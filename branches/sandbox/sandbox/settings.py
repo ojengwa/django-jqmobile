@@ -1,4 +1,11 @@
-# Django settings for sandbox project.
+# -*- coding: utf-8 -*-
+
+import os, sys
+
+sys.path.append("../contrib/")
+sys.path.append("../")
+
+PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -69,8 +76,8 @@ ADMIN_MEDIA_PREFIX = '/static/grappelli/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_PATH, '../contrib/grappelli/static/'),
     os.path.join(PROJECT_PATH, '../contrib/jqmobile/static/'),
+    os.path.join(PROJECT_PATH, '../contrib/grappelli/static/'),
 )
 
 # List of finder classes that know how to find static files in
@@ -97,6 +104,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.media',
     "django.core.context_processors.static", 
     'django.core.context_processors.request',
+    'mobileadmin.context_processors.user_agent',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -112,7 +120,7 @@ ROOT_URLCONF = 'sandbox.urls'
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, "templates/"),
     os.path.join(PROJECT_PATH, '../contrib/grappelli/templates/'),
-    os.path.join(PROJECT_PATH, '../contrib/jqmobile/templates/'),
+#   os.path.join(PROJECT_PATH, '../contrib/jqmobile/templates/'),
 )
 
 INSTALLED_APPS = (
@@ -124,8 +132,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'contrib.grappelli',
     'django.contrib.admin',
-    'contrib.mobileadmin',
-    'contrib.jqmobile',
+    'mobileadmin',
+    'jqmobile',
     'testdjango',
 )
 
@@ -157,3 +165,7 @@ LOGGING = {
 MOBILEADMIN_USER_AGENTS = {
     'mobile_jquery': r'.*',
 }
+
+handler404 = 'contrib.mobileadmin.views.page_not_found'
+handler500 = 'contrib.mobileadmin.views.server_error'
+

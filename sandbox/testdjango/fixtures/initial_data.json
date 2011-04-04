@@ -1,0 +1,1 @@
+[{"pk": 1, "model": "auth.user", "fields": {"username": "admin", "first_name": "", "last_name": "", "is_active": true, "is_superuser": true, "is_staff": true, "last_login": "2011-04-04 09:43:57", "groups": [], "user_permissions": [], "password": "sha1$76225$45ea4a3339079a6dd59d52d378005adba8468950", "email": "info@motion-m.ca", "date_joined": "2011-04-04 09:43:57"}}]

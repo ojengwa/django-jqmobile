@@ -1,0 +1,55 @@
+{% extends "mobileadmin/mobile_jquery/base.html" %}
+{% load mobile_admin_list i18n mobile_admin_media %}
+        
+{% block app.header_right_button %}
+<a data-theme="a" data-iconpos="right" data-icon="plus" href="add/">{% trans 'Add' %}</a>
+{% endblock %}
+
+{% block breadcrumbs %}
+    <a id="_objectlist" href="javascript:;" class="float-left active">{{ app_label.title|escape }}</a>
+    <a href="add/" class="float-right inactive">{% trans "Add" %}</a>
+    {% if cl.search_fields or cl.has_filters %}
+        <a id="_filter" href="javascript:;" class="float-right inactive">
+            <span class="searchimg">&nbsp;</span>
+        </a>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
+    <li class="group" id="verbose_name">{{ cl.opts.verbose_name_plural|capfirst|escape }}</li>
+    {% for res in cl.result_list %}
+        <li><a href="{{ res.id }}/" id="obj_{{ res.id }}">{{ res|escape }}</a></li>
+    {% endfor %}
+    {% block pagination %}{% pagination cl user_agent %}{% endblock %}
+</ul>
+{% endblock %}
+
+{% block page.secondarypages %}
+<div id="ma-listfilters" data-role="page" data-theme="a">
+    {% if cl.search_fields or cl.has_filters %}
+    <ul id="filter">
+        {% if cl.has_filters %}
+        <li class="group subgroup">{% trans "Filter" %}</li>
+        {% for spec in cl.filter_specs %}
+            {% admin_list_filter cl spec user_agent %}
+        {% endfor %}
+        {% endif %}
+    </ul>
+    {% endif %}
+</div>
+
+<div id="ma-listsearch" data-role="page" data-theme="a" data-rel="dialog">
+    {% if cl.search_fields %}
+    {% search_form cl user_agent %}
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block page.footer %}
+    {#<a data-theme="a" data-iconpos="left" data-icon="back" href="{% url admin:index %}">{% trans "Desktop" %}</a>#}
+    <a data-theme="a" data-iconpos="left" data-icon="gear" href="#ma-listfilters">{% trans "Filters" %}</a>
+    <a data-theme="a" data-iconpos="left" data-icon="search" data-rel="dialog" data-transition="pop" href="#ma-listsearch">{% trans "Search" %}</a>
+    <a data-theme="a" data-iconpos="left" data-icon="delete" href="{% url mobileadmin:logout %}">{% trans "Logout" %}</a>
+{% endblock %}

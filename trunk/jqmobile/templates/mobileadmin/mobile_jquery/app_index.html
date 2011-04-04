@@ -1,0 +1,19 @@
+{% extends "mobileadmin/mobile_jquery/index.html" %} 
+{% load i18n %} 
+
+{% block breadcrumbs %}<span id="title">{{ title }}</span>{% endblock %}
+
+{% block content %}
+test
+    <ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
+    {% for app in app_list %}
+    {% for model in app.models %}
+        {% if model.perms.change %}
+            <li><a target="_self" href="{{ model.admin_url }}">{{ model.name }}</a></li>
+        {% else %}
+            <li>{{ model.name }}</li>
+        {% endif %}
+    {% endfor %}
+    {% endfor %}
+    </ul>
+{% endblock %}

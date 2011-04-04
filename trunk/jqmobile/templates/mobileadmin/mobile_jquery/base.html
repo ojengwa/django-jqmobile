@@ -1,0 +1,64 @@
+{% load i18n mobile_admin_media %}{# spaceless #}
+<!DOCTYPE html>
+<html{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="robots" content="{% block robots %}NONE,NOARCHIVE{% endblock %}">
+        <title>{% url mobileadmin:index %}{# block title %}{% trans 'Django administration' %}{% endblock #}</title>
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}mobileadmin/jquery.mobile/jquery.mobile.min.css">
+        <script type="text/javascript" src="{{ STATIC_URL }}mobileadmin/js/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}mobileadmin/jquery.mobile/jquery.mobile.min.js"></script>
+        {% block extrahead %}{% endblock %}
+        {% block extrastyle %}{% endblock %}
+    </head> 
+<body{# onorientationchange="updateLayout();"#}> 
+    <div id="ma-index" data-role="page" data-theme="a">
+        <div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
+            {% block app.header_left_button %}
+            <a data-direction="reverse" data-iconpos="notext" data-icon="home" href="{% url mobileadmin:index %}" title="Home" data-theme="a">{% trans "Home" %}</a>
+            {% endblock %}
+            <h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% trans 'Django administration' %}</h1>
+            {% block app.header_right_button %}
+                {#<a data-theme="a" data-iconpos="left" data-icon="gear" href="{% url mobileadmin:password_change %}">{% trans 'Options' %}</a>#}
+            {% endblock %}
+        </div>
+        <div data-role="content">
+            {% block content %}{{ content }}{% endblock %}
+        </div>
+        <div data-role="footer" class="ui-bar">
+            {% block page.footer %}{% endblock %}
+        </div>
+    </div>
+    {% block page.secondarypages %}{% endblock %}
+</body>
+</html>
+
+{% comment %}
+        <div data-role="page" data-heme="c" id="admin-index">
+            <div data-role="header">
+                {% block header_logo %}
+                {% endblock %}
+                <div class="toolbar">
+                    {% block tools %}
+                    {% if user.is_authenticated and user.is_staff %}
+                    <div class="user-tools"
+                        <a href="{{ root_path }}logout/" id="logout_link">{% trans "Logout" %}</a>
+                        <a href="{{ root_path }}password_change/" id="password_change">{% trans 'Change password' %}</a>
+                    </div>
+                    <div class="greeting float-right">
+                        {% trans 'Welcome,' %} {% if user.first_name %}{{ user.first_name|escape }}{% else %}{{ user.username }}{% endif %}
+                    </div>
+                    {% endif %}
+                    {% endblock tools %}
+                </div>
+            </div> 
+            <div data-role="content">
+            </div> 
+            <div data-role="footer">
+                <div class="breadcrumbs" selected="true">{% block breadcrumbs %}{% endblock %}</div>
+            </div> 
+        </div>
+{# endspaceless #}
+{% endcomment%}

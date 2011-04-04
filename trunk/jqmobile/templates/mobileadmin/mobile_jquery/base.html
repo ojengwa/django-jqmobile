@@ -7,9 +7,9 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="robots" content="{% block robots %}NONE,NOARCHIVE{% endblock %}">
         <title>{% url mobileadmin:index %}{# block title %}{% trans 'Django administration' %}{% endblock #}</title>
-        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}mobileadmin/jquery.mobile/jquery.mobile.min.css">
-        <script type="text/javascript" src="{{ STATIC_URL }}mobileadmin/js/jquery.min.js"></script>
-        <script type="text/javascript" src="{{ STATIC_URL }}mobileadmin/jquery.mobile/jquery.mobile.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}jqmobile/jquery.mobile/jquery.mobile.min.css">
+        <script type="text/javascript" src="{{ STATIC_URL }}jqmobile/js/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}jqmobile/jquery.mobile/jquery.mobile.min.js"></script>
         {% block extrahead %}{% endblock %}
         {% block extrastyle %}{% endblock %}
     </head> 

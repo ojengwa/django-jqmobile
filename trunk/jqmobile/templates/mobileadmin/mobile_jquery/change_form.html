@@ -56,3 +56,18 @@
 {% prepopulated_fields_js %}
 </form>
 {% endblock %}
+
+{% block page.footer %}
+<a id="save-object" data-theme="a" data-iconpos="left" data-icon="delete" href="{% url mobileadmin:logout %}">{% trans "Save" %}</a>
+<a data-theme="a" data-iconpos="left" data-icon="delete" href="{% url mobileadmin:logout %}">{% trans "Delete" %}</a>
+<script>
+$(function(){
+    $('#save-object').bind('click', function(){
+        console.log($('form:first'));
+        $('form:first').submit();
+        return false;
+    });
+
+})
+</script>
+{% endblock %}

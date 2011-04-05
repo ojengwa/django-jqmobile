@@ -6,6 +6,7 @@
         {{ line.errors }}
         {% for field in line %}
         {% render_mobile_field field %}
+        {% endfor %}
         {% comment %}
         {% if field.is_checkbox %}
             {{ field.field }}<label for="{{ field.field.auto_id }}" class="vCheckboxLabel" onclick="javascript:;">{{ field.field.label }}</label>
@@ -16,7 +17,6 @@
         <a href="javascript:;" data-icon="button" style="display:inline;float:right;" title="{{ field.field.field.help_text|striptags|escape }}" onclick="alert(this.title);return false;">?</a>
         {% endif %}
         {% endcomment %}
-      {% endfor %}
       </li>
   {% endfor %}
 </ul>

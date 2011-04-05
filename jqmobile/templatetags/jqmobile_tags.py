@@ -9,14 +9,41 @@ from django.utils.translation import gettext as _
 
 register = template.Library()
 
+def form_flipswitch(field):
+    if field.field.value() == True:
+        checked = ' selected="selected"'
+        unchecked = ''
+    else:
+        checked = ''
+        unchecked = ' selected="selected"'
+
+    return u"""<label for="%(id)s" class="ui-input-slider">%(label)s</label>\
+<select name="%(name)s" id="%(id)s" data-role="slider">\
+    <option value="off"%(unchecked)s>%(off)s</option>\
+    <option value="on"%(checked)s>%(on)s</option>\
+</select>""" % {
+        'id': field.field.auto_id, 
+        'label': field.field.label, 
+        'name': field.field.html_name,
+        'on': _('On'),
+        'off': _('Off'),
+        'unchecked':  unchecked,
+        'checked': checked
+        }
+
+
+
 @register.simple_tag
 def render_mobile_field(field):
     html = field.field.as_widget()
-
-    print dir(field.field)
+    #print dir(field)
     if field.is_checkbox:
-       #out = '%s <label for="%s" class="vCheckboxLabel" onclick="javascript:;">%s</label>' % (field.field, field.field.auto_id, field.field.label)
-	    out = u'<label for="%s" class="ui-input-slider">%s</label> <select name="%s" id="%s" data-role="slider"><option value="off">%s</option><option value="on">%s</option></select>' % (field.field.auto_id, field.field.label, field.field.auto_id, field.field.auto_id, _('On'), _('Off'))
+        out = form_flipswitch(field)
+       #print "-------------------------------------------------------"
+       #print '%s <label for="%s" class="vCheckboxLabel" onclick="javascript:;">%s</label>' % (field.field, field.field.auto_id, field.field.label)
+       #print "-------------------------------------------------------"
+       #print out
+       #print "-------------------------------------------------------"
     else:
         out = u'<label for="%s">%s</label> %s' % (field.field.auto_id, field.field.label, field.field)
 

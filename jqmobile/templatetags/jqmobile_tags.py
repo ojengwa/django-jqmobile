@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import re, os
 from django import template
 from django.conf import settings
@@ -14,10 +16,10 @@ def render_mobile_field(field):
     print dir(field.field)
     if field.is_checkbox:
        #out = '%s <label for="%s" class="vCheckboxLabel" onclick="javascript:;">%s</label>' % (field.field, field.field.auto_id, field.field.label)
-	    out = '<label for="%s" class="ui-input-text">%s</label> <select name="slider" id="slider" data-role="slider"><option value="off">%s</option><option value="on">%s</option></select>' % (field.field.auto_id, field.field.label, _('On'), _('Off'))
+	    out = u'<label for="%s" class="ui-input-slider">%s</label> <select name="%s" id="%s" data-role="slider"><option value="off">%s</option><option value="on">%s</option></select>' % (field.field.auto_id, field.field.label, field.field.auto_id, field.field.auto_id, _('On'), _('Off'))
     else:
-        out = '%s %s' % (field.label_tag(), field.field)
+        out = u'<label for="%s">%s</label> %s' % (field.field.auto_id, field.field.label, field.field)
 
-    return SafeString(out)
+    return out
 
 

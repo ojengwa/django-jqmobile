@@ -23,11 +23,6 @@
 <form target="_self" class="panel" selected="true" title="{{ opts.object_name|capfirst }}" {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.module_name }}_form">{% csrf_token %}{% block form_top %}{% endblock %}
 {% if not add %}
     <h1><span id="object_name">{{ opts.object_name|escape }}</span>: <span id="original">{{ original|escape }}</span></h1>
-    <script type="text/javascript">
-    truncate({
-        'object_name': 35,
-        'original', 35
-    });</script>
 {% endif %}
 
 {% if errors %}

@@ -16,10 +16,11 @@ def form_flipswitch(field):
     else:
         checked = ''
         unchecked = ' selected="selected"'
-
+    # Warning: the value of the "off" option is left intentionnaly
+    # blank because Django seems to assume that any data (including "off") == True.
     return u"""<label for="%(id)s" class="ui-input-slider">%(label)s</label>\
 <select name="%(name)s" id="%(id)s" data-role="slider">\
-    <option value="off"%(unchecked)s>%(off)s</option>\
+    <option value=""%(unchecked)s>%(off)s</option>\
     <option value="on"%(checked)s>%(on)s</option>\
 </select>""" % {
         'id': field.field.auto_id, 
@@ -40,9 +41,7 @@ def render_mobile_field(field):
     if field.is_checkbox:
         out = form_flipswitch(field)
        #print "-------------------------------------------------------"
-       #print '%s <label for="%s" class="vCheckboxLabel" onclick="javascript:;">%s</label>' % (field.field, field.field.auto_id, field.field.label)
-       #print "-------------------------------------------------------"
-       #print out
+       #out = '%s <label for="%s" class="vCheckboxLabel" onclick="javascript:;">%s</label>' % (field.field, field.field.auto_id, field.field.label)
        #print "-------------------------------------------------------"
     else:
         out = u'<label for="%s">%s</label> %s' % (field.field.auto_id, field.field.label, field.field)

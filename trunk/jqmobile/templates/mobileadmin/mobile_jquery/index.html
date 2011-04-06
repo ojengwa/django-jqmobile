@@ -30,7 +30,7 @@
 
 {% block page.secondarypages %}
 <div id="ma-actions" data-role="page" data-theme="a">
-    <div data-theme="a" data-role="header" class="ui-bar-b ui-header" role="banner">
+    <div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
         <h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% trans 'Django administration' %}</h1>
     </div>
     <div data-role="content">
@@ -42,10 +42,11 @@
             <li>{% trans 'None available' %}</li>
             {% else %}
             {% for entry in admin_log %}
-            <li class="{% if entry.is_addition %}addlink{% endif %}{% if entry.is_change %}changelink{% endif %}{% if entry.is_deletion %}deletelink{% endif %}">
+            <li {% if entry.is_addition %} data-icon="plus"{% endif %}{% if entry.is_change %} data-icon="check"{% endif %}{% if entry.is_deletion %} data-icon="delete"{% endif %} data-theme="a">
                 {% if not entry.is_deletion %}<a href="{{ entry.get_admin_url }}">{% endif %}
                 {% filter capfirst %}{% trans entry.content_type.name %}{% endfilter %}: <span id="entry_{{ entry.pk }}">{{ entry.object_repr|escape }}</span>
                 {% if not entry.is_deletion %}</a>{% endif %}
+                <span class="ui-li-count ui-btn-corner-all">{{ entry.action_time }}</span>
             </li>
             {% endfor %}
             {% endif %}

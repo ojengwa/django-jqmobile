@@ -2,6 +2,7 @@
 {% load mobile_admin_modify i18n %}
 
 {% block breadcrumbs %}<a href="../" class="inactive float-left" id="object_{{ object.pk }}">{{ object|escape }}</a> </a><span class="float-right active">{% trans 'History' %}</span>
+<script type="text/javascript">truncate({'object_{{ object.pk }}': 20});</script>
 {% endblock %}
 
 {% block content %}

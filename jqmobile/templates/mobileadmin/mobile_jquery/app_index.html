@@ -6,6 +6,7 @@
 {% block content %}
 <ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
     {% for app in app_list %}
+    <li class="group" id="verbose_name" data-theme="b">{{ app.name|capfirst|escape }}</li>
     {% for model in app.models %}
     {% if model.perms.change %}
         <li><a target="_self" href="{{ model.admin_url }}">{{ model.name }}</a></li>

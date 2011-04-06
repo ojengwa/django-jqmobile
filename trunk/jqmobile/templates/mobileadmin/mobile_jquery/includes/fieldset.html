@@ -3,7 +3,6 @@
 <ul data-inset="true" data-role="listview" data-theme="a">
     {% for line in fieldset %}
     <li class="form-row{% if line.errors %} errors{% endif %} {% for field in line %}{{ field.field.name }} {% endfor %} " data-role="fieldcontain">
-        {{ line.errors }}
         {% for field in line %}
         {% render_mobile_field field %}
         {% endfor %}

@@ -44,7 +44,9 @@ def render_mobile_field(field):
        #out = '%s <label for="%s" class="vCheckboxLabel" onclick="javascript:;">%s</label>' % (field.field, field.field.auto_id, field.field.label)
        #print "-------------------------------------------------------"
     else:
-        out = u'<label for="%s">%s</label> %s' % (field.field.auto_id, field.field.label, field.field)
+        out = u'<label for="%s">%s</label> %s%s' % (
+                field.field.auto_id, field.field.label, field.field, 
+                str(field.field.errors)[22:-5].replace('<li>', '<div class="errormsg">').replace('</li>', '</div>'))
 
     return out
 

@@ -1,0 +1,19 @@
+.error {
+    padding: 15px 20px;
+}
+
+.form-row.errors input {
+    border-color: #c30;
+}
+
+.errormsg {
+    font-size: 14px;
+    font-weight: normal;
+    margin: 6px 0 0 345px;
+    padding: 6px;
+    width: 60%;
+}
+
+.min-width-480px .errormsg {
+    margin-left: 22.3%;
+}

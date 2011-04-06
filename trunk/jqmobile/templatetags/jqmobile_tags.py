@@ -35,11 +35,6 @@ def form_flipswitch(field):
 
 def form_datetime(field):
     datetime=field.field
-
-    print "--------------------------------------"
-    print field.field.auto_id
-    print field.field.html_name
-    print "--------------------------------------"
     #on place le titre
     out=u'<label for="%s"><h1>%s</h1></label>' % (datetime.auto_id,datetime.label)
     out+='<table>'
@@ -55,9 +50,6 @@ def form_datetime(field):
 
     #on met tout on place (sous titre + text )
     i=0
-    print (html)
-    print (res_title)
-    print (res_date_hour)
     for title in res_title:
         out+='<tr><td> <label for="%(id)s_%(i)d">%(label)s </label></td><td> <input type="text" value="'% {'label':title,'id':datetime.auto_id,'i':i }
         if i < len(res_date_hour):
@@ -84,8 +76,32 @@ def render_mobile_field(field):
         out = form_datetime(field)
     else:
         out = u'<label for="%s">%s</label> %s%s' % (field.field.auto_id, field.field.label, field.field,str(field.field.errors)[22:-5].replace('<li>', '<div class="errormsg">').replace('</li>', '</div>'))
-        print (field.field)
 			
     return out
 
+
+@register.simple_tag
+def get_breadcrumb(field):
+	path=field
+
+	exp=re.compile('([A-Z a-z 0-9]+/)')
+	sub_path=exp.findall(path)
+	out=u'<ul>'
+	
+	i=1;
+	path="/"
+	#on parcour l'arborecence
+	for page in sub_path:
+	
+		path+=page #on reconstruit l'arborecence à chaque boucle
+		out+='<li><a href="%(path)s"' % {'path':path} #on forme la liste des boutons
+		
+		if i == len(sub_path):
+			out+=' class="ui-btn-active"' #on active le dernier lien
+		
+		out+='>%(page)s</a></li>' % {'page':page} # on fini la liste
+		i+=1	
+			
+	out+='</ul>'
+	return out
 

@@ -1,4 +1,4 @@
-{% load i18n mobile_admin_media %}{# spaceless #}
+{% load i18n mobile_admin_media jqmobile_tags %}{# spaceless #}
 <!DOCTYPE html>
 <html{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
     <head>
@@ -36,15 +36,28 @@
                 {#<a data-theme="a" data-iconpos="left" data-icon="gear" href="{% url mobileadmin:password_change %}">{% trans 'Options' %}</a>#}
             {% endblock %}
         </div>
+ 
+ 		<div data-role="navbar">{% block navbar %} {% endblock %}</div>
+       <!-- <div class="breadcrumbs" selected="true">{% block breadcrumbs %}{% endblock %}<div>-->
+        
         <div data-role="content">
             {% block content %}{{ content }}{% endblock %}
         </div>
-        <div data-role="footer" class="ui-bar">
+        <div data-role="footer" class="ui-bar" data-position="fixed">
             {% block page.footer %}{% endblock %}
         </div>
     </div>
     {% block page.secondarypages %}{% endblock %}
 </body>
+<div data-role="footer" >
+
+	<!--<div data-role="navbar">
+		<ul>
+			<li><a href="a.html" class="ui-btn-active">One</a></li>
+			<li><a href="b.html">Two</a></li>
+		</ul>
+	</div>--><!-- /navbar --> 
+</div>
 </html>
 
 {% comment %}
@@ -70,7 +83,13 @@
             </div> 
             <div data-role="footer">
                 <div class="breadcrumbs" selected="true">{% block breadcrumbs %}{% endblock %}</div>
-            </div> 
-        </div>
+				<!--<div data-role="navbar">
+					<ul>
+						<li><a href="a.html" class="ui-btn-active">One</a></li>
+						<li><a href="b.html">Two</a></li>
+					</ul>
+				</div>--><!-- /navbar --> 
+            	</div> 
+       		</div>
 {# endspaceless #}
 {% endcomment%}

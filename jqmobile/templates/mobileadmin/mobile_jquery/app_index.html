@@ -1,5 +1,5 @@
 {% extends "mobileadmin/mobile_jquery/index.html" %} 
-{% load i18n %} 
+{% load i18n jqmobile_tags %} 
 
 {% block breadcrumbs %}<span id="title">{{ title }}</span>{% endblock %}
 
@@ -17,3 +17,10 @@
     {% endfor %}
 </ul>
 {% endblock %}
+
+{% block navbar %}
+app_index
+	{% get_breadcrumb request.path %}
+{% endblock %}
+
+

@@ -1,8 +1,13 @@
 {% extends "mobileadmin/mobile_jquery/base.html" %}
-{% load mobile_admin_list i18n mobile_admin_media %}
+{% load mobile_admin_list i18n mobile_admin_media jqmobile_tags %}
         
 {% block app.header_right_button %}
 <a data-theme="a" data-iconpos="right" data-icon="plus" href="add/">{% trans 'Add' %}</a>
+{% endblock %}
+
+{% block navbar %}
+change_list
+	{% get_breadcrumb request.path %}
 {% endblock %}
 
 {% block breadcrumbs %}

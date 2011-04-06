@@ -1,11 +1,15 @@
 {% extends "mobileadmin/mobile_jquery/base.html" %}
-{% load i18n mobile_admin_modify mobile_admin_media %}
+{% load i18n mobile_admin_modify mobile_admin_media jqmobile_tags %}
 
 {% block extrahead %}{{ block.super }}
 <script type="text/javascript" src="../../../jsi18n/"></script>
 <script type="text/javascript" src="{% mobileadmin_media_prefix %}js/urlify.js"></script>
 {% endblock %}
 
+{% block navbar %}
+change_form
+	{% get_breadcrumb request.path %}
+{% endblock %}
 
 {% block breadcrumbs %}<a href="../" class="inactive float-left">{{ opts.verbose_name_plural|capfirst|escape }}</a>
 
@@ -42,13 +46,13 @@
 {% endfor %}
  
 {% block after_related_objects %}{% endblock %} 
- 
+<!--
 <div class="submit-row" selected="true">
 <ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
     <li><a href="javascript:;" onclick="document.forms[0].submit()" class="inactive float-right submit" >{% trans 'Save' %}</a></li>
     {% if has_delete_permission %}{% if change or show_delete %}<li><a href="delete/" class="inactive float-left delete">{% trans "Delete" %}</a></li>{% endif %}{% endif %}
 </ul>
-</div>
+</div>--><!-- ajout dasn le footer de ces otions là, donc plus besoin de les afficher ici-->
 
 {% if add %} 
    <script type="text/javascript">document.getElementById("{{ adminform.first_field.auto_id }}").focus();</script> 
@@ -60,8 +64,8 @@
 {% endblock %}
 
 {% block page.footer %}
-<a id="save-object" data-theme="a" data-iconpos="left" data-icon="delete" href="{% url mobileadmin:logout %}">{% trans "Save" %}</a>
-<a data-theme="a" data-iconpos="left" data-icon="delete" href="{% url mobileadmin:logout %}">{% trans "Delete" %}</a>
+<a id="save-object" data-theme="a" data-iconpos="left" data-icon="delete" onclick="document.forms[0].submit()">{% trans "Save" %}</a>
+{% if has_delete_permission %}{% if change or show_delete %}<a data-theme="a" data-iconpos="left" data-icon="delete" href="delete/">{% trans "Delete" %}</a>{% endif %}{% endif %}
 <script>
 $(function(){
     $('#save-object').bind('click', function(){

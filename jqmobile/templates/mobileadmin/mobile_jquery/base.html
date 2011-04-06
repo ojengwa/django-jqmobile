@@ -44,20 +44,20 @@
             {% block content %}{{ content }}{% endblock %}
         </div>
         <div data-role="footer" class="ui-bar" data-position="fixed">
+        	<a data-icon="arrow-l" href="{% get_back_path request.path %}">{% trans "Back" %}</a>
             {% block page.footer %}{% endblock %}
         </div>
     </div>
     {% block page.secondarypages %}{% endblock %}
 </body>
-<div data-role="footer" >
-
-	<!--<div data-role="navbar">
+<!--<div data-role="footer" >
+	<div data-role="navbar">
 		<ul>
 			<li><a href="a.html" class="ui-btn-active">One</a></li>
 			<li><a href="b.html">Two</a></li>
 		</ul>
-	</div>--><!-- /navbar --> 
-</div>
+	</div><!-- /navbar --> 
+</div>-->
 </html>
 
 {% comment %}

@@ -87,14 +87,14 @@ def get_breadcrumb(field):
 	exp=re.compile('([A-Z a-z 0-9]+/)')
 	sub_path=exp.findall(path)
 	out=u'<ul>'
-	
+		
 	i=1;
 	path="/"
 	#on parcour l'arborecence
 	for page in sub_path:
 	
 		path+=page #on reconstruit l'arborecence à chaque boucle
-		out+='<li><a href="%(path)s"' % {'path':path} #on forme la liste des boutons
+		out+='<li><a href="%(path)s" data-icon="arrow-l"' % {'path':path} #on forme la liste des boutons
 		
 		if i == len(sub_path):
 			out+=' class="ui-btn-active"' #on active le dernier lien
@@ -104,4 +104,21 @@ def get_breadcrumb(field):
 			
 	out+='</ul>'
 	return out
-
+	
+@register.simple_tag
+def get_back_path(field):
+	path=field
+	exp=re.compile('([A-Z a-z 0-9]+/)')
+	sub_path=exp.findall(path)
+	i=1;
+	if i < len(sub_path):
+		path="/"
+		for page in sub_path:
+			if i < len(sub_path):
+				path+=page
+			i+=1
+	else:
+		path="./"
+	#on parcour l'arborecence
+	
+	return path

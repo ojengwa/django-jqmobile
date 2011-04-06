@@ -17,7 +17,7 @@
 {% block content %}
 
 <ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
-    <li class="group" id="verbose_name">{{ cl.opts.verbose_name_plural|capfirst|escape }}</li>
+    <li class="group" id="verbose_name" data-theme="b">{{ cl.opts.verbose_name_plural|capfirst|escape }}</li>
     {% for res in cl.result_list %}
         <li><a href="{{ res.id }}/" id="obj_{{ res.id }}">{{ res|escape }}</a></li>
     {% endfor %}

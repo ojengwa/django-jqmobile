@@ -94,7 +94,8 @@ def get_breadcrumb(field):
 	for page in sub_path:
 	
 		path+=page #on reconstruit l'arborecence à chaque boucle
-		out+='<li><a href="%(path)s" data-icon="arrow-l"' % {'path':path} #on forme la liste des boutons
+        # data-role="button" data-icon="arrow-l" data-iconpos="left" <- fonctionne pas ??
+		out+='<li><a href="%(path)s"' % {'path':path} #on forme la liste des boutons
 		
 		if i == len(sub_path):
 			out+=' class="ui-btn-active"' #on active le dernier lien

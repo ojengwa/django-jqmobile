@@ -7,14 +7,17 @@
 {% endblock %}
 
 {% block navbar %}
-change_form
 	{% get_breadcrumb request.path %}
 {% endblock %}
+
+{% block app.title %}{% trans "Admin" %} / {{ opts.verbose_name_plural|capfirst|escape }} / {{ original|escape|truncatewords:"3" }}{% endblock %}
 
 {% block breadcrumbs %}<a href="../" class="inactive float-left">{{ opts.verbose_name_plural|capfirst|escape }}</a>
 
 {% if change %}
+{# view on site #}
 {% if has_absolute_url %}<a href="../../../r/{{ content_type_id }}/{{ object_id }}/" class="inactive float-right" target="_blank">{% trans "Go" %}</a>{% endif%}
+{# history #}
 <a href="history/" class="inactive float-right">{% trans "History" %}</a>
 {% endif%}
 

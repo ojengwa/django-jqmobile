@@ -5,8 +5,9 @@
 <a data-theme="a" data-iconpos="right" data-icon="plus" href="add/">{% trans 'Add' %}</a>
 {% endblock %}
 
+{% block app.title %}{% trans "Admin" %} / {{ app_label.title|escape }}{% endblock %}
+
 {% block navbar %}
-change_list
 	{% get_breadcrumb request.path %}
 {% endblock %}
 
@@ -19,12 +20,12 @@ change_list
         </a>
     {% endif %}
 {% endblock %}
-{% block content %}
 
+{% block content %}
 <ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
-    <li class="group" id="verbose_name" data-theme="b">{{ cl.opts.verbose_name_plural|capfirst|escape }}</li>
+    <li class="group" id="verbose_name" data-theme="a">{{ cl.opts.verbose_name_plural|capfirst|escape }}</li>
     {% for res in cl.result_list %}
-        <li><a href="{{ res.id }}/" id="obj_{{ res.id }}">{{ res|escape }}</a></li>
+        <li data-theme="c"><a href="{{ res.id }}/" id="obj_{{ res.id }}">{{ res|escape }}</a></li>
     {% endfor %}
     {% block pagination %}{% pagination cl user_agent %}{% endblock %}
 </ul>

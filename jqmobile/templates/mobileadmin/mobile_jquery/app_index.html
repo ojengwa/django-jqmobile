@@ -1,17 +1,18 @@
 {% extends "mobileadmin/mobile_jquery/index.html" %} 
 {% load i18n jqmobile_tags %} 
 
-{% block breadcrumbs %}<span id="title">{{ title }}</span>{% endblock %}
+{% block app.title %} Admin / {{ app_list.0.name }}{% endblock %}
 
 {% block content %}
 <ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
+    
     {% for app in app_list %}
-    <li class="group" id="verbose_name" data-theme="b">{{ app.name|capfirst|escape }}</li>
+    <li class="group" id="verbose_name" data-theme="a">{{ app.name|capfirst|escape }}</li>
     {% for model in app.models %}
     {% if model.perms.change %}
-        <li><a target="_self" href="{{ model.admin_url }}">{{ model.name }}</a></li>
+        <li data-theme="c"><a target="_self" href="{{ model.admin_url }}">{{ model.name }}</a></li>
     {% else %}
-        <li>{{ model.name }}</li>
+        <li data-theme="c">{{ model.name }}</li>
     {% endif %}
     {% endfor %}
     {% endfor %}
@@ -19,7 +20,6 @@
 {% endblock %}
 
 {% block navbar %}
-app_index
 	{% get_breadcrumb request.path %}
 {% endblock %}
 

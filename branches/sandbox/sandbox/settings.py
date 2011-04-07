@@ -113,6 +113,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',    
 )
 
 ROOT_URLCONF = 'sandbox.urls'
@@ -120,6 +121,7 @@ ROOT_URLCONF = 'sandbox.urls'
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, "templates/"),
     os.path.join(PROJECT_PATH, '../contrib/grappelli/templates/'),
+    os.path.join(PROJECT_PATH, '../contrib/debug_toolbar/templates/'),
 #   os.path.join(PROJECT_PATH, '../contrib/jqmobile/templates/'),
 )
 
@@ -130,11 +132,12 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'contrib.grappelli',
+    'grappelli',
     'django.contrib.admin',
     'mobileadmin',
     'jqmobile',
     'testdjango',
+    'debug_toolbar',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -168,4 +171,19 @@ MOBILEADMIN_USER_AGENTS = {
 
 handler404 = 'contrib.mobileadmin.views.page_not_found'
 handler500 = 'contrib.mobileadmin.views.server_error'
+
+
+INTERNAL_IPS = ('127.0.0.1',)
+
+DEBUG_TOOLBAR_PANELS = (
+    'debug_toolbar.panels.version.VersionDebugPanel',
+    'debug_toolbar.panels.timer.TimerDebugPanel',
+    'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
+    'debug_toolbar.panels.headers.HeaderDebugPanel',
+    'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
+    'debug_toolbar.panels.template.TemplateDebugPanel',
+    'debug_toolbar.panels.sql.SQLDebugPanel',
+    'debug_toolbar.panels.signals.SignalDebugPanel',
+    'debug_toolbar.panels.logger.LoggingPanel',
+)
 

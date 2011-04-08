@@ -100,7 +100,7 @@ def get_breadcrumb(field):
 		if i == len(sub_path):
 			out+=' class="ui-btn-active"' #on active le dernier lien
 		
-		out+='>%(page)s</a></li>' % {'page':page} # on fini la liste
+		out+='>%(page)s</a></li>' % {'page': page.replace('/', '')} # on fini la liste
 		i+=1	
 			
 	out+='</ul>'

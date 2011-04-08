@@ -1,0 +1,33 @@
+
+== Global ==
+
+ - trouver la source du conflit entre l'admin desktop et mobile
+ - le header doit contenir les boutons "Options" (sans texte) et "Déconnexion" (avec texte) alignés à droite
+ - le bouton "Options" doit ouvrir une liste dans une nouvelle page
+ - la page "Options" doit contenir les liens suivants: Changer mot de passe, Desktop admin (fr?), Mes actions récentes, Mon compte (lien vers current user)
+ - affichier l'icon "home" au lieu de "ma" dans le breadcrumb
+ 
+== index.html ==
+- enlever footer
+
+== app_index.html ==
+ - enlever footer
+
+== change_list.html ==
+
+ - le footer doit contenir les boutons (si applicable): Filtres, Rechercher, Ajouter
+ - le bouton Filtres doit ouvrir une nouvelle page et afficher les filtres disponibles
+ - le bouton Rechercher doit ouvrir soit une nouvelle page ou un dialog pour saisir le terme de recherche
+
+== change_form.html ==
+
+ - vérifier que tout les widgets de formulaires fonctionne pour chacun des champs
+ - affichage des erreurs de validations
+ - le bouton supprimer devrait être d'une couleur rouge (voir l'admin desktop)
+ - les boutons de sauvegarde devraient être bleu (voir l'admin desktop)
+ - styliser le formulaire d'ajout d'utilisateur
+
+ == à long terme ==
+
+ - le champ password du formulaire d'ajout d'utilisateur doit compoter un bouton pour modifier le password (le lien est enterré dans le field.field.help_text)
+ - intégration avec grappelli.dashboard

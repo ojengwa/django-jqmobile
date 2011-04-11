@@ -2,12 +2,13 @@
 {% load mobile_admin_list i18n mobile_admin_media jqmobile_tags %}
         
 {% block app.header_right_button %}
-<a data-theme="a" data-iconpos="right" data-icon="plus" href="add/">{% trans 'Add' %}</a>
+	
 {% endblock %}
 
 {% block app.title %}{% trans "Admin" %} / {{ app_label.title|escape }}{% endblock %}
 
 {% block navbar %}
+change_list
 	{% get_breadcrumb request.path %}
 {% endblock %}
 
@@ -52,9 +53,12 @@
 </div>
 {% endblock %}
 
+{% block contenu_option %}
+    <li><a data-theme="a" data-iconpos="left" data-icon="gear" href="#ma-listfilters">{% trans "Filters" %}</a></li>
+    <li><a data-theme="a" data-iconpos="left" data-icon="search" data-rel="dialog" data-transition="pop" href="#ma-listsearch">{% trans "Search" %}</a></li>
+    <li><a data-theme="e" data-iconpos="left" data-icon="delete" href="{% url mobileadmin:logout %}">{% trans "Log out" %}</a></li>
+{% endblock %}
+
 {% block page.footer %}
-    {#<a data-theme="a" data-iconpos="left" data-icon="back" href="{% url admin:index %}">{% trans "Desktop" %}</a>#}
-    <a data-theme="a" data-iconpos="left" data-icon="gear" href="#ma-listfilters">{% trans "Filters" %}</a>
-    <a data-theme="a" data-iconpos="left" data-icon="search" data-rel="dialog" data-transition="pop" href="#ma-listsearch">{% trans "Search" %}</a>
-    <a data-theme="a" data-iconpos="left" data-icon="delete" href="{% url mobileadmin:logout %}">{% trans "Logout" %}</a>
+   <a data-theme="a" data-iconpos="right" data-icon="plus" href="add/">{% trans 'Add' %}</a>
 {% endblock %}

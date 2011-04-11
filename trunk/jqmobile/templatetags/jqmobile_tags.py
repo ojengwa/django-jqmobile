@@ -75,8 +75,19 @@ def render_mobile_field(field):
     elif '<p class="datetime">' in html:
         out = form_datetime(field)
     else:
-        out = u'<label for="%s">%s</label> %s%s' % (field.field.auto_id, field.field.label, field.field,str(field.field.errors)[22:-5].replace('<li>', '<div class="errormsg">').replace('</li>', '</div>'))
-			
+    	out = u'<label for="%(id)s">%(label)s</label> %(objet)s' % {'id':field.field.auto_id, 
+        'label':field.field.label,
+         'objet':field.field,
+         }
+         
+	print(str(field.field.errors))
+    
+	out+='<span id="%(id)s_errors" >%(errors)s</span>' % {'id':field.field.auto_id,'errors':str(field.field.errors)}
+    	#if 'type="text"' in html:
+        #	out+='<script type="text/javascript">'
+        #	if "email" in html:
+        #		out+='var %(id)s = new LiveValidation("%(id)s", { validMessage: "%(valid)s" ,wait: 500});\n %(id)s.add(Validate.Presence, {failureMessage: "%(fail)s" });\n %(id)s.add(Validate.Format, {pattern: /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/i,failureMessage: "%(fail)s" });' % {'id':field.field.auto_id,'valid':"email correct",'fail': "email incorrect"}        		
+        #	out+='</script>'
     return out
 
 
@@ -100,7 +111,10 @@ def get_breadcrumb(field):
 		if i == len(sub_path):
 			out+=' class="ui-btn-active"' #on active le dernier lien
 		
-		out+='>%(page)s</a></li>' % {'page': page.replace('/', '')} # on fini la liste
+		if i ==1:
+			out+=' data-icon="home"></a></li>'
+		else:
+			out+='>%(page)s</a></li>' % {'page': page.replace('/', '')} # on fini la liste
 		i+=1	
 			
 	out+='</ul>'

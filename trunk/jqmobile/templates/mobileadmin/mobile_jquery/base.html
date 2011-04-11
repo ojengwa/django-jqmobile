@@ -22,7 +22,7 @@
     <div id="ma-index" data-role="page" data-theme="a">
         <div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
             {% block app.header_left_button %}
-            <a data-direction="reverse" data-iconpos="notext" data-icon="home" href="{% url mobileadmin:index %}" title="Home" data-theme="a">{% trans "Home" %}</a>
+            	<a href="#ma_options" data-icon="gear" data-iconpos="notext" data-role="button" class="ui-btn-left"></a>
             {% endblock %}
             {# TODO: the default title should check for Grappelli title in settings before falling back to "Django Admin #}
             <h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% block app.title %}{% trans "Django Admin" %}{% endblock %}</h1>
@@ -32,19 +32,32 @@
         </div>
  
  		<div data-role="navbar">{% block navbar %} {% endblock %}</div>
-       <!-- <div class="breadcrumbs" selected="true">{% block breadcrumbs %}{% endblock %}<div>-->
         
-        <div data-role="content">
-            {% block content %}{{ content }}{% endblock %}
-        </div>
-        <div data-role="footer" class="ui-bar" data-position="fixed">
-            {#<a data-icon="arrow-l" href="{% get_back_path request.path %}">{% trans "Back" %}</a>#}
-            {% block page.footer %}{% endblock %}
-        </div>
+			<div data-role="content">{% block content %}{{ content }}{% endblock %}</div>
+			<div for="footer_id" data-role="footer" class="ui-bar" data-position="fixed" data-backbtn="false"> 
+				{% block page.footer %}{% endblock %}			
+			</div>
+    	</div>
+    {% block page.options_page %}
+    <div id="ma_options" data-role="page" data-theme="a">
+    	 <div data-theme="a" data-role="header" class="ui-bar-b ui-header" role="banner">
+    	 	<h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% trans 'Django administration' %}</h1>
+    	</div>
+    	<div data-role="content">    	
+    		<ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
+    			<li><a data-icon="back" href="{{ request.path }}">{% trans "Back" %}</a></li>
+    			<li><a data-icon="gear" >{% trans "Change password" %}</a></li>
+    			<li><a data-icon="home" href="{{ model.admin_url }}">{% trans "Desktop admin" %}</a></li>
+    			<li><a data-icon="home" href="{{ current_user }}">{% trans "Mon compte" %}</a></li>
+    			<li><a data-icon="star" >{% trans "Mes actions récentes" %}</a></li>
+    			{% block contenu_option %}{% endblock %}
+    		</ul>
+    	</div>
     </div>
-    {% block page.secondarypages %}
-    
     {% endblock %}
+    
+    {% block page.secondarypages %}{% endblock %}
+	</div>
 </body>
 </html>
 {# endspaceless #}

@@ -4,21 +4,23 @@
 {% block after_field_sets %}
 <h1>{% trans "First, enter a username and password. Then, you'll be able to edit more user options." %}</h1>
 <fieldset>
-<div class="form-row">
-    {{ form.username.errors }}
-    <label for="id_username" class="required">{% trans 'Username' %}:</label> {{ form.username }}
-</div>
+<ul class="ui-listview" data-role="listview" data-theme="a">
+	<li class="ui-li ui-li-static ui-body-c ui-field-contain ui-body ui-br" data-role="fieldcontain" >
+		<label for="id_username" class="required ui-input-text">{% trans 'Username' %}:</label> 
+		{{ form.username }}
+		{% if form.username.errors %}<ul><li>{{form.username.errors}}</li></ul>{% endif %}
+	</li>
 
-<div class="form-row">
-    {{ form.password1.errors }}
-    <label for="id_password1" class="required">{% trans 'Password' %}:</label> {{ form.password1 }}
-</div>
+	<div class="form-row">
+		{{ form.password1.errors }}
+		<label for="id_password1" class="required">{% trans 'Password' %}:</label> {{ form.password1 }}
+	</div>
 
-<div class="form-row">
-    <label for="id_password2" class="required">{% trans 'Password (again)' %}:</label> {{ form.password2 }}
-    {{ form.password2.errors }}
-</div>
-
+	<div class="form-row">
+		<label for="id_password2" class="required">{% trans 'Password (again)' %}:</label> {{ form.password2 }}
+		{{ form.password2.errors }}
+	</div>
+</ul>
 <script type="text/javascript">document.getElementById("id_username").focus();</script> 
 </fieldset>
 {% endblock %}

@@ -2,11 +2,21 @@
 {% load i18n mobile_admin_modify mobile_admin_media jqmobile_tags %}
 
 {% block extrahead %}{{ block.super }}
+<!--<script type="text/javascript" src="{{ STATIC_URL }}jqmobile/js/livevalidation_standalone.compressed.js"></script> -->
+
 <script type="text/javascript" src="../../../jsi18n/"></script>
 <script type="text/javascript" src="{% mobileadmin_media_prefix %}js/urlify.js"></script>
 {% endblock %}
 
+
+
+
+{% block app.header_right_button %}
+	<a data-direction="reverse" data-icon="delete" href="{% url mobileadmin:logout %}" title="Home" data-theme="a" data-role="button">{% trans "Log out" %}</a>
+{% endblock %}
+
 {% block navbar %}
+change_form
 	{% get_breadcrumb request.path %}
 {% endblock %}
 
@@ -41,13 +51,12 @@
 {% for fieldset in adminform %} 
   {% include "mobileadmin/mobile_jquery/includes/fieldset.html" %}
 {% endfor %}
- 
+
 {% block after_field_sets %}{% endblock %} 
- 
+
 {% for inline_admin_formset in inline_admin_formsets %} 
     {% mobile_inline_admin_formset inline_admin_formset user_agent %}
 {% endfor %}
- 
 {% block after_related_objects %}{% endblock %} 
 <!--
 <div class="submit-row" selected="true">
@@ -55,7 +64,8 @@
     <li><a href="javascript:;" onclick="document.forms[0].submit()" class="inactive float-right submit" >{% trans 'Save' %}</a></li>
     {% if has_delete_permission %}{% if change or show_delete %}<li><a href="delete/" class="inactive float-left delete">{% trans "Delete" %}</a></li>{% endif %}{% endif %}
 </ul>
-</div>--><!-- ajout dasn le footer de ces otions là, donc plus besoin de les afficher ici-->
+</div>--><!-- ajout dans le footer de ces 
+options là, donc plus besoin de les afficher ici-->
 
 {% if add %} 
    <script type="text/javascript">document.getElementById("{{ adminform.first_field.auto_id }}").focus();</script> 
@@ -66,9 +76,15 @@
 </form>
 {% endblock %}
 
+{% block contenu_option %}
+
+{% endblock %}
+
 {% block page.footer %}
-<a id="save-object" data-theme="a" data-iconpos="left" data-icon="delete" onclick="document.forms[0].submit()">{% trans "Save" %}</a>
-{% if has_delete_permission %}{% if change or show_delete %}<a data-theme="a" data-iconpos="left" data-icon="delete" href="delete/">{% trans "Delete" %}</a>{% endif %}{% endif %}
+	<a id="save-object" data-theme="b" data-iconpos="left" data-icon="check" onclick="document.forms[0].submit();">{% trans "Save" %}</a>
+	
+	{% if has_delete_permission %}{% if change or show_delete %}<a data-theme="e" data-iconpos="left" data-icon="delete" href="delete/">{% trans "Delete" %}</a>{% endif %}{% endif %}
+	
 <script>
 $(function(){
     $('#save-object').bind('click', function(){

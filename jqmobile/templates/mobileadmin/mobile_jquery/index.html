@@ -16,15 +16,14 @@
 {% endif %}
 {% endblock %}
 
-{% block navbar %}
-{% endblock %}
+{% block navbar %}{% endblock %}
 
-{% block page.footer %}
+{% block contenu_option %}
     {% if user.is_authenticated and user.is_staff %}
-    <a data-theme="a" data-iconpos="left" data-icon="back" href="{% url admin:index %}">{% trans "Desktop" %}</a>
-    <a data-theme="a" data-iconpos="left" data-icon="gear" href="{% url mobileadmin:password_change %}">{% trans "Password" %}</a>
-    <a data-theme="a" data-iconpos="left" data-icon="grid" href="#ma-actions">{% trans "Actions" %}</a>
-    <a data-theme="a" data-iconpos="left" data-icon="delete" href="{% url mobileadmin:logout %}">{% trans "Logout" %}</a>
+		<li><a href="{% url admin:index %}">{% trans "Desktop" %}</a></li>
+		<li><a href="{% url mobileadmin:password_change %}">{% trans "Password" %}</a></li>
+		<li><a href="#ma-actions">{% trans "Actions" %}</a></li>
+		<li><a href="{% url mobileadmin:logout %}">{% trans "Log out" %}</a></li>
     {% endif %}
 {% endblock %}
 
@@ -33,7 +32,7 @@
 {% block page.secondarypages %}
 {{ block.super }}
 <div id="ma-actions" data-role="page" data-theme="a">
-    <div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
+    <div data-theme="a" data-role="header" class="ui-bar-b ui-header" role="banner">
         <h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% trans 'Django administration' %}</h1>
     </div>
     <div data-role="content">
@@ -47,7 +46,7 @@
             {% for entry in admin_log %}
             <li class="{% if entry.is_addition %}addlink{% endif %}{% if entry.is_change %}changelink{% endif %}{% if entry.is_deletion %}deletelink{% endif %}">
                 {% if not entry.is_deletion %}<a href="{{ entry.get_admin_url }}">{% endif %}
-                {% filter capfirst %}{% trans entry.content_type.name %}{% endfilter %}: <span id="entry_{{ entry.pk }}">{{ entry.object_repr|escape }}</span>
+                {% filter capfirst %}{% trans entry.content_type.name %}{% endfilter %}: <span id="entry_{{ entry.pk }}" data-theme="e">{{ entry.object_repr|escape }}</span>
                 {% if not entry.is_deletion %}</a>{% endif %}
             </li>
             {% endfor %}

@@ -55,7 +55,7 @@ class DjangoNumberFieldsAdmin(admin.ModelAdmin):
     list_editable = ('decimal_test', 'integer_test', 'float_test', 'pinteger_test', 'psinteger_test', 'boolean_test', 'nboolean_test')
     fieldsets = (
         (None, {
-            'fields': ('char_test', 'decimal_test', 'integer_test', 'float_test', 'pinteger_test', 'psinteger_test', 'boolean_test', 'nboolean_test')
+            'fields': ('char_test', 'decimal_test', 'integer_test', 'float_test', 'pinteger_test', 'psinteger_test', 'sinteger_test', 'boolean_test', 'nboolean_test')
         }),
     )
 admin.site.register(DjangoNumberFields, DjangoNumberFieldsAdmin)

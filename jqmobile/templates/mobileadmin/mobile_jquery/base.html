@@ -46,9 +46,9 @@
     	<div data-role="content">    	
     		<ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
     			<li><a data-icon="back" href="{{ request.path }}">{% trans "Back" %}</a></li>
-    			<li><a data-icon="gear" >{% trans "Change password" %}</a></li>
-    			<li><a data-icon="home" href="{{ model.admin_url }}">{% trans "Desktop admin" %}</a></li>
-    			<li><a data-icon="home" href="{{ current_user }}">{% trans "Mon compte" %}</a></li>
+    			<li><a data-icon="gear" href="{% url admin:password_change %}">{% trans "Change Password" %}</a></li>
+    			<li><a data-icon="home" href="{% url admin:index %}">{% trans "Desktop Admin" %}</a></li>
+    			<li><a data-icon="home" href="{% url admin:auth_user_change request.user.id %}">{% trans "My Account" %}</a></li>
     			<li><a data-icon="star" >{% trans "Mes actions récentes" %}</a></li>
     			{% block contenu_option %}{% endblock %}
     		</ul>

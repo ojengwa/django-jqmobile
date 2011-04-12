@@ -2,10 +2,6 @@
 == Global ==
  - trouver la source du conflit entre l'admin desktop et mobile
  
-X - le header doit contenir les boutons "Options" (sans texte) et "Déconnexion" (avec texte) alignés à droite
-
-X - le bouton "Options" doit ouvrir une liste dans une nouvelle page
-
  - la page "Options" doit contenir les liens suivants: 
  	X(lien à ajouter) Changer mot de passe, 
  	X(lien à ajouter) Desktop admin (fr?), 
@@ -14,27 +10,29 @@ X - le bouton "Options" doit ouvrir une liste dans une nouvelle page
  
 X(mais retour à la ligne non désiré) - affichier l'icon "home" au lieu de "ma" dans le breadcrumb
  
-== index.html ==
-X	- enlever footer
-
-== app_index.html ==
-X - enlever footer
-
 == change_list.html ==
+	- Afficher le titres des uploads (sinon  bouton vide)
 
-X - le footer doit contenir les boutons (si applicable): Filtres, Rechercher, Ajouter
-X - le bouton Filtres doit ouvrir une nouvelle page et afficher les filtres disponibles
-X - le bouton Rechercher doit ouvrir soit une nouvelle page ou un dialog pour saisir le terme de recherche
 
 == change_form.html ==
 
  - vérifier que tout les widgets de formulaires fonctionne pour chacun des champs
- - affichage des erreurs de validations
-X - le bouton supprimer devrait être d'une couleur rouge (voir l'admin desktop)
-X - les boutons de sauvegarde devraient être bleu (voir l'admin desktop)
- - styliser le formulaire d'ajout d'utilisateur
 
  == à long terme ==
 
  - le champ password du formulaire d'ajout d'utilisateur doit compoter un bouton pour modifier le password (le lien est enterré dans le field.field.help_text)
  - intégration avec grappelli.dashboard
+ 
+ 
+ 
+ == testdjango ==
+X 	- fiels field test : OK
+X 	- Net fields tests : OK
+ 	- Number fields tests
+	 	- Boutons Bool on/off : etat non enregistré (ou pas affiché)
+	 	- Test Name qui fait planter
+	 - related fields:
+X	 	- Boutons ajouts (nouveau) qui appraisent pas
+X	- Text fields tests :OK
+X	- Les erreurs de s'affichent pas pour les dates
+X	- Time fields tests :OK

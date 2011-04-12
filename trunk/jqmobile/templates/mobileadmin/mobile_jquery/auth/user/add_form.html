@@ -2,26 +2,27 @@
 {% load i18n %}
 
 {% block after_field_sets %}
-<h1>{% trans "First, enter a username and password. Then, you'll be able to edit more user options." %}</h1>
-<fieldset>
 <ul class="ui-listview" data-role="listview" data-theme="a">
+<li classe="ui-li ui-li-divider ui-btn ui-bar-b ui-corner-top ui-btn-up-undefined" data-role="list-divider" role="heading" data-theme="c"><h1>{% trans "First, enter a username and password. Then, you'll be able to edit more user options." %}</h1></li>
 	<li class="ui-li ui-li-static  ui-field-contain ui-body ui-br" data-role="fieldcontain" >
 		<label for="id_username" class="required ui-input-text">{% trans 'Username' %}:</label> 
 		{{ form.username }}
-		{% if form.username.errors %}<ul><li>{{form.username.errors}}</li></ul>{% endif %}
+		{% if form.username.errors %}</li></ul>{{form.username.errors}}<ul class="ui-listview" data-role="listview" data-theme="a">{% endif %}
 	</li>
 
 	<li class="ui-li ui-li-static  ui-field-contain ui-body ui-br" data-role="fieldcontain" >
+	<p>
+		<br>
 		<label for="id_password1" class="required ui-input-text">{% trans 'Password' %}:</label> 
 		{{ form.password1 }}
-		{% if form.password1.errors %}<ul><li>{{ form.password1.errors }}</li></ul>{% endif %}
-
-
+		{% if form.password1.errors %}</li></ul>{{ form.password1.errors }}<ul class="ui-listview" data-role="listview" data-theme="a">{% endif %}
+		<br><br>
 		<label for="id_password2" class="required">{% trans 'Password (again)' %}:</label> 
 		{{ form.password2 }}
-		{% if form.password2.errors %}<ul><li>{{ form.password2.errors }}</li></ul>{% endif %}
+		{% if form.password2.errors %}</li></ul>{{ form.password2.errors }}<ul class="ui-listview" data-role="listview" data-theme="a">{% endif %}
+	</p>
 	</li>
 </ul>
 <script type="text/javascript">document.getElementById("id_username").focus();</script> 
-</fieldset>
+
 {% endblock %}

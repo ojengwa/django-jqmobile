@@ -37,43 +37,44 @@ change_form
 {% endblock %}
 
 {% block content %}
-<form target="_self" class="panel" selected="true" title="{{ opts.object_name|capfirst }}" {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.module_name }}_form">{% csrf_token %}{% block form_top %}{% endblock %}
-{% if not add %}
-    <h1><span id="object_name">{{ opts.object_name|escape }}</span>: <span id="original">{{ original|escape }}</span></h1>
-{% endif %}
+	<form target="_self" class="panel" selected="true" title="{{ opts.object_name|capfirst }}" {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.module_name }}_form">{% csrf_token %}{% block form_top %}{% endblock %}
+	{% if not add %}
+		<h1><span id="object_name">{{ opts.object_name|escape }}</span>: <span id="original">{{ original|escape }}</span></h1>
+	{% endif %}
+	{% if errors %}
+		<ul classe="ui-listview ui-listview-inset ui-corner-all ui-shadow" data-theme="e" data-role="listview" >
+		<li classe="ui-li ui-li-static ui-body-a ui-corner-top error">
+		{% blocktrans count errors.items|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
+		</li>
+	{% endif %}
+	</ul>
+	
+	{% for fieldset in adminform %} 
+	  {% include "mobileadmin/mobile_jquery/includes/fieldset.html" %}
+	{% endfor %}
+	
+	{% block after_field_sets %}{% endblock %} 
 
-{% if errors %}
-<h1 class="error">
-{% blocktrans count errors.items|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
-</h1>
-{% endif %}
+	{% for inline_admin_formset in inline_admin_formsets %} 
+		{% mobile_inline_admin_formset inline_admin_formset user_agent %}
+	{% endfor %}
+	{% block after_related_objects %}{% endblock %} 
+	<!--
+	<div class="submit-row" selected="true">
+	<ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
+		<li><a href="javascript:;" onclick="document.forms[0].submit()" class="inactive float-right submit" >{% trans 'Save' %}</a></li>
+		{% if has_delete_permission %}{% if change or show_delete %}<li><a href="delete/" class="inactive float-left delete">{% trans "Delete" %}</a></li>{% endif %}{% endif %}
+	</ul>
+	</div>--><!-- ajout dans le footer de ces 
+	options là, donc plus besoin de les afficher ici-->
 
-{% for fieldset in adminform %} 
-  {% include "mobileadmin/mobile_jquery/includes/fieldset.html" %}
-{% endfor %}
+	{% if add %} 
+	   <script type="text/javascript">document.getElementById("{{ adminform.first_field.auto_id }}").focus();</script> 
+	{% endif %} 
 
-{% block after_field_sets %}{% endblock %} 
-
-{% for inline_admin_formset in inline_admin_formsets %} 
-    {% mobile_inline_admin_formset inline_admin_formset user_agent %}
-{% endfor %}
-{% block after_related_objects %}{% endblock %} 
-<!--
-<div class="submit-row" selected="true">
-<ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
-    <li><a href="javascript:;" onclick="document.forms[0].submit()" class="inactive float-right submit" >{% trans 'Save' %}</a></li>
-    {% if has_delete_permission %}{% if change or show_delete %}<li><a href="delete/" class="inactive float-left delete">{% trans "Delete" %}</a></li>{% endif %}{% endif %}
-</ul>
-</div>--><!-- ajout dans le footer de ces 
-options là, donc plus besoin de les afficher ici-->
-
-{% if add %} 
-   <script type="text/javascript">document.getElementById("{{ adminform.first_field.auto_id }}").focus();</script> 
-{% endif %} 
-
-{# JavaScript for prepopulated fields #}
-{% prepopulated_fields_js %}
-</form>
+	{# JavaScript for prepopulated fields #}
+	{% prepopulated_fields_js %}
+	</form>
 {% endblock %}
 
 {% block contenu_option %}

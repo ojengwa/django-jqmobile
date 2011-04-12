@@ -4,7 +4,7 @@
     {% for line in fieldset %}
     <li class="form-row{% if line.errors %} errors{% endif %} {% for field in line %}{{ field.field.name }} {% endfor %} " data-role="fieldcontain"{% if line.errors %} data-icon="alert"{% endif %}>
         {% for field in line %}
-        {% render_mobile_field field %}
+        	{% render_mobile_field field %}
         {% endfor %}
         {% comment %}
         {% if field.is_checkbox %}

@@ -24,8 +24,12 @@
 {% block page.footer %}
 <div for="footer_id" data-role="footer" class="ui-bar" data-position="fixed" data-backbtn="false"> 
 	<a data-theme="a" data-iconpos="right" data-icon="plus" href="add/">{% trans 'Add' %}</a>
-	<a data-theme="a" data-iconpos="left" data-icon="gear" href="#ma-listfilters">{% trans "Filters" %}</a>
+    {% if cl.has_filters %}
+    <a data-theme="a" data-iconpos="left" data-icon="gear" href="#ma-listfilters">{% trans "Filters" %}</a>
+    {% endif %}
+    {% if cl.search_fields %}
 	<a data-theme="a" data-iconpos="left" data-icon="search" data-rel="dialog" data-transition="pop" href="#ma-listsearch">{% trans "Search" %}</a>
+    {% endif %}
 </div>
 {% endblock %}
 
@@ -48,10 +52,50 @@
 		</div>
 		<div data-role="content">    	
 			<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="c">
-					<li class="group" id="verbose_name" data-theme="a">{% trans "Filters" %}</li>
-					<li><a data-icon="gear" >test1</a></li>
-					<li><a data-icon="gear" >test2</a></li>
-					<li><a data-icon="gear" >test3</a></li>
+                {% comment %}
+                {% if cl.search_fields or cl.has_filters or cl.date_hierarchy %}
+                    <div class="module changelist-filters">
+
+                        <!-- PAGINATION TOP -->
+                        {% pagination cl %}
+
+                        {% if cl.has_filters or cl.search_fields %}
+
+                            <!-- FILTERS -->
+                            {% if cl.has_filters %}
+                                <div id="filters" class="module filter span-6">
+                                    <div class="pulldown-container">
+                                        <a href="javascript://" class="button toggle-filters">{% trans 'Filter' %}</a>
+                                        <div class="filter-pulldown">
+                                            {% for spec in cl.filter_specs %}{% admin_list_filter cl spec %}{% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+
+                            <!-- SEARCH -->
+                            {% if cl.search_fields %}
+                                <div id="search" class="module search span-6">
+                                    {% block search %}{% search_form cl %}{% endblock %}
+                                </div>
+                            {% endif %}
+
+                        {% endif %}
+                        <br clear="all" />
+                    </div>
+
+                    <!-- DATE HIERARCHY -->
+                    {% if cl.date_hierarchy %}
+                        {% date_hierarchy cl %}
+                    {% endif %}
+
+                {% endif %}
+                {% endcomment %}
+                <li class="group" id="verbose_name" data-theme="a">{% trans "Filters" %}</li>
+                <li><a data-icon="gear" >test1</a></li>
+                <li><a data-icon="gear" >test2</a></li>
+                <li><a data-icon="gear" >test3</a></li>
 			</ul>
 		</div>
 	</div>

@@ -10,7 +10,7 @@
 
 
 {% block navbar %}
-	{% get_breadcrumb request.path %}
+	{% get_breadcrumb request.path  original %}
 {% endblock %}
 
 {% block app.title %}{% trans "Admin" %} / {{ opts.verbose_name_plural|capfirst|escape }} / {{ original|escape|truncatewords:"3" }}{% endblock %}

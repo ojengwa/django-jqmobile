@@ -53,7 +53,6 @@ def form_datetime(field):
     #on cherche les classe corespondante au type de input (le premier trouvé est faux, car englobant)
     exp=re.compile('(class="[_A-Za-z0-9-]+")')
     _type=(exp.findall(html))
-    print(_type)
     #on met tout on place (sous titre + text )
     i=0
     for title in res_title:
@@ -124,31 +123,33 @@ def render_mobile_field(field):
 
 
 @register.simple_tag
-def get_breadcrumb(field):
+def get_breadcrumb(field,name=''):
 	path=field
 
 	exp=re.compile('([A-Z a-z 0-9]+/)')
 	sub_path=exp.findall(path)
 	out=u'<ul>'
-		
+	
 	i=1;
 	path="/"
+	last_sub=''
 	#on parcour l'arborecence
 	for page in sub_path:
-	
 		path+=page #on reconstruit l'arborecence à chaque boucle
         # data-role="button" data-icon="arrow-l" data-iconpos="left" <- fonctionne pas ??
 		out+='<li><a href="%(path)s"' % {'path':path} #on forme la liste des boutons
 		
 		if i == len(sub_path):
 			out+=' class="ui-btn-active"' #on active le dernier lien
+		if last_sub=="user/" and name!='':
+			page=unicode(name)
 		
 		if i ==1:
 			out+=' data-icon="home" data-iconpos="left">Home</a></li>'
 		else:
 			out+='>%(page)s</a></li>' % {'page': page.replace('/', '')} # on fini la liste
 		i+=1	
-			
+		last_sub=page
 	out+='</ul>'
 	return out
 	

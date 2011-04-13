@@ -20,7 +20,7 @@ X(voir en bas) - vérifier que tout les widgets de formulaires fonctionne pour c
 
  == à long terme ==
 
- - le champ password du formulaire d'ajout d'utilisateur doit compoter un bouton pour modifier le password (le lien est enterré dans le field.field.help_text)
+ - le champ password du formulaire d'ajout d'utilisateur doit comporter un bouton pour modifier le password (le lien est enterré dans le field.field.help_text)
  - intégration avec grappelli.dashboard
  
  

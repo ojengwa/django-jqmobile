@@ -27,6 +27,8 @@ class UserAdmin(admin.ModelAdmin):
     list_display   = ('username', 'first_name', 'last_name', 'email', 'date_joined', 'last_login', 'is_staff', 'is_superuser')
     search_fields  = ['username', 'first_name',  'last_name', 'email']
     date_hierarchy = 'date_joined'
+    list_per_page = 4
+
 
 class DjangoTextFieldsAdmin(admin.ModelAdmin):
     list_display = ('__unicode__', 'char_test', 'slug_test', 'text_test')

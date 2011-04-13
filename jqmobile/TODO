@@ -2,7 +2,7 @@
 == Global ==
  - trouver la source du conflit entre l'admin desktop et mobile
  
- - la page "Options" doit contenir les liens suivants: 
+X - la page "Options" doit contenir les liens suivants: 
  	X(lien à ajouter) Changer mot de passe, 
  	X(lien à ajouter) Desktop admin (fr?), 
  	X(lien à ajouter) Mes actions récentes, 
@@ -11,12 +11,12 @@
 X(mais retour à la ligne non désiré) - affichier l'icon "home" au lieu de "ma" dans le breadcrumb
  
 == change_list.html ==
-	- Afficher le titres des uploads (sinon  bouton vide)
+X	- Afficher le titres des uploads (sinon  bouton vide)
 
 
 == change_form.html ==
 
- - vérifier que tout les widgets de formulaires fonctionne pour chacun des champs
+X(voir en bas) - vérifier que tout les widgets de formulaires fonctionne pour chacun des champs
 
  == à long terme ==
 
@@ -30,8 +30,8 @@ X 	- fiels field test : OK
 X 	- Net fields tests : OK
  	- Number fields tests
 	 	- Boutons Bool on/off : etat non enregistré (ou pas affiché)
-	 	- Test Name qui fait planter
-	 - related fields:
+X	 	- Test Name qui fait planter
+X	 - related fields:
 X	 	- Boutons ajouts (nouveau) qui appraisent pas
 X	- Text fields tests :OK
 X	- Les erreurs de s'affichent pas pour les dates

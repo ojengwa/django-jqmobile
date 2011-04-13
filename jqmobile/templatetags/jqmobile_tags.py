@@ -5,7 +5,7 @@ from django import template
 from django.conf import settings
 from django.utils.safestring import SafeString
 from django.utils.translation import gettext as _
-#from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse
 
 register = template.Library()
 
@@ -107,7 +107,10 @@ def render_mobile_field(field):
 		if (href!=''):
 			out+='<span id="%(id)s_button" >%(ajout)s %(new)s </a></span>' % {'id':field.field.auto_id,'ajout':href[0], 'new':_("New")}
 		elif '<input name="password"' in html:
-			out+='<span id="%(id)s_button" ><a data-role="button" data-icon="gear" href="{%% url request.user.id:password_change %%}" id="modif_mdp">{%% trans Change Password %%} </a></span>' % {'id':field.field.auto_id}
+			out+='<span id="%(id)s_button" ><a data-role="button" data-icon="gear" href="password" id="modif_mdp">%(label)s</a></span>' % {
+                    'id':field.field.auto_id,
+                    'label': _('trans Change Password'),
+                    }
         
 		out+='<span id="%(id)s_errors" >%(errors)s</span>' % {'id':field.field.auto_id,'errors':unicode(field.field.errors)}
 		

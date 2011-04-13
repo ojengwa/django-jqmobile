@@ -41,7 +41,6 @@ def form_datetime(field):
     
     html=datetime.as_widget()
     errors=(unicode(datetime.errors)).replace('<ul class="errorlist">','<span id="date_errors"><ul class="errorlist">').replace('</ul>','</ul></span>')
-    print ((errors))
     
     #on recherche les sous titres
     exp=re.compile('([A-Z][a-z]*.:)')
@@ -91,15 +90,14 @@ def render_mobile_field(field):
 		#on récupère le possible bouton d'ajout
 		exp=re.compile('(<a href=".*></a>$)');
 		bottom_button=exp.findall(html);
-		href='';
-		
+		href='';		
+		#print (html+'\n')
 		#on regarde si il y a effectivement un bouton d'ajout
 		if(len(bottom_button)>0):
 			html=html.replace(bottom_button[0],'')
 			exp=re.compile('(<a href=".*;">)');
 			href=(exp.findall(bottom_button[0]));
 			href[0]=href[0].replace('<a','<a data-role="button" data-icon="plus"');
-			print(href)
 
 		out = u'<label for="%(id)s">%(label)s</label> %(objet)s' % {'id':field.field.auto_id, 
         'label':field.field.label,
@@ -108,8 +106,11 @@ def render_mobile_field(field):
          #on ajout le bouton sous le reste
 		if (href!=''):
 			out+='<span id="%(id)s_button" >%(ajout)s %(new)s </a></span>' % {'id':field.field.auto_id,'ajout':href[0], 'new':_("New")}
+		elif '<input name="password"' in html:
+			out+='<span id="%(id)s_button" ><a data-role="button" data-icon="gear" href="{%% url request.user.id:password_change %%}" id="modif_mdp">{%% trans Change Password %%} </a></span>' % {'id':field.field.auto_id}
         
 		out+='<span id="%(id)s_errors" >%(errors)s</span>' % {'id':field.field.auto_id,'errors':unicode(field.field.errors)}
+		
 		#inclure le fichier livevalidation_standalone.compressed.js pour des verification en temps réel
     	#if 'type="text"' in html:
         #	out+='<script type="text/javascript">'

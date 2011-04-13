@@ -9,12 +9,6 @@
 {% endblock %}
 
 
-
-
-{% block app.header_right_button %}
-	<a data-direction="reverse" data-icon="delete" href="{% url mobileadmin:logout %}" title="Home" data-theme="a" data-role="button">{% trans "Log out" %}</a>
-{% endblock %}
-
 {% block navbar %}
 change_form
 	{% get_breadcrumb request.path %}

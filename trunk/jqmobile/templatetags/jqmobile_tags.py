@@ -88,11 +88,12 @@ def render_mobile_field(field):
     elif '<p class="datetime">' in html:
         out = form_datetime(field)
     else:
-		#on récupère le bouton d'ajout
+		#on récupère le possible bouton d'ajout
 		exp=re.compile('(<a href=".*></a>$)');
 		bottom_button=exp.findall(html);
 		href='';
 		
+		#on regarde si il y a effectivement un bouton d'ajout
 		if(len(bottom_button)>0):
 			html=html.replace(bottom_button[0],'')
 			exp=re.compile('(<a href=".*;">)');
@@ -104,6 +105,7 @@ def render_mobile_field(field):
         'label':field.field.label,
          'objet':html,
          }
+         #on ajout le bouton sous le reste
 		if (href!=''):
 			out+='<span id="%(id)s_button" >%(ajout)s %(new)s </a></span>' % {'id':field.field.auto_id,'ajout':href[0], 'new':_("New")}
         

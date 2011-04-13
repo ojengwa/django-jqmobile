@@ -19,18 +19,17 @@
 {% block navbar %}{% endblock %}
 
 {% block contenu_option %}
-    {% if user.is_authenticated and user.is_staff %}
+    	<!--
 		<li><a href="{% url admin:index %}">{% trans "Desktop" %}</a></li>
 		<li><a href="{% url mobileadmin:password_change %}">{% trans "Password" %}</a></li>
-		<li><a href="#ma-actions">{% trans "Actions" %}</a></li>
-		<li><a href="{% url mobileadmin:logout %}">{% trans "Log out" %}</a></li>
-    {% endif %}
+		<li><a href="#ma-actions">{% trans "Actions" %}</a></li> 
+		<li><a href="{% url mobileadmin:logout %}">{% trans "Log out" %}</a></li> 
+		-->
 {% endblock %}
 
 
 
 {% block page.secondarypages %}
-{{ block.super }}
 <div id="ma-actions" data-role="page" data-theme="a">
     <div data-theme="a" data-role="header" class="ui-bar-b ui-header" role="banner">
         <h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% trans 'Django administration' %}</h1>
@@ -41,14 +40,14 @@
             {% load log %}
             {% get_admin_log 10 as admin_log for_user user %}
             {% if not admin_log %}
-            <li>{% trans 'None available' %}</li>
+           	 <li>{% trans 'None available' %}</li>
             {% else %}
             {% for entry in admin_log %}
-            <li class="{% if entry.is_addition %}addlink{% endif %}{% if entry.is_change %}changelink{% endif %}{% if entry.is_deletion %}deletelink{% endif %}">
-                {% if not entry.is_deletion %}<a href="{{ entry.get_admin_url }}">{% endif %}
-                {% filter capfirst %}{% trans entry.content_type.name %}{% endfilter %}: <span id="entry_{{ entry.pk }}" data-theme="e">{{ entry.object_repr|escape }}</span>
-                {% if not entry.is_deletion %}</a>{% endif %}
-            </li>
+		        <li class="{% if entry.is_addition %}addlink{% endif %}{% if entry.is_change %}changelink{% endif %}{% if entry.is_deletion %}deletelink{% endif %}">
+		            {% if not entry.is_deletion %}<a href="{{ entry.get_admin_url }}">{% endif %}
+		            {% filter capfirst %}{% trans entry.content_type.name %}{% endfilter %}: <span id="entry_{{ entry.pk }}" data-theme="e">{{ entry.object_repr|escape }}</span>
+		            {% if not entry.is_deletion %}</a>{% endif %}
+		        </li>
             {% endfor %}
             {% endif %}
         </ul>

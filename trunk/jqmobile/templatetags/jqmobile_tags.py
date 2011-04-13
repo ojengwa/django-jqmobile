@@ -144,7 +144,7 @@ def get_breadcrumb(field):
 			out+=' class="ui-btn-active"' #on active le dernier lien
 		
 		if i ==1:
-			out+=' data-icon="home"></a></li>'
+			out+=' data-icon="home" data-iconpos="left">Home</a></li>'
 		else:
 			out+='>%(page)s</a></li>' % {'page': page.replace('/', '')} # on fini la liste
 		i+=1	

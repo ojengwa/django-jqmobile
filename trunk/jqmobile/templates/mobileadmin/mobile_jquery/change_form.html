@@ -10,12 +10,12 @@
 
 
 {% block navbar %}
-change_form
 	{% get_breadcrumb request.path %}
 {% endblock %}
 
 {% block app.title %}{% trans "Admin" %} / {{ opts.verbose_name_plural|capfirst|escape }} / {{ original|escape|truncatewords:"3" }}{% endblock %}
 
+{% comment %}
 {% block breadcrumbs %}<a href="../" class="inactive float-left">{{ opts.verbose_name_plural|capfirst|escape }}</a>
 
 {% if change %}
@@ -29,6 +29,7 @@ change_form
 <span class="float-right active">{% trans "Add" %}</span>
 {% endif %}
 {% endblock %}
+{% endcomment %}
 
 {% block content %}
 	<form target="_self" class="panel" selected="true" title="{{ opts.object_name|capfirst }}" {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.module_name }}_form">{% csrf_token %}{% block form_top %}{% endblock %}
@@ -53,14 +54,6 @@ change_form
 		{% mobile_inline_admin_formset inline_admin_formset user_agent %}
 	{% endfor %}
 	{% block after_related_objects %}{% endblock %} 
-	<!--
-	<div class="submit-row" selected="true">
-	<ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
-		<li><a href="javascript:;" onclick="document.forms[0].submit()" class="inactive float-right submit" >{% trans 'Save' %}</a></li>
-		{% if has_delete_permission %}{% if change or show_delete %}<li><a href="delete/" class="inactive float-left delete">{% trans "Delete" %}</a></li>{% endif %}{% endif %}
-	</ul>
-	</div>--><!-- ajout dans le footer de ces 
-	options là, donc plus besoin de les afficher ici-->
 
 	{% if add %} 
 	   <script type="text/javascript">document.getElementById("{{ adminform.first_field.auto_id }}").focus();</script> 
@@ -71,23 +64,22 @@ change_form
 	</form>
 {% endblock %}
 
-{% block contenu_option %}
-
-{% endblock %}
 
 {% block page.footer %}
+<div for="footer_id" data-role="footer" class="ui-bar" data-position="fixed" data-backbtn="false"> 
 	<a id="save-object" data-theme="b" data-iconpos="left" data-icon="check" onclick="document.forms[0].submit();">{% trans "Save" %}</a>
-	
-	{% if has_delete_permission %}{% if change or show_delete %}<a data-theme="e" data-iconpos="left" data-icon="delete" href="delete/">{% trans "Delete" %}</a>{% endif %}{% endif %}
-	
-<script>
-$(function(){
-    $('#save-object').bind('click', function(){
-        console.log($('form:first'));
-        $('form:first').submit();
-        return false;
-    });
 
-})
-</script>
+	{% if has_delete_permission %}{% if change or show_delete %}<a data-theme="e" data-iconpos="left" data-icon="delete" href="delete/">{% trans "Delete" %}</a>{% endif %}{% endif %}
+
+	<script>
+		$(function(){
+		$('#save-object').bind('click', function(){
+		console.log($('form:first'));
+		$('form:first').submit();
+		return false;
+		});
+
+		})
+	</script>
+</div>
 {% endblock %}

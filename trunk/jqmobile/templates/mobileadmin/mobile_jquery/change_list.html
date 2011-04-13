@@ -2,13 +2,15 @@
 {% load mobile_admin_list i18n mobile_admin_media jqmobile_tags %}
         
 
-{% block app.title %}{% trans "Admin" %} / {{ app_label.title|escape }}{% endblock %}
+{% block app.title %}
+	{% trans "Admin" %} / {{ app_label.title|escape }}7
+{% endblock %}
 
 {% block navbar %}
-change_list
 	{% get_breadcrumb request.path %}
 {% endblock %}
 
+{% comment %}
 {% block breadcrumbs %}
     <a id="_objectlist" href="javascript:;" class="float-left active">{{ app_label.title|escape }}</a>
     <a href="add/" class="float-right inactive">{% trans "Add" %}</a>
@@ -18,45 +20,53 @@ change_list
         </a>
     {% endif %}
 {% endblock %}
+{% endcomment %}
+{% block page.footer %}
+<div for="footer_id" data-role="footer" class="ui-bar" data-position="fixed" data-backbtn="false"> 
+	<a data-theme="a" data-iconpos="right" data-icon="plus" href="add/">{% trans 'Add' %}</a>
+	<a data-theme="a" data-iconpos="left" data-icon="gear" href="#ma-listfilters">{% trans "Filters" %}</a>
+	<a data-theme="a" data-iconpos="left" data-icon="search" data-rel="dialog" data-transition="pop" href="#ma-listsearch">{% trans "Search" %}</a>
+</div>
+{% endblock %}
 
 {% block content %}
-<ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
-    <li class="group" id="verbose_name" data-theme="a">{{ cl.opts.verbose_name_plural|capfirst|escape }}</li>
-    {% for res in cl.result_list %}
-        <li data-theme="c"><a href="{{ res.id }}/" id="obj_{{ res.id }}">{{ res|escape }}</a></li>
-    {% endfor %}
-    {% block pagination %}{% pagination cl user_agent %}{% endblock %}
-</ul>
-
+	<ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
+		<li class="group" id="verbose_name" data-theme="a">{{ cl.opts.verbose_name_plural|capfirst|escape }}</li>
+		{% for res in cl.result_list %}
+		<li data-theme="c"><a href="{{ res.id }}/" id="obj_{{ res.id }}">{{ res|escape }}</a></li>
+		{% endfor %}
+		{% block pagination %}
+			{% pagination cl user_agent %}
+		{% endblock %}
+	</ul>
+	{% block page.secondarypages %}{{ block.super }}
+	<div id="ma-listfilters" data-role="page" data-theme="a" >
+		 <div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
+			<a data-icon="back" href="{{ request.path }}" data-role="button" class="ui-btn-left">{% trans "Back" %}</a>
+			<h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% trans 'Django administration' %}</h1>
+			<a data-direction="reverse" data-icon="delete" href="{% url mobileadmin:logout %}" title="Home" data-theme="a" data-role="button">{% trans "Log out" %}</a>
+		</div>
+		<div data-role="content">    	
+			<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="c">
+					<li class="group" id="verbose_name" data-theme="a">{% trans "Filters" %}</li>
+					<li><a data-icon="gear" >test1</a></li>
+					<li><a data-icon="gear" >test2</a></li>
+					<li><a data-icon="gear" >test3</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div id="ma-listsearch" data-role="page" data-theme="a" >
+		 <div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
+			<a data-icon="back" href="{{ request.path }}" data-role="button" class="ui-btn-left">{% trans "Back" %}</a>
+			<h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% trans 'Django administration' %}</h1>
+			<a data-direction="reverse" data-icon="delete" href="{% url mobileadmin:logout %}" title="Home" data-theme="a" data-role="button">{% trans "Log out" %}</a>
+		</div>
+		<div data-role="fieldcontain">
+			<label for="search">{% trans "Search" %}</label>
+			<input type="search" name="search" id="search" value=""/>
+		</div>
+	</div>
+	{% endblock %}		
 {% endblock %}
 
-{% block page.secondarypages %}
-<div id="ma-listfilters" data-role="page" data-theme="a">
-    {% if cl.search_fields or cl.has_filters %}
-    <ul id="filter">
-        {% if cl.has_filters %}
-        <li class="group subgroup">{% trans "Filter" %}</li>
-        {% for spec in cl.filter_specs %}
-            {% admin_list_filter cl spec user_agent %}
-        {% endfor %}
-        {% endif %}
-    </ul>
-    {% endif %}
-</div>
-
-<div id="ma-listsearch" data-role="page" data-theme="a" data-rel="dialog">
-    {% if cl.search_fields %}
-    {% search_form cl user_agent %}
-    {% endif %}
-</div>
-{% endblock %}
-
-{% block contenu_option %}
-    <li><a data-theme="a" data-iconpos="left" data-icon="gear" href="#ma-listfilters">{% trans "Filters" %}</a></li>
-    <li><a data-theme="a" data-iconpos="left" data-icon="search" data-rel="dialog" data-transition="pop" href="#ma-listsearch">{% trans "Search" %}</a></li>
-    <li><a data-theme="e" data-iconpos="left" data-icon="delete" href="{% url mobileadmin:logout %}">{% trans "Log out" %}</a></li>
-{% endblock %}
-
-{% block page.footer %}
-   <a data-theme="a" data-iconpos="right" data-icon="plus" href="add/">{% trans 'Add' %}</a>
-{% endblock %}

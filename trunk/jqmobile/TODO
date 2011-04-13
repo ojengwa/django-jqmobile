@@ -7,6 +7,8 @@ X - la page "Options" doit contenir les liens suivants:
  	X(lien à ajouter) Desktop admin (fr?), 
  	X(lien à ajouter) Mes actions récentes, 
  	X(lien à ajouter) Mon compte (lien vers current user)
+ 	
+X - enlever le footer vide
  
 X(mais retour à la ligne non désiré) - affichier l'icon "home" au lieu de "ma" dans le breadcrumb
  
@@ -23,6 +25,8 @@ X(voir en bas) - vérifier que tout les widgets de formulaires fonctionne pour c
  - le champ password du formulaire d'ajout d'utilisateur doit comporter un bouton pour modifier le password (le lien est enterré dans le field.field.help_text)
  - intégration avec grappelli.dashboard
  
+ -modifier l'affichage des redirections
+ 
  
  
  == testdjango ==
@@ -36,3 +40,14 @@ X	 	- Boutons ajouts (nouveau) qui appraisent pas
 X	- Text fields tests :OK
 X	- Les erreurs de s'affichent pas pour les dates
 X	- Time fields tests :OK
+
+== menu option ===
+X	- modification de la presentation
+
+	- change password : imposible de revenir en arriere
+	- dkstop admin : verssion non mobile
+X	- mes action récente: theme à modifier
+
+	en bas (footer)
+	- liste de recherche
+	- liste de filtre 

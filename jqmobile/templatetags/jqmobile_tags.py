@@ -109,7 +109,7 @@ def render_mobile_field(field):
 		elif '<input name="password"' in html:
 			out+='<span id="%(id)s_button" ><a data-role="button" data-icon="gear" href="password" id="modif_mdp">%(label)s</a></span>' % {
                     'id':field.field.auto_id,
-                    'label': _('trans Change Password'),
+                    'label': _('Change Password'),
                     }
         
 		out+='<span id="%(id)s_errors" >%(errors)s</span>' % {'id':field.field.auto_id,'errors':unicode(field.field.errors)}

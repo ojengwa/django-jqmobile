@@ -10,7 +10,11 @@
 
 
 {% block navbar %}
+	{% if not add %}
 	{% get_breadcrumb request.path  original %}
+	{% else %}
+	{% get_breadcrumb request.path %}
+	{% endif %}
 {% endblock %}
 
 {% block app.title %}{% trans "Admin" %} / {{ opts.verbose_name_plural|capfirst|escape }} / {{ original|escape|truncatewords:"3" }}{% endblock %}

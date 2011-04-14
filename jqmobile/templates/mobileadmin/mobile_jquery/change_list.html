@@ -50,7 +50,8 @@
 			<h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% trans 'Django administration' %}</h1>
 			<a data-direction="reverse" data-icon="delete" href="{% url mobileadmin:logout %}" title="Home" data-theme="a" data-role="button">{% trans "Log out" %}</a>
 		</div>
-		<div data-role="content">    	
+		<div data-role="content">
+			
 			<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="c">
                 {% comment %}
                 {% if cl.search_fields or cl.has_filters or cl.date_hierarchy %}
@@ -92,10 +93,31 @@
 
                 {% endif %}
                 {% endcomment %}
-                <li class="group" id="verbose_name" data-theme="a">{% trans "Filters" %}</li>
-                <li><a data-icon="gear" >test1</a></li>
-                <li><a data-icon="gear" >test2</a></li>
-                <li><a data-icon="gear" >test3</a></li>
+                {% comment %}
+                <li class="group" id="verbose_name" data-theme="a"><div data-role="fieldcontain">
+					<label for="select-choice-6" class="select">Choose shipping method:</label>
+					<select name="select-choice-6" id="select-choice-6" data-native-menu="false">
+						<option value="choose-one" data-placeholder="true">Choose one...</option>
+						<option value="standard">Standard: 7 day</option>
+						<option value="rush">Rush: 3 days</option>
+						<option value="express">Express: next day</option>
+						<option value="overnight">Overnight</option>
+					</select>
+				</div></li>
+				
+				{% if cl.has_filters %}
+				<div id="filters" class="module filter span-6">
+					<div class="pulldown-container">
+						<a href="javascript://" class="button toggle-filters">{% trans 'Filter' %}</a>
+						<div class="filter-pulldown">
+						{% for spec in cl.filter_specs %}
+							{% admin_list_filter cl spec %}
+						{% endfor %}
+						</div>
+					</div>
+				</div>
+				{% endif %}
+				{% endcomment %}
 			</ul>
 		</div>
 	</div>

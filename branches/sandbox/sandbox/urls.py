@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     (r'^admin/',        include(admin.site.urls)),
     (r'^ma/',           include(mobileadmin.sites.site.urls)),
     (r'^grappelli/',    include('contrib.grappelli.urls')),
+    (r'^$',             'django.views.generic.simple.redirect_to', {'url': '/ma/'}),
 )
 
 if settings.DEBUG:

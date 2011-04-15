@@ -167,13 +167,16 @@ LOGGING = {
 # mobile traffic (or use your custom filter)
 MOBILEADMIN_USER_AGENTS = {
     'mobile_jquery': r'.*',
+#   'mobile_jquery': r'AppleWebKit/.*Mobile/',
+#   'mobile_jquery': r'^BlackBerry',
+#   'mobile_jquery': r'[Oo]pera [Mm]ini',
 }
 
 handler404 = 'contrib.mobileadmin.views.page_not_found'
 handler500 = 'contrib.mobileadmin.views.server_error'
 
 
-INTERNAL_IPS = ('127.0.0.1',)
+INTERNAL_IPS = ('127.0.0.1', '192.168.0.196')
 
 DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar.panels.version.VersionDebugPanel',

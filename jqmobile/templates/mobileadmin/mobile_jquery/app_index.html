@@ -1,7 +1,7 @@
 {% extends "mobileadmin/mobile_jquery/index.html" %} 
 {% load i18n jqmobile_tags %} 
 
-{% block app.title %} Admin / {{ app_list.0.name }}{% endblock %}
+{% block app.title %} {% trans "Admin" %} / {{ app_list.0.name }}{% endblock %}
 
 {% block content %}
 <ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">

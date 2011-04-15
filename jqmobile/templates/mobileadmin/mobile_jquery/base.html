@@ -28,7 +28,7 @@
 		        {# TODO: the default title should check for Grappelli title in settings before falling back to "Django Admin #}
 		        <h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% block app.title %}{% trans "Django Admin" %}{% endblock %}</h1>
 		        {% block app.header_right_button %}
-				<a data-direction="reverse" data-icon="delete" href="{% url mobileadmin:logout %}" title="Home" data-theme="a" data-role="button">{% trans "Log out" %}</a>
+                <a data-direction="reverse" data-icon="delete" href="{% url mobileadmin:logout %}" title="{% trans "Logout" %}" data-theme="a" data-role="button" data-iconpos="notext">{% trans "Log out" %}</a>
 				{% endblock %}
 		    </div>
             {% block navbar %} {% endblock %}
@@ -41,9 +41,9 @@
 		{% block page.secondarypages %}
 		<div id="ma_options" data-role="page" data-theme="a" >
 			 <div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
-				<a data-icon="home" href="{{ request.path }}" data-role="button" class="ui-btn-left" data-iconpos="notext">{% trans "Back" %}</a>
+				<a data-icon="back" href="{{ request.path }}" data-role="button" class="ui-btn-left">{% trans "Back" %}</a>
 				<h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% trans 'Django administration' %}</h1>
-				<a data-direction="reverse" data-icon="delete" href="{% url mobileadmin:logout %}" title="Home" data-theme="a" data-role="button">{% trans "Log out" %}</a>
+				<a data-direction="reverse" data-icon="delete" href="{% url mobileadmin:logout %}" title="{% trans "Log out" %}" data-theme="a" data-role="button" data-iconpos="notext">{% trans "Log out" %}</a>
 			</div>
 			<div data-role="content">    	
 				<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="c">
@@ -62,7 +62,7 @@
 			<div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
 				<a data-icon="back" href="{{ request.path }}" data-role="button" class="ui-btn-left">{% trans "Back" %}</a>
 				<h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% trans 'Django administration dc' %}</h1>
-				<a data-direction="reverse" data-icon="delete" href="{% url mobileadmin:logout %}" title="Home" data-theme="a" data-role="button">{% trans "Log out" %}</a>
+				<a data-direction="reverse" data-icon="delete" href="{% url mobileadmin:logout %}" title="{% trans "Logout" %}" data-theme="a" data-role="button" data-iconpos="notext">{% trans "Log out" %}</a>
 			</div>
 			<div data-role="content">
 				<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="c">

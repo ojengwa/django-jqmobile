@@ -7,7 +7,7 @@
  == à long terme ==
  - intégration avec grappelli.dashboard
  
- -modifier l'affichage des redirections
+ -modifier l'affichage des redirections (pas besoin, c'est le debug_toolbar qui fait ça.. une fois désactivé les redirections ne seront plus la)
  
  
  

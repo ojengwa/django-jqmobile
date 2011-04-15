@@ -124,33 +124,34 @@ def render_mobile_field(field):
 
 @register.simple_tag
 def get_breadcrumb(field,name=''):
-	path=field
+	path = field
+	exp = re.compile('([A-Z a-z 0-9]+/)')
+	sub_path = exp.findall(path)
+	out = u'<div data-role="navbar"><ul class="breadcrumbs">'
+	i = 1;
+	path = "/"
+	last_sub = ''
 
-	exp=re.compile('([A-Z a-z 0-9]+/)')
-	sub_path=exp.findall(path)
-	out=u'<ul>'
-	
-	i=1;
-	path="/"
-	last_sub=''
 	#on parcour l'arborecence
 	for page in sub_path:
-		path+=page #on reconstruit l'arborecence à chaque boucle
-        # data-role="button" data-icon="arrow-l" data-iconpos="left" <- fonctionne pas ??
-		out+='<li><a href="%(path)s"' % {'path':path} #on forme la liste des boutons
+		path +=page #on reconstruit l'arborecence à chaque boucle
+		out +='<li><a href="%(path)s"' % {'path':path} #on forme la liste des boutons
 		
 		if i == len(sub_path):
-			out+=' class="ui-btn-active"' #on active le dernier lien
-		if last_sub=="user/" and name!='':
-			page=unicode(name)
+            # on active le dernier lien
+			out +=' class="ui-btn-active"' 
+
+		if i == len(sub_path) and name != '':
+			page = unicode(name)
 		
-		if i ==1:
-			out+=' data-icon="home" data-iconpos="left">Home</a></li>'
+		if i == 1:
+			out +=' class="ui-btn-home"><span class="hidden">%s</span><span class="home-icon">&nbsp;</span></a></li>' % _('Home')
 		else:
-			out+='>%(page)s</a></li>' % {'page': page.replace('/', '')} # on fini la liste
-		i+=1	
-		last_sub=page
-	out+='</ul>'
+			out +='>%(page)s</a></li>' % {'page': page.replace('/', '')} # on fini la liste
+		i +=1	
+		last_sub =page
+	out+='</ul></div>'
+
 	return out
 	
 @register.simple_tag

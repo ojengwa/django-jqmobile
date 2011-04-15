@@ -1,7 +1,22 @@
 
 == Global ==
  - trouver la source du conflit entre l'admin desktop et mobile
+ - vérifier que tout les icons de button sont tous à gauche du texte
+ - traductions (fr)
 
+== Changelist ==
+
+ - Skinné la page filters
+ - Faire fonctionner les filtres
+ - Skinné la page de recherche
+ - Faire fonctionner la recherche
+
+== Changeform ==
+
+ - Arranger le bouton "+ new" pour les select (foreign field & many to many fields)
+ - Afficher le bouton "View on site" si l'objet à un absolute_url
+ - Afficher le bouton "History" (pour l'historique de l'objet)
+ - Afficher le champs heure des champs datetime à coté du champs date (+ arranger la largeur des labels)
 
 
  == à long terme ==

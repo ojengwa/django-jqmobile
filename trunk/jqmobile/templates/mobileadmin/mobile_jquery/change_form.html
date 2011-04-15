@@ -2,8 +2,6 @@
 {% load i18n mobile_admin_modify mobile_admin_media jqmobile_tags %}
 
 {% block extrahead %}{{ block.super }}
-<!--<script type="text/javascript" src="{{ STATIC_URL }}jqmobile/js/livevalidation_standalone.compressed.js"></script> -->
-
 <script type="text/javascript" src="../../../jsi18n/"></script>
 <script type="text/javascript" src="{% mobileadmin_media_prefix %}js/urlify.js"></script>
 {% endblock %}
@@ -20,19 +18,12 @@
 {% block app.title %}{% trans "Admin" %} / {{ opts.verbose_name_plural|capfirst|escape }} / {{ original|escape|truncatewords:"3" }}{% endblock %}
 
 {% comment %}
-{% block breadcrumbs %}<a href="../" class="inactive float-left">{{ opts.verbose_name_plural|capfirst|escape }}</a>
-
 {% if change %}
 {# view on site #}
 {% if has_absolute_url %}<a href="../../../r/{{ content_type_id }}/{{ object_id }}/" class="inactive float-right" target="_blank">{% trans "Go" %}</a>{% endif%}
 {# history #}
 <a href="history/" class="inactive float-right">{% trans "History" %}</a>
 {% endif%}
-
-{% if add %}
-<span class="float-right active">{% trans "Add" %}</span>
-{% endif %}
-{% endblock %}
 {% endcomment %}
 
 {% block content %}
@@ -60,7 +51,11 @@
 	{% block after_related_objects %}{% endblock %} 
 
 	{% if add %} 
-	   <script type="text/javascript">document.getElementById("{{ adminform.first_field.auto_id }}").focus();</script> 
+    <script type="text/javascript">
+    $(function(){
+        $("#{{ adminform.first_field.auto_id }}").focus()
+    });
+    </script> 
 	{% endif %} 
 
 	{# JavaScript for prepopulated fields #}
@@ -73,17 +68,15 @@
 <div for="footer_id" data-role="footer" class="ui-bar" data-position="fixed" data-backbtn="false"> 
 	<a id="save-object" data-theme="b" data-iconpos="left" data-icon="check" onclick="document.forms[0].submit();">{% trans "Save" %}</a>
 
-	{% if has_delete_permission %}{% if change or show_delete %}<a data-theme="e" data-iconpos="left" data-icon="delete" href="delete/">{% trans "Delete" %}</a>{% endif %}{% endif %}
+	{% if has_delete_permission %}{% if change or show_delete %}<a data-theme="e" data-iconpos="left" data-icon="delete" href="delete/" class="ui-btn-delete">{% trans "Delete" %}</a>{% endif %}{% endif %}
 
 	<script>
-		$(function(){
+    $(function(){
 		$('#save-object').bind('click', function(){
-		console.log($('form:first'));
-		$('form:first').submit();
-		return false;
-		});
-
-		})
+            $('form:first').submit()
+            return false
+        })
+	})
 	</script>
 </div>
 {% endblock %}

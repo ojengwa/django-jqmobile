@@ -12,6 +12,18 @@
     width: 12px;
 }
 
+/* Chanfe form tweaks */
+
+.ui-btn-delete {
+    border: 1px solid #992626;
+    background: #D93636;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 1px 0 #992626;
+    background-image: -moz-linear-gradient(top,#D93636,#BF3030);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#D93636),color-stop(1,#BF3030));
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#D93636', EndColorStr='#BF3030')";
+}
 
 
 .error {

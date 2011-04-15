@@ -19,8 +19,6 @@
 </ul>
 {% endblock %}
 
-{% block navbar %} 
-	{% get_breadcrumb request.path %}
-{% endblock %}
+{% block navbar %}{% get_breadcrumb request.path app_list.0.name %}{% endblock %}
 
 

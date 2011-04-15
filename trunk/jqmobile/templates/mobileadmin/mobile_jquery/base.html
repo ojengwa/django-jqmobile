@@ -31,10 +31,7 @@
 				<a data-direction="reverse" data-icon="delete" href="{% url mobileadmin:logout %}" title="Home" data-theme="a" data-role="button">{% trans "Log out" %}</a>
 				{% endblock %}
 		    </div>
-		    
-			<div data-role="navbar">
-				{% block navbar %} {% endblock %}
-			</div>
+            {% block navbar %} {% endblock %}
 			<div data-role="content">
 				{% block content %}{{ content }}{% endblock %}
 			</div>
@@ -44,7 +41,7 @@
 		{% block page.secondarypages %}
 		<div id="ma_options" data-role="page" data-theme="a" >
 			 <div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
-				<a data-icon="back" href="{{ request.path }}" data-role="button" class="ui-btn-left">{% trans "Back" %}</a>
+				<a data-icon="home" href="{{ request.path }}" data-role="button" class="ui-btn-left" data-iconpos="notext">{% trans "Back" %}</a>
 				<h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% trans 'Django administration' %}</h1>
 				<a data-direction="reverse" data-icon="delete" href="{% url mobileadmin:logout %}" title="Home" data-theme="a" data-role="button">{% trans "Log out" %}</a>
 			</div>

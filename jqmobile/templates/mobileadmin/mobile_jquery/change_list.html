@@ -52,7 +52,7 @@
 		</div>
 		<div data-role="content">
 			
-			<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="c">
+	
                 {% comment %}
                 {% if cl.search_fields or cl.has_filters or cl.date_hierarchy %}
                     <div class="module changelist-filters">
@@ -93,32 +93,22 @@
 
                 {% endif %}
                 {% endcomment %}
-                {% comment %}
-                <li class="group" id="verbose_name" data-theme="a"><div data-role="fieldcontain">
-					<label for="select-choice-6" class="select">Choose shipping method:</label>
-					<select name="select-choice-6" id="select-choice-6" data-native-menu="false">
-						<option value="choose-one" data-placeholder="true">Choose one...</option>
-						<option value="standard">Standard: 7 day</option>
-						<option value="rush">Rush: 3 days</option>
-						<option value="express">Express: next day</option>
-						<option value="overnight">Overnight</option>
-					</select>
-				</div></li>
-				
+            
 				{% if cl.has_filters %}
 				<div id="filters" class="module filter span-6">
-					<div class="pulldown-container">
-						<a href="javascript://" class="button toggle-filters">{% trans 'Filter' %}</a>
-						<div class="filter-pulldown">
+					{# <div class="pulldown-container"> #}
+					<ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
+						<li class="group" id="verbose_name" data-theme="a">{% trans 'Filter' %}</a></li>
+						{# <div class="filter-pulldown"> #}
 						{% for spec in cl.filter_specs %}
-							{% admin_list_filter cl spec %}
+							<li data-theme="c">{% admin_list_filter cl spec 1 %}</li>
 						{% endfor %}
-						</div>
-					</div>
+						{# </div> #}
+					</ul>
+					{# </div> #}
 				</div>
 				{% endif %}
-				{% endcomment %}
-			</ul>
+				
 		</div>
 	</div>
 	
@@ -131,7 +121,11 @@
 
 		<div data-role="fieldcontain">
 			<label for="search">{% trans "Search" %}</label>
-			<input type="search" name="search" id="search" value=""/>
+			{% if cl.search_fields %}
+            <div id="search" class="module search span-6">
+                ={% block search %}{% search_form cl 0 %}{% endblock %}=
+            </div>
+        {% endif %}
 		</div>
 	</div>
 	{% endblock %}		

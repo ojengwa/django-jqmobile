@@ -1,14 +1,15 @@
 
 == Global ==
- - enlever le bouton logout du header, le mettre dans la page options
+X - enlever le bouton logout du header, le mettre dans la page options
  - trouver la source du conflit entre l'admin desktop et mobile
- - vérifier que tout les icons de button sont tous à gauche du texte
+X - vérifier que tout les icons de button sont tous à gauche du texte
  - traductions (fr) (http://docs.djangoproject.com/en/dev/howto/i18n/#using-translations-in-your-own-projects)
 
 == Changelist ==
 
- - Skinné la page filters
- - Faire fonctionner les filtres
+X - Skinné la page filters
+ - Faire fonctionner les filtres (probleme pour le submit)
+ 
  - Skinné la page de recherche
  - Faire fonctionner la recherche
 
@@ -17,8 +18,8 @@
  - utiliser les standards HTML pour les forms (http://diveintohtml5.org/forms.html)
  - Arranger le bouton "+ new" pour les select (foreign field & many to many fields)
  - Afficher le bouton "View on site" si l'objet à un absolute_url
- - Afficher le bouton "History" (pour l'historique de l'objet
- - Afficher le champs heure des champs datetime à coté du champs date (+ arranger la largeur des labels)
+ - Afficher le bouton "History" (pour l'historique de l'objet) 
+X - Afficher le champs heure des champs datetime à coté du champs date (+ arranger la largeur des labels)
  - utiliser des checkbox au lieu des sliders on/off
 
 

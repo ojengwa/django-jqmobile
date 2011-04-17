@@ -37,7 +37,7 @@ def form_datetime(field):
     datetime=field.field
     #on place le titre
     out=u'<label for="%s"><h1>%s</h1></label>' % (datetime.auto_id,datetime.label)
-    out+='<table>'
+    out+='<table><tr>'
     
     html=datetime.as_widget()
     errors=(unicode(datetime.errors)).replace('<ul class="errorlist">','<span id="date_errors"><ul class="errorlist">').replace('</ul>','</ul></span>')
@@ -56,16 +56,16 @@ def form_datetime(field):
     #on met tout on place (sous titre + text )
     i=0
     for title in res_title:
-        out+='<tr><td> <label for="%(id)s_%(i)d">%(label)s </label></td><td> <input type="text" %(_type)s value='% {'label':title,'id':datetime.auto_id,'i':i,'_type':_type[i+1] }
+        out+='<td> <label for="%(id)s_%(i)d">%(label)s </label></td><td> <input type="text" %(_type)s value='% {'label':title,'id':datetime.auto_id,'i':i,'_type':_type[i+1] }
         if i < len(res_date_hour):
             out+='"%(value)s"' % {'value':res_date_hour[i]}
         elif "Time" in _type[i+1]:
             out+='"00:00:00"'
         else:
         	out+='"00/00/0000"'
-        out+=' id="%(id)s_%(i)d" name="%(name)s_%(i)d"/> </td></tr>' % {'id':datetime.auto_id,'i':i, 'name': field.field.html_name }
+        out+=' id="%(id)s_%(i)d" name="%(name)s_%(i)d"/> </td>' % {'id':datetime.auto_id,'i':i, 'name': field.field.html_name }
         i+=1
-    out+='</table>'
+    out+='</tr></table>'
     out+= errors
     return out
 
@@ -85,12 +85,15 @@ def render_mobile_field(field):
        #print "-------------------------------------------------------"
     elif '<p class="datetime">' in html:
         out = form_datetime(field)
+    #elif '<option value="off">Off</option> <option value="on">On</option>' in html:
+    #	print("on off")
+
     else:
 		#on récupère le possible bouton d'ajout
 		exp=re.compile('(<a href=".*></a>$)');
 		bottom_button=exp.findall(html);
 		href='';		
-		#print (html+'\n')
+		print (html+'\n')
 		#on regarde si il y a effectivement un bouton d'ajout
 		if(len(bottom_button)>0):
 			html=html.replace(bottom_button[0],'')

@@ -13,7 +13,8 @@ X - Skinné la page filters
 
 == Changeform ==
 
- - utiliser les standards HTML pour les forms (http://diveintohtml5.org/forms.html)
+X - utiliser les standards HTML pour les forms (http://diveintohtml5.org/forms.html)
+ 	
  - Arranger le bouton "+ new" pour les select (foreign field & many to many fields)
  - Afficher le bouton "View on site" si l'objet à un absolute_url
  - Afficher le bouton "History" (pour l'historique de l'objet) 

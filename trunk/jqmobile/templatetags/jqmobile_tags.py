@@ -56,13 +56,22 @@ def form_datetime(field):
     #on met tout on place (sous titre + text )
     i=0
     for title in res_title:
-        out+='<td> <label for="%(id)s_%(i)d">%(label)s </label></td><td> <input type="text" %(_type)s value='% {'label':title,'id':datetime.auto_id,'i':i,'_type':_type[i+1] }
+        out+='<td> <label for="%(id)s_%(i)d">%(label)s </label></td><td>' % {'label':title,'id':datetime.auto_id,'i':i}
+        # { <input type="text" %(_type)s value=,'_type':_type[i+1] }
+        
+        
         if i < len(res_date_hour):
-            out+='"%(value)s"' % {'value':res_date_hour[i]}
-        elif "Time" in _type[i+1]:
-            out+='"00:00:00"'
-        else:
-        	out+='"00/00/0000"'
+        	if "Time" in _type[i+1]: #time
+        		out+= '<input type="time"'
+        	else: #date
+        		out+='<input type="date"'
+        		
+        	out+=' value="%(value)s"' % {'value':res_date_hour[i]}
+        elif "Time" in _type[i+1]: #time
+            out+='<input type="time" value="00:00:00"'
+        else: #date
+        	out+='<input type="date" value="00/00/0000"'
+        	
         out+=' id="%(id)s_%(i)d" name="%(name)s_%(i)d"/> </td>' % {'id':datetime.auto_id,'i':i, 'name': field.field.html_name }
         i+=1
     out+='</tr></table>'

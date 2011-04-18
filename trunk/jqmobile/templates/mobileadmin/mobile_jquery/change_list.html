@@ -34,7 +34,7 @@
 {% endblock %}
 
 {% block add_scripts %}
-<script>
+<script type="text/javascript">
   //reset type=date inputs to text
   $( document ).bind( "mobileinit", function(){
     $.mobile.page.prototype.options.degradeInputs.date = true;
@@ -43,8 +43,8 @@
 {% endblock %}
 
 {% block extrahead %}
-  <script type="text/javascript" src="{{ STATIC_URL }}jQuery.ui.datepicker.js"></script>
-  <script type="text/javascript" src="{{ STATIC_URL }}jquery.ui.datepicker.mobile.js"></script>
+  <script type="text/javascript" src="{{ STATIC_URL }}jqmobile/js/jQuery.ui.datepicker.js"></script>
+  <script type="text/javascript" src="{{ STATIC_URL }}jqmobile/js/jquery.ui.datepicker.mobile.js"></script>
 
 {% endblock %}
 

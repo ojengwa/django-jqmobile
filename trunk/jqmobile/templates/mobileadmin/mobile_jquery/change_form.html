@@ -2,8 +2,19 @@
 {% load i18n mobile_admin_modify mobile_admin_media jqmobile_tags %}
 
 {% block extrahead %}{{ block.super }}
+  <script type="text/javascript" src="{{ STATIC_URL }}jqmobile/js/jQuery.ui.datepicker.js"></script>
+  <script type="text/javascript" src="{{ STATIC_URL }}jqmobile/js/jquery.ui.datepicker.mobile.js"></script>
 <script type="text/javascript" src="../../../jsi18n/"></script>
 <script type="text/javascript" src="{% mobileadmin_media_prefix %}js/urlify.js"></script>
+{% endblock %}
+
+{% block add_scripts %}
+<script type="text/javascript">
+  //reset type=date inputs to text
+  $( document ).bind( "mobileinit", function(){
+    $.mobile.page.prototype.options.degradeInputs.date = true;
+  });	
+</script>
 {% endblock %}
 
 

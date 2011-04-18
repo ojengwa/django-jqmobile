@@ -121,8 +121,11 @@
 			<label for="search">{% trans "Search" %}</label>
 			{% if cl.search_fields %}
             <div id="search" class="module search span-6">
-                {% block search %}{% search_form cl 0 %}{% endblock %}
-	            <!-- <input type="search" name="password" id="search" value="" /> -->
+                {# {% block search %}{% search_form cl 0 %}{% endblock %} #}
+                <form id='changelist-search' methode="get" action='' > 
+			        <input type="search" name="search" id="search" value="" /> 
+			        <input type="submit" value="{% trans "Valider" %}"/>
+	            </form>
             </div>
         {% endif %}
 		</div>

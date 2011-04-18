@@ -102,7 +102,7 @@ def render_mobile_field(field):
 		exp=re.compile('(<a href=".*></a>$)');
 		bottom_button=exp.findall(html);
 		href='';		
-		print (html+'\n')
+		#print (html+'\n')
 		#on regarde si il y a effectivement un bouton d'ajout
 		if(len(bottom_button)>0):
 			html=html.replace(bottom_button[0],'')

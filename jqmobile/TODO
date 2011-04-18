@@ -2,6 +2,8 @@
 == Global ==
  - trouver la source du conflit entre l'admin desktop et mobile
  - traductions (fr) (http://docs.djangoproject.com/en/dev/howto/i18n/#using-translations-in-your-own-projects)
+ - logout devrait retourné au login form
+ - le login form devrait utilisé l'interface mobile (présentement il utilise grappelli)
 
 == Changelist ==
 

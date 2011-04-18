@@ -87,12 +87,12 @@ def render_mobile_field(field):
     
     
     
-    if field.is_checkbox:
-        out = form_flipswitch(field)
-       #print "-------------------------------------------------------"
-       #out = '%s <label for="%s" class="vCheckboxLabel" onclick="javascript:;">%s</label>' % (field.field, field.field.auto_id, field.field.label)1
-       #print "-------------------------------------------------------"
-    elif '<p class="datetime">' in html:
+#   if field.is_checkbox:
+#       out = form_flipswitch(field)
+#      #print "-------------------------------------------------------"
+#      #out = '%s <label for="%s" class="vCheckboxLabel" onclick="javascript:;">%s</label>' % (field.field, field.field.auto_id, field.field.label)1
+#      #print "-------------------------------------------------------"
+    if '<p class="datetime">' in html:
         out = form_datetime(field)
     #elif '<option value="off">Off</option> <option value="on">On</option>' in html:
     #	print("on off")

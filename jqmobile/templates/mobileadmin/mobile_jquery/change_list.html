@@ -33,6 +33,21 @@
 </div>
 {% endblock %}
 
+{% block add_scripts %}
+<script>
+  //reset type=date inputs to text
+  $( document ).bind( "mobileinit", function(){
+    $.mobile.page.prototype.options.degradeInputs.date = true;
+  });	
+</script>
+{% endblock %}
+
+{% block extrahead %}
+  <script type="text/javascript" src="{{ STATIC_URL }}jQuery.ui.datepicker.js"></script>
+  <script type="text/javascript" src="{{ STATIC_URL }}jquery.ui.datepicker.mobile.js"></script>
+
+{% endblock %}
+
 {% block content %}
 	<ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
 		<li class="group" id="verbose_name" data-theme="a">{{ cl.opts.verbose_name_plural|capfirst|escape }}</li>

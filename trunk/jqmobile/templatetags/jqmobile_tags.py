@@ -47,10 +47,11 @@ def form_datetime(field):
     res_title=exp.findall(html)
     
     #on recherche les dates et heures corespondantes aux sous titres   
-    exp=re.compile('(value=".{8,10}")')
+#   exp=re.compile('(value=".{8,10}")')
+    exp=re.compile('value="(.*?)"')
     res_date_hour=exp.findall(html)
-    for i in range(0,len(res_date_hour)):
-    	res_date_hour[i]=(res_date_hour[i].replace('value=','').replace('"',''))
+#   for i in range(0,len(res_date_hour)):
+#   	res_date_hour[i]=res_date_hour[i]
     
     #on cherche les classe corespondante au type de input (le premier trouvé est faux, car englobant)
     exp=re.compile('(class="[_A-Za-z0-9-]+")')

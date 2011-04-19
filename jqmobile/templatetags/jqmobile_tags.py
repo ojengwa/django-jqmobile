@@ -59,18 +59,17 @@ def form_datetime(field):
         out+='<td> <label for="%(id)s_%(i)d">%(label)s </label></td><td>' % {'label':title,'id':datetime.auto_id,'i':i}
         # { <input type="text" %(_type)s value=,'_type':_type[i+1] }
         
-        
         if i < len(res_date_hour):
         	if "Time" in _type[i+1]: #time
         		out+= '<input type="time"'
         	else: #date
-        		out+='<input type="text" onClick="ShowDate();"'
+        		out+='<input type="date"'
         		
         	out+=' value="%(value)s"' % {'value':res_date_hour[i]}
         elif "Time" in _type[i+1]: #time
-            out+='<input type="time" value="00:00:00"'
+            out+='<input type="time" value=""'
         else: #date
-        	out+='<input type="date" value="00/00/0000"'
+        	out+='<input type="date" value=""'
         	
         out+=' id="%(id)s_%(i)d" name="%(name)s_%(i)d"/> </td>' % {'id':datetime.auto_id,'i':i, 'name': field.field.html_name }
         i+=1

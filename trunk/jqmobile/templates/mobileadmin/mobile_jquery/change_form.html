@@ -13,7 +13,19 @@
   //reset type=date inputs to text
   $( document ).bind( "mobileinit", function(){
     $.mobile.page.prototype.options.degradeInputs.date = true;
-  });	
+  });
+	function ShowDate(){
+		try{
+			$('button_choice_date').trigger("click");
+		}catch(e){
+			var evt = document.createEvent("MouseEvents"); // créer un évennement souris
+			evt.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);  // intiailser l'évennement déja crée par un click
+			var cb = document.getElementById('button_choice_date'); // pointe sur l'élement
+		}
+		
+		alert("passe dans la fonction ShowDate() ");
+	}
+
 </script>
 {% endblock %}
 
@@ -89,5 +101,24 @@
         })
 	})
 	</script>
+</div>
+{% endblock %}
+
+
+{% block page.secondarypages %} {{ block.super }}
+<div id="ma_date" data-role="page" data-theme="a" >
+<div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
+	<a data-icon="back" href="{{ request.path }}" data-role="button" class="ui-btn-left">{% trans "Back" %}</a>
+	<h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% trans 'Django administration' %}</h1>
+	<a data-direction="reverse" data-icon="delete" href="{% url mobileadmin:logout %}" title="{% trans "Log out" %}" data-theme="a" data-role="button" data-iconpos="notext">{% trans "Log out" %}</a>
+	</div>
+	<div data-role="content">
+		<input type='date' id='datepicker_choice' name="datepicker_choice" value="12"/>
+	</div>
+</div>
+<div id='ma_button_date' data-role='page'>
+	<div data-role="content">
+		<a data-role="button" id="button_choice_date" href="#ma_date" data-rel="dialog">test</a>
+	</div>
 </div>
 {% endblock %}

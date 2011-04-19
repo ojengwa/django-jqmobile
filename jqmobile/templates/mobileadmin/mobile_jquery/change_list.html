@@ -24,12 +24,14 @@
 {% block page.footer %}
 <div for="footer_id" data-role="footer" class="ui-bar" data-position="fixed" data-backbtn="false"> 
 	<a data-theme="b" data-iconpos="left" data-icon="plus" href="add/">{% trans 'Add' %}</a>
+	{% comment %}
     {% if cl.has_filters %}
     <a data-theme="a" data-iconpos="left" data-icon="gear" href="#ma-listfilters">{% trans "Filters" %}</a>
     {% endif %}
     {% if cl.search_fields %}
 	<a data-theme="a" data-iconpos="left" data-icon="search" data-rel="dialog" data-transition="pop" href="#ma-listsearch">{% trans "Search" %}</a>
     {% endif %}
+    {% endcomment %}
 </div>
 {% endblock %}
 
@@ -45,6 +47,7 @@
 		{% endblock %}
 	</ul>
 	{% block page.secondarypages %}{{ block.super }}
+	{% comment %}
 	<div id="ma-listfilters" data-role="page" data-theme="a" >
 		 <div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
 			<a data-icon="back" href="{{ request.path }}" data-role="button" class="ui-btn-left">{% trans "Back" %}</a>
@@ -94,6 +97,7 @@
                 {% endif %}
                 {% endcomment %}
             
+            	{% comment %}
 				{% if cl.has_filters %}
 				<div id="filters" class="module filter span-6">
 					{# <div class="pulldown-container"> #}
@@ -108,10 +112,14 @@
 					{# </div> #}
 				</div>
 				{% endif %}
+				{% endcomment %}
 				
+				{% comment %}
 		</div>
 	</div>
+	{% endcomment %}
 	
+	{% comment %}
 	<div id="ma-listsearch" data-role="page" data-theme="a" >
 		 <div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
 			<a data-icon="back" href="{{ request.path }}" data-role="button" class="ui-btn-left">{% trans "Back" %}</a>
@@ -131,6 +139,7 @@
         {% endif %}
 		</div>
 	</div>
+	{% endcomment %}
 	{% endblock %}		
 {% endblock %}
 

@@ -64,7 +64,7 @@ def form_datetime(field):
         	if "Time" in _type[i+1]: #time
         		out+= '<input type="time"'
         	else: #date
-        		out+='<input type="date"'
+        		out+='<input type="text" onClick="ShowDate();"'
         		
         	out+=' value="%(value)s"' % {'value':res_date_hour[i]}
         elif "Time" in _type[i+1]: #time

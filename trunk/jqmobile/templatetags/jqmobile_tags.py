@@ -46,14 +46,17 @@ def form_datetime(field):
     exp=re.compile('([A-Z][a-z]*.:)')
     res_title=exp.findall(html)
     
-    #on recherche les dates et heures corespondantes aux sous titres
-    exp=re.compile('([0-9][0-9][:|/][0-9][0-9][:|/][0-9]*[0-9])')
+    #on recherche les dates et heures corespondantes aux sous titres   
+    exp=re.compile('(value=".{8,10}")')
     res_date_hour=exp.findall(html)
+    for i in range(0,len(res_date_hour)):
+    	res_date_hour[i]=(res_date_hour[i].replace('value=','').replace('"',''))
     
     #on cherche les classe corespondante au type de input (le premier trouvé est faux, car englobant)
     exp=re.compile('(class="[_A-Za-z0-9-]+")')
     _type=(exp.findall(html))
     #on met tout on place (sous titre + text )
+    
     i=0
     for title in res_title:
         out+='<td> <label for="%(id)s_%(i)d">%(label)s </label></td><td>' % {'label':title,'id':datetime.auto_id,'i':i}
@@ -67,9 +70,9 @@ def form_datetime(field):
         		
         	out+=' value="%(value)s"' % {'value':res_date_hour[i]}
         elif "Time" in _type[i+1]: #time
-            out+='<input type="time" value=""'
+            out+='<input type="time" value="a"'
         else: #date
-        	out+='<input type="date" value=""'
+        	out+='<input type="date" value="a"'
         	
         out+=' id="%(id)s_%(i)d" name="%(name)s_%(i)d"/> </td>' % {'id':datetime.auto_id,'i':i, 'name': field.field.html_name }
         i+=1

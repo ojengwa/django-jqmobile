@@ -4,7 +4,7 @@ import re, os
 from django import template
 from django.conf import settings
 from django.utils.safestring import SafeString
-from django.utils.translation import gettext as _
+from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 
 register = template.Library()
@@ -111,7 +111,7 @@ def render_mobile_field(field):
 			html=html.replace(bottom_button[0],'')
 			exp=re.compile('(<a href=".*;">)');
 			href=(exp.findall(bottom_button[0]));
-			href[0]=href[0].replace('<a','<a data-role="button" data-icon="plus"');
+			href[0]=href[0].replace('<a','<a data-role="button" data-icon="plus" id="%(id)s_button"' % {'id':field.field.auto_id});
 
 		out = u'<label for="%(id)s">%(label)s</label> %(objet)s' % {'id':field.field.auto_id, 
         'label':field.field.label,
@@ -119,9 +119,9 @@ def render_mobile_field(field):
          }
          #on ajout le bouton sous le reste
 		if (href!=''):
-			out+='<span id="%(id)s_button" >%(ajout)s %(new)s </a></span>' % {'id':field.field.auto_id,'ajout':href[0], 'new':_("New")}
+			out+='<span class="form-button">%(ajout)s %(new)s </a></span>' % {'ajout':href[0], 'new':_("New")}
 		elif '<input name="password"' in html:
-			out+='<span id="%(id)s_button" ><a data-role="button" data-icon="gear" href="password" id="modif_mdp">%(label)s</a></span>' % {
+			out+='<span class="form-button"><a data-role="button" data-icon="gear" href="password" id="%(id)s_button">%(label)s</a></span>' % {
                     'id':field.field.auto_id,
                     'label': _('Change Password'),
                     }

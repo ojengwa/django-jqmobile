@@ -40,6 +40,7 @@
 		</div>
 
 		{% block page.secondarypages %}
+		{# options #}
 		<div id="ma_options" data-role="page" data-theme="a" >
 			 <div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
 				<a data-icon="back" href="{{ request.path }}" data-role="button" class="ui-btn-left">{% trans "Back" %}</a>
@@ -60,6 +61,7 @@
 				</ul>
 			</div>
 		</div>
+		{# end options #}
 		<div id="ma-actions" data-role="page" data-theme="a">
 			<div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
 				<a data-icon="back" href="{{ request.path }}" data-role="button" class="ui-btn-left">{% trans "Back" %}</a>

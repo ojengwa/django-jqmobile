@@ -21,18 +21,24 @@
     {% endif %}
 {% endblock %}
 {% endcomment %}
+
+{% block app.header_right_button %}
+ 	<a data-theme="b" data-iconpos="left" data-icon="plus" href="add/" class="ui-btn-right">{% trans 'Add' %}</a>
+{% endblock %}
+		
 {% block page.footer %}
-<div for="footer_id" data-role="footer" class="ui-bar" data-position="fixed" data-backbtn="false"> 
-	<a data-theme="b" data-iconpos="left" data-icon="plus" href="add/">{% trans 'Add' %}</a>
-	{% comment %}
+{% comment %}
+<div for="footer_id" data-role="footer" class="ui-bar" data-position="fixed" data-backbtn="false">
+	
     {% if cl.has_filters %}
     <a data-theme="a" data-iconpos="left" data-icon="gear" href="#ma-listfilters">{% trans "Filters" %}</a>
     {% endif %}
     {% if cl.search_fields %}
 	<a data-theme="a" data-iconpos="left" data-icon="search" data-rel="dialog" data-transition="pop" href="#ma-listsearch">{% trans "Search" %}</a>
     {% endif %}
-    {% endcomment %}
+    
 </div>
+{% endcomment %}
 {% endblock %}
 
 

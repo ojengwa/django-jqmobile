@@ -25,9 +25,10 @@
 {% block app.header_right_button %}
  	<a data-theme="b" data-iconpos="left" data-icon="plus" href="add/" class="ui-btn-right">{% trans 'Add' %}</a>
 {% endblock %}
-		
+
+{% comment %}		
 {% block page.footer %}
-{% comment %}
+
 <div for="footer_id" data-role="footer" class="ui-bar" data-position="fixed" data-backbtn="false">
 	
     {% if cl.has_filters %}
@@ -35,11 +36,10 @@
     {% endif %}
     {% if cl.search_fields %}
 	<a data-theme="a" data-iconpos="left" data-icon="search" data-rel="dialog" data-transition="pop" href="#ma-listsearch">{% trans "Search" %}</a>
-    {% endif %}
-    
+    {% endif %} 
 </div>
-{% endcomment %}
 {% endblock %}
+{% endcomment %}
 
 
 {% block content %}

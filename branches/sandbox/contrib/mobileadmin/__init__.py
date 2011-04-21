@@ -29,14 +29,17 @@ def autoregister():
     
     for model, modeladmin in main_site._registry.iteritems():
         admin_class = modeladmin.__class__
+        print dir(admin_class)
         for name in settings.TEMPLATE_MAPPING:
             (found, value) = classlookup(admin_class, name)
             if found:
+                print "%s - %s" % (admin_class, name)
                 setattr(admin_class, name, decorators.mobile_templates(value))
                 
         if admin_class == UserAdmin:
             setattr(admin_class, 'add_view', views.auth_add_view)
-
+            setattr(admin_class, 'change_user_password_template', 'mobileadmin/mobile_jquery/auth/user/add_form.html')
+            
         site.register(model, admin_class)
 
 def autodiscover():

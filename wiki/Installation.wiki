@@ -6,7 +6,7 @@ Here you will find the basic configurations required to get you started.
 
 == Requirements ==
 
-django-jqmobile requires [django-mobileadmin](https://github.com/jezdez/django-mobileadmin/). Unfortunately I had to fork the project in a temporary branch so I could apply patches to fix bugs or add features. You can use svn to get it:
+django-jqmobile requires [django-mobileadmin https://github.com/jezdez/django-mobileadmin/]. Unfortunately I had to fork the project in a temporary branch so I could apply patches to fix bugs or add features. You can use svn to get it:
 
 {{{
 

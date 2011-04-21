@@ -1,0 +1,21 @@
+{% load jqmobile_tags %}
+{% if fieldset.name %}<h2>{{ fieldset.name }}</h2>{% endif %}
+<ul data-inset="true" data-role="listview" data-theme="a">
+    {% for line in fieldset %}
+    <li class="form-row{% if line.errors %} errors{% endif %} {% for field in line %}{{ field.field.name }} {% endfor %} " data-role="fieldcontain"{% if line.errors %} data-icon="alert"{% endif %}>
+        {% for field in line %}
+        	{% render_mobile_field field %}
+        {% endfor %}
+        {% comment %}
+        {% if field.is_checkbox %}
+            {{ field.field }}<label for="{{ field.field.auto_id }}" class="vCheckboxLabel" onclick="javascript:;">{{ field.field.label }}</label>
+        {% else %}
+            {{ field.label_tag }}{{ field.field }}
+        {% endif %}
+        {% if field.field.field.help_text %}
+        <a href="javascript:;" data-icon="button" style="display:inline;float:right;" title="{{ field.field.field.help_text|striptags|escape }}" onclick="alert(this.title);return false;">?</a>
+        {% endif %}
+        {% endcomment %}
+      </li>
+  {% endfor %}
+</ul>

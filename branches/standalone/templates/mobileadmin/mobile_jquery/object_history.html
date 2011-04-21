@@ -1,0 +1,30 @@
+{% extends "mobileadmin/mobile_jquery/base.html" %}
+{% load mobile_admin_modify i18n jqmobile_tags %}
+
+{% comment %}
+{% block breadcrumbs %}<a href="../" class="inactive float-left" id="object_{{ object.pk }}">{{ object|escape }}</a> </a><span class="float-right active">{% trans 'History' %}</span>
+<script type="text/javascript">truncate({'object_{{ object.pk }}': 20});</script>
+{% endblock %}
+{% endcomment %}
+
+{% block navbar %}
+	{% get_breadcrumb request.path request.GET.user %}
+{% endblock %}
+
+{% block content %}
+{% if action_list %}
+<ul id="{{ object.lower }}" title="{{ title }}" selected="true" data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a">
+	<li data-theme="a">{% trans "History" %}
+    {% for action in action_list %}
+    <li>
+    {{ action.user.username }}, {{ action.action_time|date:_("DATETIME_FORMAT") }}<br />
+    {{ action.change_message }}
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<div class="panel" selected="true">
+<h1>{% trans "This object doesn't have a change history. It probably wasn't added via this admin site." %}</h1>
+</div>
+{% endif %}
+{% endblock %}

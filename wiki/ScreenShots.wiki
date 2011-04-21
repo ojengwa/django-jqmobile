@@ -1,4 +1,4 @@
-#summary Screenshot of the interface
+#summary Screenshots of the interface
 
 = Screenshots =
 

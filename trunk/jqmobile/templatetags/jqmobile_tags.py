@@ -71,9 +71,9 @@ def form_datetime(field):
         		
         	out+=' value="%(value)s"' % {'value':res_date_hour[i]}
         elif "Time" in _type[i+1]: #time
-            out+='<input type="time" value="a"'
+            out+='<input type="time" value=""'
         else: #date
-        	out+='<input type="date" value="a"'
+        	out+='<input type="date" value=""'
         	
         out+=' id="%(id)s_%(i)d" name="%(name)s_%(i)d"/> </td>' % {'id':datetime.auto_id,'i':i, 'name': field.field.html_name }
         i+=1

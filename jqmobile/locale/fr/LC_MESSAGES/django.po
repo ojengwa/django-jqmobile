@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-21 11:15-0400\n"
+"POT-Creation-Date: 2011-04-21 11:20-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: templates/mobileadmin/mobile_jquery/404.html:4
 #: templates/mobileadmin/mobile_jquery/404.html:5
 msgid "Page not found"
-msgstr ""
+msgstr "Page non trouvée"
 
 #: templates/mobileadmin/mobile_jquery/404.html:10
 msgid "We're sorry, but the requested page could not be found."
@@ -30,7 +30,7 @@ msgstr ""
 #: templates/mobileadmin/mobile_jquery/505.html:4
 #: templates/mobileadmin/mobile_jquery/505.html:5
 msgid "Server error (500)"
-msgstr ""
+msgstr "Erreur serveur (500)"
 
 #: templates/mobileadmin/mobile_jquery/505.html:10
 msgid ""
@@ -46,19 +46,20 @@ msgstr ""
 
 #: templates/mobileadmin/mobile_jquery/base.html:31
 msgid "Django Admin"
-msgstr ""
+msgstr "Admin Django"
 
 #: templates/mobileadmin/mobile_jquery/base.html:46
 #: templates/mobileadmin/mobile_jquery/base.html:67
 #: templates/mobileadmin/mobile_jquery/change_form.html:105
 msgid "Back"
-msgstr ""
+msgstr "Retour"
 
 #: templates/mobileadmin/mobile_jquery/base.html:47
+#: templates/mobileadmin/mobile_jquery/base.html:68
 #: templates/mobileadmin/mobile_jquery/change_form.html:106
 #: templates/mobileadmin/mobile_jquery/index.html:7
 msgid "Django administration"
-msgstr ""
+msgstr "Administration Django"
 
 #: templates/mobileadmin/mobile_jquery/base.html:48
 #: templates/mobileadmin/mobile_jquery/base.html:60
@@ -83,15 +84,11 @@ msgstr ""
 
 #: templates/mobileadmin/mobile_jquery/base.html:56
 msgid "My Account"
-msgstr ""
+msgstr "Mon Compte"
 
 #: templates/mobileadmin/mobile_jquery/base.html:57
-msgid "Mes actions récentes"
-msgstr ""
-
-#: templates/mobileadmin/mobile_jquery/base.html:68
-msgid "Django administration dc"
-msgstr ""
+msgid "My Recent Actions"
+msgstr "Mes Actions Récentes"
 
 #: templates/mobileadmin/mobile_jquery/base.html:69
 #: templates/mobileadmin/mobile_jquery/registration/password_change_form.html:17
@@ -100,7 +97,7 @@ msgstr ""
 
 #: templates/mobileadmin/mobile_jquery/base.html:73
 msgid "My Actions"
-msgstr ""
+msgstr "Mes Actions"
 
 #: templates/mobileadmin/mobile_jquery/base.html:77
 msgid "None available"

@@ -54,7 +54,7 @@
 					<li><a data-icon="gear" href="{% url admin:password_change %}">{% trans "Change Your Password" %}</a></li>
 					<li><a data-icon="home" href="{% url admin:index %}">{% trans "Desktop Admin" %}</a></li>
 					<li><a data-icon="home" href="{% url admin:auth_user_change request.user.id %}">{% trans "My Account" %}</a></li>
-					<li><a data-icon="star" href="#ma-actions">{% trans "Mes actions récentes" %}</a></li>
+					<li><a data-icon="star" href="#ma-actions">{% trans "My Recent Actions" %}</a></li>
 					{% endif %}
 					{% block contenu_option %}{% endblock %}
 					 <li><a data-icon="delete" href="{% url mobileadmin:logout %}">{% trans "Log out" %}</a></li>
@@ -65,7 +65,7 @@
 		<div id="ma-actions" data-role="page" data-theme="a">
 			<div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
 				<a data-icon="back" href="{{ request.path }}" data-role="button" class="ui-btn-left">{% trans "Back" %}</a>
-				<h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% trans 'Django administration dc' %}</h1>
+				<h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% trans 'Django administration' %}</h1>
 				<a data-direction="reverse" data-icon="delete" href="{% url mobileadmin:logout %}" title="{% trans "Logout" %}" data-theme="a" data-role="button" data-iconpos="notext">{% trans "Log out" %}</a>
 			</div>
 			<div data-role="content">

@@ -1,30 +1,22 @@
 
 == Global ==
- - trouver la source du conflit entre l'admin desktop et mobile
- - traductions (fr) (http://docs.djangoproject.com/en/dev/howto/i18n/#using-translations-in-your-own-projects)
+ ~ trouver la source du conflit entre l'admin desktop et mobile (on vas voir si on peux se passer de mobileadmin avant)
+ ~ le login form devrait utilisé l'interface mobile (présentement il utilise grappelli)
  - logout devrait retourné au login form
- 
- - le login form devrait utilisé l'interface mobile (présentement il utilise grappelli)
- - idem avec le "changer mot de passeé d'un utilisateur
 
 == Changelist ==
 
- - Faire fonctionner les filtres (probleme pour le submit)
- 
- - Skinné la page de recherche
- - Faire fonctionner la recherche
+ ~ Faire fonctionner les filtres (probleme pour le submit)
+ ~ Skinné la page de recherche
+ ~ Faire fonctionner la recherche
 
 == Changeform == 	
- - Arranger le bouton "+ new" pour les select (foreign field & many to many fields)
 
 
  == à long terme ==
- - intégration avec grappelli.dashboard
+ ~ intégration avec grappelli.dashboard
   
  == testdjango ==
-
- 	- Number fields tests
-	 	- Boutons Bool on/off : etat non enregistré (ou pas affiché)
 
 
 == Docs ==

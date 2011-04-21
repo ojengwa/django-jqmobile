@@ -1,6 +1,6 @@
 = Credits =
 
-This project is sponsored by [Motion Média](http://motion-m.ca)
+This project is sponsored by [http://motion-m.ca Motion Média]
 
 http://motion-m.ca/media/img/logo.png
 

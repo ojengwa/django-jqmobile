@@ -4,7 +4,7 @@
 {% block content %}
 {% if app_list %}
     <ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
-        <li data-theme="a">{% trans 'Django administration' %}</li>
+        <li data-theme="a">{% trans 'Django Admin' %}</li>
         {% for app in app_list %}
         <li data-theme="c"><a href="{{ app.app_url }}" id="{{ app.name|slugify }}_app">{% blocktrans with app.name as name %}{{ name }}{% endblocktrans %}</a></li>
         {% endfor %}

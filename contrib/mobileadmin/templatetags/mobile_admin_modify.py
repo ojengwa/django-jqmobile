@@ -19,8 +19,12 @@ def prepopulated_fields_js(context):
                 if inline_admin_form.original is None:
                     prepopulated_fields.extend(inline_admin_form.prepopulated_fields)
     context.update({'prepopulated_fields': prepopulated_fields})
-    return context
-prepopulated_fields_js = register.inclusion_tag('admin/prepopulated_fields_js.html', takes_context=True)(prepopulated_fields_js)
+    return render_to_string((
+        'mobileadmin/%s/prepopulated_fields_js.html' % template.Variable('user_agent').resolve(context),
+        'mobileadmin/prepopulated_fields_js.html',
+        'admin/prepopulated_fields_js.html',
+        ), context)
+register.simple_tag(prepopulated_fields_js, takes_context=True)
 
 def mobile_inline_admin_formset(inline_admin_formset, user_agent):
     template_name = inline_admin_formset.opts.template

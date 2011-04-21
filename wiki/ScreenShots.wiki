@@ -1,3 +1,5 @@
+#summary Screenshot of the interface
+
 = Screenshots =
 
 == Admin Index ==

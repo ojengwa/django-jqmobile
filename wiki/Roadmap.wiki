@@ -1,0 +1,26 @@
+#summary Project's roadmap
+
+== Releases ==
+
+=== v1.0 (First stable release) ===
+
+ * App Index
+ * Change list
+ * Change form
+ * Change password
+ * Breadcrumb navigation
+ * HTML5 field types
+ * Recent Actions
+ * Object history
+ * View on site (object)
+ * Logout
+
+=== v1.1 ===
+
+ * List search
+ * List Date hierachy
+
+=== v1.2 ===
+
+ * List actions
+ * List filters

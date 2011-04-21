@@ -4,6 +4,8 @@ This project is sponsored by [http://motion-m.ca Motion Média]
 
 http://motion-m.ca/media/img/logo.png
 
+Special thanks to Maxime Barbier
+
 = django-mobileadmin =
 
 Copyright (c) 2007, Jannis Leidel

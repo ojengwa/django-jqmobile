@@ -25,7 +25,7 @@ msgstr "Page non trouvée"
 
 #: templates/mobileadmin/mobile_jquery/404.html:10
 msgid "We're sorry, but the requested page could not be found."
-msgstr ""
+msgstr "Nous sommes désolé, mais la page demmandée n'a pas été trouvé"
 
 #: templates/mobileadmin/mobile_jquery/505.html:4
 #: templates/mobileadmin/mobile_jquery/505.html:5
@@ -42,7 +42,7 @@ msgstr ""
 #: templates/mobileadmin/mobile_jquery/change_form.html:32
 #: templates/mobileadmin/mobile_jquery/change_list.html:6
 msgid "Admin"
-msgstr ""
+msgstr "Admin"
 
 #: templates/mobileadmin/mobile_jquery/base.html:31
 msgid "Django Admin"
@@ -68,19 +68,19 @@ msgstr "Administration Django"
 #: templates/mobileadmin/mobile_jquery/index.html:26
 #: templates/mobileadmin/mobile_jquery/auth/user/change_password.html:14
 msgid "Log out"
-msgstr ""
+msgstr "Déconextion"
 
 #: templates/mobileadmin/mobile_jquery/base.html:52
 msgid "Options"
-msgstr ""
+msgstr "Options"
 
 #: templates/mobileadmin/mobile_jquery/base.html:54
 msgid "Change Your Password"
-msgstr ""
+msgstr "Changer votre mot de Passe"
 
 #: templates/mobileadmin/mobile_jquery/base.html:55
 msgid "Desktop Admin"
-msgstr ""
+msgstr "Acceuil Admin"
 
 #: templates/mobileadmin/mobile_jquery/base.html:56
 msgid "My Account"
@@ -93,7 +93,7 @@ msgstr "Mes Actions Récentes"
 #: templates/mobileadmin/mobile_jquery/base.html:69
 #: templates/mobileadmin/mobile_jquery/registration/password_change_form.html:17
 msgid "Logout"
-msgstr ""
+msgstr "Déconextion"
 
 #: templates/mobileadmin/mobile_jquery/base.html:73
 msgid "My Actions"
@@ -105,31 +105,31 @@ msgstr ""
 
 #: templates/mobileadmin/mobile_jquery/change_form.html:39
 msgid "Go"
-msgstr ""
+msgstr "Aller"
 
 #: templates/mobileadmin/mobile_jquery/change_form.html:42
 msgid "History"
-msgstr ""
+msgstr "Historique"
 
 #: templates/mobileadmin/mobile_jquery/change_form.html:54
 #: templates/mobileadmin/mobile_jquery/auth/user/change_password.html:47
 msgid "Please correct the error below."
 msgid_plural "Please correct the errors below."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Veuillez corriger l'erreur suivante"
+msgstr[1] "Veuillez corriger les erreurs suivantes"
 
 #: templates/mobileadmin/mobile_jquery/change_form.html:86
 msgid "Save"
-msgstr ""
+msgstr "Enregistrer"
 
 #: templates/mobileadmin/mobile_jquery/change_form.html:88
 #: templates/mobileadmin/mobile_jquery/delete_confirmation.html:4
 msgid "Delete"
-msgstr ""
+msgstr "Supprimer"
 
 #: templates/mobileadmin/mobile_jquery/change_list.html:26
 msgid "Add"
-msgstr ""
+msgstr "Ajouter"
 
 #: templates/mobileadmin/mobile_jquery/delete_confirmation.html:9
 #, python-format
@@ -138,6 +138,9 @@ msgid ""
 "related objects, but your account doesn't have permission to delete the "
 "following types of objects:"
 msgstr ""
+"La suppression du %(object_name)s ' le %(escaped_object)s' aboutirait à la suppression"
+"des objets liés, mais votre compte n'a pas de permission de supprimer le"
+"les types d'objets suivants:"
 
 #: templates/mobileadmin/mobile_jquery/delete_confirmation.html:20
 #, python-format
@@ -145,37 +148,40 @@ msgid ""
 "Are you sure you want to delete the %(object_name)s \"%(escaped_object)s\"? "
 "All of the following related items will be deleted:"
 msgstr ""
+"Êtes-vous sûrs que vous voulez supprimer le %(object_name)s \"%(escaped_object)s \"?"
+"Tout les articles liés suivants seront supprimés :"
+
 
 #: templates/mobileadmin/mobile_jquery/delete_confirmation.html:28
 msgid "Yes, I'm sure"
-msgstr ""
+msgstr "Oui, je suis sure"
 
 #: templates/mobileadmin/mobile_jquery/filter.html:2
 #, python-format
 msgid " By %(filter_title)s "
-msgstr ""
+msgstr "Par %(filter_title)s"
 
 #: templates/mobileadmin/mobile_jquery/index.html:9
 #, python-format
 msgid "%(name)s"
-msgstr ""
+msgstr "%(name)s"
 
 #: templates/mobileadmin/mobile_jquery/index.html:14
 msgid "You don't have permission to edit anything."
-msgstr ""
+msgstr "Vous n'avez pas de permission d'éditer quoi que ce soit."
 
 #: templates/mobileadmin/mobile_jquery/index.html:23
 msgid "Desktop"
-msgstr ""
+msgstr "Bureau"
 
 #: templates/mobileadmin/mobile_jquery/index.html:24
 #: templates/mobileadmin/mobile_jquery/auth/user/add_form.html:16
 msgid "Password"
-msgstr ""
+msgstr "Mot de Passe"
 
 #: templates/mobileadmin/mobile_jquery/index.html:25
 msgid "Actions"
-msgstr ""
+msgstr "Actions"
 
 #: templates/mobileadmin/mobile_jquery/invalid_setup.html:8
 msgid ""
@@ -183,57 +189,66 @@ msgid ""
 "database tables have been created, and make sure the database is readable by "
 "the appropriate user."
 msgstr ""
+"Quelquechose ne va pas bien avec votre installation de base de données. Assurez-vous que les tables appropriées"
+"de le base de données ont été créées, et assurez vous que la base de données est lisible par"
+"L'utilisateur approprié."
+
 
 #: templates/mobileadmin/mobile_jquery/login.html:4
 #: templates/mobileadmin/mobile_jquery/login.html:23
 msgid "Log in"
-msgstr ""
+msgstr "Connextion"
 
 #: templates/mobileadmin/mobile_jquery/login.html:12
 msgid "Username:"
-msgstr ""
+msgstr "Identifiant"
 
 #: templates/mobileadmin/mobile_jquery/login.html:16
 msgid "Password:"
-msgstr ""
+msgstr "Mot de Passe"
 
 #: templates/mobileadmin/mobile_jquery/object_history.html:19
 msgid "DATETIME_FORMAT"
-msgstr ""
+msgstr "DATETIME_FORMAT"
 
 #: templates/mobileadmin/mobile_jquery/object_history.html:26
 msgid ""
 "This object doesn't have a change history. It probably wasn't added via this "
 "admin site."
 msgstr ""
+"Cet objet n'a pas d'historique de changement. Il n'a probablement pas été ajouté via ce"
+"Site d'administration."
+
 
 #: templates/mobileadmin/mobile_jquery/pagination.html:9
 msgid "All"
-msgstr ""
+msgstr "Tous"
 
 #: templates/mobileadmin/mobile_jquery/search_form.html:5
 msgid "Search"
-msgstr ""
+msgstr "Chercher"
 
 #: templates/mobileadmin/mobile_jquery/search_form.html:15
 #, python-format
 msgid "%(full_result_count)s total"
-msgstr ""
+msgstr "%(full_result_count)s total"
 
 #: templates/mobileadmin/mobile_jquery/auth/user/add_form.html:6
 msgid ""
 "First, enter a username and password. Then, you'll be able to edit more user "
 "options."
 msgstr ""
+"D'abord, entrez à un nom d'utilisateur et un mot de passe. Alors, vous pourrez éditer plus d'utilisateur"
+"Options."
 
 #: templates/mobileadmin/mobile_jquery/auth/user/add_form.html:8
 msgid "Username"
-msgstr ""
+msgstr "Nom d'utilisateur"
 
 #: templates/mobileadmin/mobile_jquery/auth/user/add_form.html:20
 #: templates/mobileadmin/mobile_jquery/auth/user/change_password.html:56
 msgid "Password (again)"
-msgstr ""
+msgstr "Mot de passe (encore)"
 
 #: templates/mobileadmin/mobile_jquery/auth/user/change_password.html:7
 msgid "Documentation"
@@ -242,90 +257,92 @@ msgstr ""
 #: templates/mobileadmin/mobile_jquery/auth/user/change_password.html:11
 #: templates/mobileadmin/mobile_jquery/registration/password_change_form.html:18
 msgid "Change password"
-msgstr ""
+msgstr "Modifier mot de passe"
 
 #: templates/mobileadmin/mobile_jquery/auth/user/change_password.html:35
 #: templates/mobileadmin/mobile_jquery/registration/password_change_form.html:32
 msgid "Password change"
-msgstr ""
+msgstr "Mot de passe changé"
 
 #: templates/mobileadmin/mobile_jquery/auth/user/change_password.html:43
 msgid "Change password: "
-msgstr ""
+msgstr "Modifier mot de passe"
 
 #: templates/mobileadmin/mobile_jquery/auth/user/change_password.html:45
 #, python-format
 msgid "Enter a new password for the user <strong>%(username)s</strong>."
-msgstr ""
+msgstr "Entrez un nouveau mot de passe pour l'utilisateur<strong>%(username)s</strong>."
 
 #: templates/mobileadmin/mobile_jquery/auth/user/change_password.html:52
 #: templates/mobileadmin/mobile_jquery/registration/password_change_form.html:41
 msgid "New password:"
-msgstr ""
+msgstr "Nouveau mot de passe"
 
 #: templates/mobileadmin/mobile_jquery/auth/user/change_password.html:58
 msgid "Enter the same password as above, for verification."
-msgstr ""
+msgstr "Entrez le même mot de passe que ci-dessus, pour la vérification."
 
 #: templates/mobileadmin/mobile_jquery/auth/user/change_password.html:64
 #: templates/mobileadmin/mobile_jquery/registration/password_change_form.html:57
 msgid "Change my password"
-msgstr ""
+msgstr "Changer mon mot de passe"
 
 #: templates/mobileadmin/mobile_jquery/registration/logged_out.html:4
 msgid "Log in again"
-msgstr ""
+msgstr "Se connecter à nouveau"
 
 #: templates/mobileadmin/mobile_jquery/registration/logged_out.html:4
 msgid "Logged out"
-msgstr ""
+msgstr "Déconnecté"
 
 #: templates/mobileadmin/mobile_jquery/registration/logged_out.html:8
 msgid "Thanks for spending some quality time with the Web site today."
-msgstr ""
+msgstr "Merci d'avoir passer du temps de qualité sur le site Web aujourd'hui."
 
 #: templates/mobileadmin/mobile_jquery/registration/password_change_done.html:4
 msgid "Password change successful"
-msgstr ""
+msgstr "Votre mot de pass à bien été changé"
 
 #: templates/mobileadmin/mobile_jquery/registration/password_change_done.html:8
 msgid "Your password was changed."
-msgstr ""
+msgstr "Votre mot de passe a été changé."
 
 #: templates/mobileadmin/mobile_jquery/registration/password_change_form.html:21
 msgid "Welcome,"
-msgstr ""
+msgstr "Bienvenu"
 
 #: templates/mobileadmin/mobile_jquery/registration/password_change_form.html:33
 msgid ""
 "Please enter your old password, for security's sake, and then enter your new "
 "password twice so we can verify you typed it in correctly."
 msgstr ""
+"Entrez s'il vous plaît votre ancien mot de passe, par mesure de sécurité et entrez ensuite votre nouveau"
+"mot de passe deux fois affin que nous vérifions que vous l'avez tapé correctement."
 
 #: templates/mobileadmin/mobile_jquery/registration/password_change_form.html:36
 msgid "Old password:"
-msgstr ""
+msgstr "Ancien mot de passe:"
 
 #: templates/mobileadmin/mobile_jquery/registration/password_change_form.html:46
 msgid "Confirm password:"
-msgstr ""
+msgstr "Confirmer le mot de passe:"
 
 #: templatetags/jqmobile_tags.py:29
 msgid "On"
-msgstr ""
+msgstr "On"
 
 #: templatetags/jqmobile_tags.py:30
 msgid "Off"
-msgstr ""
+msgstr "Off"
 
 #: templatetags/jqmobile_tags.py:122
 msgid "New"
-msgstr ""
+msgstr "Nouveau"
 
 #: templatetags/jqmobile_tags.py:126
 msgid "Change Password"
-msgstr ""
+msgstr "Modifier mot de passe"
 
 #: templatetags/jqmobile_tags.py:163
 msgid "Home"
-msgstr ""
+msgstr "Acceuil"

@@ -1,0 +1,70 @@
+#summary django-jqmobile Installation documentation
+
+= Introduction =
+
+Here you will find the basic configurations required to get you started.
+
+== Requirements ==
+
+django-jqmobile requires [django-mobileadmin](https://github.com/jezdez/django-mobileadmin/). Unfortunately I had to fork the project in a temporary branch so I could apply patches to fix bugs or add features. You can use svn to get it:
+
+{{{
+
+svn co http://django-jqmobile.googlecode.com/svn/branches/sandbox/contrib/mobileadmin mobileadmin
+
+}}}
+
+When the code base of django-jqmobile will stabilize I will try to push my patches to django-mobileadmin
+
+== Configurations ==
+
+=== settings.py ===
+
+{{{
+
+STATICFILES_DIRS = (
+    # ...
+    '/full/path/to/jqmobile/static/',
+)
+
+TEMPLATE_DIRS = (
+    # ...
+    '/full/path/to/jqmobile/templates/',
+)
+
+INSTALLED_APPS = (
+    # ...
+    'mobileadmin',
+    'jqmobile',
+)
+
+# Tell mobiladmin to use jQuery.mobile for all
+# mobile traffic (or use your custom filter)
+MOBILEADMIN_USER_AGENTS = {
+    'mobile_jquery': r'.*',
+}
+
+}}}
+
+=== urls.py ===
+
+{{{
+
+from django.conf.urls.defaults import *
+
+from django.contrib import admin
+import mobileadmin
+
+admin.autodiscover()
+mobileadmin.autoregister()
+
+
+urlpatterns = patterns('',
+    (r'^admin/', include(admin.site.urls)),
+    (r'^ma/', include(mobileadmin.sites.site.urls)),
+)
+
+handler404 = 'mobileadmin.views.page_not_found'
+handler500 = 'mobileadmin.views.server_error'
+
+}}}

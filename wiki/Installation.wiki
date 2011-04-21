@@ -14,7 +14,7 @@ svn co http://django-jqmobile.googlecode.com/svn/branches/sandbox/contrib/mobile
 
 }}}
 
-When the code base of django-jqmobile will stabilize I will try to push my patches to django-mobileadmin
+When the code base of django-jqmobile will stabilize I will try to push my patches to django-mobileadmin. I might even try to drop the requirement if possible since browser detection is basically unused.
 
 == Configurations ==
 

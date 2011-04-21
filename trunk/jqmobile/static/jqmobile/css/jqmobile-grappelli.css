@@ -1,0 +1,103 @@
+/* General */
+
+.ui-body-a {
+    background: #fff!important;
+    color: #444;
+    text-shadow: none;
+}
+
+.ui-content h1 {
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0;
+    position: relative;
+    z-index: 800;
+    margin: 0 0 10px 0;
+}
+
+.ui-content h2 {
+    font-size: 14px;
+    padding: 5px 10px;
+    margin: 10px 0 1px 0;
+    /*
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    background: -moz-linear-gradient(center top , #E3E3E3, #D6D6D6) repeat scroll 0 0 transparent;
+    border-bottom: 1px solid #BDBDBD;*/
+}
+
+.ui-content form .ui-listview-inset {
+    border: 1px solid #BDBDBD;
+    margin: 0;
+}
+
+.ui-content form .ui-listview-inset li {
+    background: #eee!important;
+    border-color: #BDBDBD;
+}
+.ui-content form .ui-listview-inset li.ui-corner-top {
+}
+.ui-content label {
+}
+.ui-content .required label {
+    font-weight: bold;
+}
+
+/* Home button tweaks */
+
+.ui-btn-home .hidden {
+    display: none;
+}
+.ui-btn-home .home-icon {
+    background: url("../jquery.mobile/images/icons-18-black.png") no-repeat scroll -579px 0 transparent;
+    display: block;
+    height: 15px;
+    margin: 0 auto;
+    width: 12px;
+}
+
+/* Change list tweaks */
+
+/* Change form tweaks */
+
+.ui-btn-delete {
+    border: 1px solid #992626;
+    background: #D93636;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 1px 0 #992626;
+    background-image: -moz-linear-gradient(top,#D93636,#BF3030);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#D93636),color-stop(1,#BF3030));
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#D93636', EndColorStr='#BF3030')";
+}
+
+a#save-object {
+    float: right;
+    margin-right: 30px;
+}
+
+.error {
+    padding: 15px 20px;
+}
+
+.form-row.errors input {
+    border-color: #c30;
+}
+
+.errormsg {
+    font-size: 14px;
+    font-weight: normal;
+    margin: 6px 0 0 345px;
+    padding: 6px;
+    width: 60%;
+}
+
+.min-width-480px .errormsg {
+    margin-left: 22.3%;
+}
+
+.form-row .form-button a {
+    width: 200px;
+    margin-left: 22%;
+}

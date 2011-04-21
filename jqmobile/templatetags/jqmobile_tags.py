@@ -53,7 +53,7 @@ def form_datetime(field):
 #   for i in range(0,len(res_date_hour)):
 #   	res_date_hour[i]=res_date_hour[i]
     
-    #on cherche les classe corespondante au type de input (le premier trouvé est faux, car englobant)
+    #on cherche les classe corespondante au type de input (le premier trouve est faux, car englobant)
     exp=re.compile('(class="[_A-Za-z0-9-]+")')
     _type=(exp.findall(html))
     #on met tout on place (sous titre + text )
@@ -101,7 +101,7 @@ def render_mobile_field(field):
     #	print("on off")
 
     else:
-		#on récupère le possible bouton d'ajout
+		#on recupere le possible bouton d'ajout
 		exp=re.compile('(<a href=".*></a>$)');
 		bottom_button=exp.findall(html);
 		href='';		
@@ -128,7 +128,7 @@ def render_mobile_field(field):
         
 		out+='<span id="%(id)s_errors" >%(errors)s</span>' % {'id':field.field.auto_id,'errors':unicode(field.field.errors)}
 		
-		#inclure le fichier livevalidation_standalone.compressed.js pour des verification en temps réel
+		#inclure le fichier livevalidation_standalone.compressed.js pour des verification en temps reel
     	#if 'type="text"' in html:
         #	out+='<script type="text/javascript">'
         #	if "email" in html:
@@ -149,7 +149,7 @@ def get_breadcrumb(field,name=''):
 
 	#on parcour l'arborecence
 	for page in sub_path:
-		path +=page #on reconstruit l'arborecence à chaque boucle
+		path +=page #on reconstruit l'arborecence a chaque boucle
 		out +='<li><a href="%(path)s"' % {'path':path} #on forme la liste des boutons
 		
 		if i == len(sub_path):

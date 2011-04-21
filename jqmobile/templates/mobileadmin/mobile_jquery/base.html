@@ -91,36 +91,3 @@
 	</body>
 </html>
 {# endspaceless #}
-{% comment %}
-        <div data-role="page" data-heme="c" id="admin-index">
-            <div data-role="header">
-                {% block header_logo %}
-                {% endblock %}
-                <div class="toolbar">
-                    {% block tools %}
-                    {% if user.is_authenticated and user.is_staff %}
-                    <div class="user-tools"
-                        <a href="{{ root_path }}logout/" id="logout_link">{% trans "Logout" %}</a>
-                        <a href="{{ root_path }}password_change/" id="password_change">{% trans 'Change password' %}</a>
-                    </div>
-                    <div class="greeting float-right">
-                        {% trans 'Welcome,' %} {% if user.first_name %}{{ user.first_name|escape }}{% else %}{{ user.username }}{% endif %}
-                    </div>
-                    {% endif %}
-                    {% endblock tools %}
-                </div>
-            </div> 
-            <div data-role="content">
-            </div> 
-            <div data-role="footer">
-                <div class="breadcrumbs" selected="true">{% block breadcrumbs %}{% endblock %}</div>
-				<!--<div data-role="navbar">
-					<ul>
-						<li><a href="a.html" class="ui-btn-active">One</a></li>
-						<li><a href="b.html">Two</a></li>
-					</ul>
-				</div>--><!-- /navbar --> 
-            	</div> 
-       		</div>
-{# endspaceless #}
-{% endcomment%}

@@ -143,7 +143,7 @@ def get_breadcrumb(field,name=''):
 	exp = re.compile('([A-Z a-z 0-9]+/)')
 	sub_path = exp.findall(path)
 	out = u'<div data-role="navbar"><ul class="breadcrumbs">'
-	i = 1;
+	i = 0;
 	path = "/"
 	last_sub = ''
 
@@ -152,14 +152,14 @@ def get_breadcrumb(field,name=''):
 		path +=page #on reconstruit l'arborecence a chaque boucle
 		out +='<li><a href="%(path)s"' % {'path':path} #on forme la liste des boutons
 		
-		if i == len(sub_path):
+		if i == len(sub_path)-1:
             # on active le dernier lien
 			out +=' class="ui-btn-active"' 
-
-		if i == len(sub_path) and name != '':
+			
+		if i>0 and name != '' and "user/" in sub_path[i-1]:
 			page = unicode(name)
 		
-		if i == 1:
+		if i ==0:
 			out +=' class="ui-btn-home"><span class="hidden">%s</span><span class="home-icon">&nbsp;</span></a></li>' % _('Home')
 		else:
 			out +='>%(page)s</a></li>' % {'page': page.replace('/', '')} # on fini la liste

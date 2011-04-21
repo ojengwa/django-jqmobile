@@ -8,12 +8,13 @@
 {% endcomment %}
 
 {% block navbar %}
-	{% get_breadcrumb request.path %}
+	{% get_breadcrumb request.path request.GET.user %}
 {% endblock %}
 
 {% block content %}
 {% if action_list %}
-<ul id="{{ object.lower }}" title="{{ title }}" selected="true">
+<ul id="{{ object.lower }}" title="{{ title }}" selected="true" data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a">
+	<li data-theme="a">{% trans "History" %}
     {% for action in action_list %}
     <li>
     {{ action.user.username }}, {{ action.action_time|date:_("DATETIME_FORMAT") }}<br />

@@ -38,7 +38,7 @@ def autoregister():
                 
         if admin_class == UserAdmin:
             setattr(admin_class, 'add_view', views.auth_add_view)
-            setattr(admin_class, 'change_user_password_template', 'mobileadmin/mobile_jquery/auth/user/add_form.html')
+            setattr(admin_class, 'change_user_password_template', 'mobileadmin/mobile_jquery/auth/user/change_password.html')
             
         site.register(model, admin_class)
 

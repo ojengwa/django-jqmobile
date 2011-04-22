@@ -51,7 +51,7 @@
 		{% block pagination %}
             {% pagination cl %}
 		{% endblock %}
-	</ul>
+	{% if not pagination_required %}</ul> {% endif %}
 	{% block page.secondarypages %}{{ block.super }}
 	{% comment %}
 	<div id="ma-listfilters" data-role="page" data-theme="a" >

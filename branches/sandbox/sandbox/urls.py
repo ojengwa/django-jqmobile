@@ -1,15 +1,15 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
-
 from django.contrib import admin
-admin.autodiscover()
+import jqmobile
 
-import mobileadmin
-mobileadmin.autoregister()
+admin.autodiscover()
+jqmobile.autodiscover()
+
 
 urlpatterns = patterns('',
     (r'^admin/',        include(admin.site.urls)),
-    (r'^ma/',           include(mobileadmin.sites.site.urls)),
+    (r'^ma/',           include(jqmobile.site.urls)),
     (r'^grappelli/',    include('contrib.grappelli.urls')),
     (r'^$',             'django.views.generic.simple.redirect_to', {'url': '/ma/'}),
 )

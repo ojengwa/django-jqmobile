@@ -4,7 +4,7 @@
     <div data-role="fieldcontain">
         <label for="{{ search_var }}">{% trans "Search" %}</label>
         <input type="search" size="40" name="{{ search_var }}" id="searchinput" value="{{ cl.query|escape }}">
-        {#<input type="submit" data-role="button" data-theme="b" value="{% trans 'Go' %}" data-inset="true">#}
+        {#<input type="submit" data-role="button" data-theme="b" value="{% trans "Go" %}" data-inset="true">#}
     </div>
     {% for pair in cl.params.items %}{% ifnotequal pair.0 search_var %}
     <input type="hidden" name="{{ pair.0|escape }}" value="{{ pair.1|escape }}"/>

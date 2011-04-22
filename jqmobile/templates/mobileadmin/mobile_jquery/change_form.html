@@ -1,5 +1,5 @@
-{% extends "mobileadmin/mobile_jquery/base.html" %}
-{% load i18n mobile_admin_modify mobile_admin_media jqmobile_tags %}
+{% extends "jqmobile/base.html" %}
+{% load i18n jqmobile_tags %}
 
 {% block extrahead %}{{ block.super }}
 {#<script type="text/javascript" src="{{ STATIC_URL }}jqmobile/js/jQuery.ui.datepicker.js"></script>#}
@@ -63,13 +63,13 @@ $( document ).bind( "mobileinit", function(){
 	</ul>
 	
 	{% for fieldset in adminform %} 
-	  {% include "mobileadmin/mobile_jquery/includes/fieldset.html" %}
+	  {% include "jqmobile/includes/fieldset.html" %}
 	{% endfor %}
 	
 	{% block after_field_sets %}{% endblock %} 
 
 	{% for inline_admin_formset in inline_admin_formsets %} 
-		{% mobile_inline_admin_formset inline_admin_formset user_agent %}
+		{# mobile_inline_admin_formset inline_admin_formset user_agent #}
 	{% endfor %}
 	{% block after_related_objects %}{% endblock %} 
 
@@ -82,7 +82,7 @@ $( document ).bind( "mobileinit", function(){
 	{% endif %} 
 
 	{# JavaScript for prepopulated fields #}
-	{% prepopulated_fields_js %}
+	{# prepopulated_fields_js #}
 	</form>
 {% endblock %}
 
@@ -110,7 +110,7 @@ $( document ).bind( "mobileinit", function(){
 <div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
 	<a data-icon="back" href="{{ request.path }}" data-role="button" class="ui-btn-left">{% trans "Back" %}</a>
 	<h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% trans 'Django administration' %}</h1>
-	<a data-direction="reverse" data-icon="delete" href="{% url mobileadmin:logout %}" title="{% trans "Log out" %}" data-theme="a" data-role="button" data-iconpos="notext">{% trans "Log out" %}</a>
+	<a data-direction="reverse" data-icon="delete" href="{% url jqmobile:logout %}" title="{% trans "Log out" %}" data-theme="a" data-role="button" data-iconpos="notext">{% trans "Log out" %}</a>
 	</div>
 	<div data-role="content">
 		<input type='date' id='datepicker_choice' name="datepicker_choice" value="12"/>

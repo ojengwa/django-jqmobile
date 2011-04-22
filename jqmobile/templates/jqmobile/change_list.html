@@ -49,7 +49,7 @@
 		<li data-theme="c"><a href="{{ res.id }}/" id="obj_{{ res.id }}">{{ res|escape }}</a></li>
 		{% endfor %}
 		{% block pagination %}
-			{# pagination cl user_agent #}
+            {% pagination cl %}
 		{% endblock %}
 	</ul>
 	{% block page.secondarypages %}{{ block.super }}

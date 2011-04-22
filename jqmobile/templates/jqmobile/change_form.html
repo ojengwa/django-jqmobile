@@ -22,9 +22,9 @@ $( document ).bind( "mobileinit", function(){
 
 {% block navbar %}
 	{% if not add %}
-	{% get_breadcrumb request.path  original %}
+		{% get_breadcrumb request.path  original %}
 	{% else %}
-	{% get_breadcrumb request.path %}
+		{% get_breadcrumb request.path %}
 	{% endif %}
 {% endblock %}
 

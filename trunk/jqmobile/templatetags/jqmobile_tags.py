@@ -156,7 +156,7 @@ def get_breadcrumb(field,name=''):
             # on active le dernier lien
 			out +=' class="ui-btn-active"' 
 			
-		if i>0 and name != '' and "user/" in sub_path[i-1]:
+		if i>0 and name != '' and ("user/" in sub_path[i-1] or "group/" in sub_path[i-1]):
 			page = unicode(name)
 		
 		if i ==0:

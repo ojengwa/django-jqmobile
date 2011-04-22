@@ -1,5 +1,5 @@
-{% extends "mobileadmin/mobile_jquery/base.html" %}
-{% load i18n mobile_admin_modify %}
+{% extends "jqmobile/base.html" %}
+{% load i18n %}
 
 {% block content %}
 {% if app_list %}
@@ -20,9 +20,9 @@
 
 {% block contenu_option %}
     	<!--
-		<li><a href="{% url admin:index %}">{% trans "Desktop" %}</a></li>
-		<li><a href="{% url mobileadmin:password_change %}">{% trans "Password" %}</a></li>
+		<li><a href="{% url jqmobile:index %}">{% trans "Desktop" %}</a></li>
+		<li><a href="{% url jqmobile:password_change %}">{% trans "Password" %}</a></li>
 		<li><a href="#ma-actions">{% trans "Actions" %}</a></li> 
-		<li><a href="{% url mobileadmin:logout %}">{% trans "Log out" %}</a></li> 
+		<li><a href="{% url jqmobile:logout %}">{% trans "Log out" %}</a></li> 
 		-->
 {% endblock %}

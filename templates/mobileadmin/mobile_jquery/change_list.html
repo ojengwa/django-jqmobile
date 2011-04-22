@@ -1,9 +1,9 @@
-{% extends "mobileadmin/mobile_jquery/base.html" %}
-{% load mobile_admin_list i18n mobile_admin_media jqmobile_tags %}
+{% extends "jqmobile/base.html" %}
+{% load i18n jqmobile_tags %}
         
 
 {% block app.title %}
-	{% trans "Admin" %} / {{ app_label.title|escape }}7
+	{% trans "Admin" %} / {{ app_label.title|escape }}
 {% endblock %}
 
 {% block navbar %}
@@ -49,7 +49,7 @@
 		<li data-theme="c"><a href="{{ res.id }}/" id="obj_{{ res.id }}">{{ res|escape }}</a></li>
 		{% endfor %}
 		{% block pagination %}
-			{% pagination cl user_agent %}
+			{# pagination cl user_agent #}
 		{% endblock %}
 	</ul>
 	{% block page.secondarypages %}{{ block.super }}

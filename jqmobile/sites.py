@@ -8,7 +8,7 @@ class MobileAdminSite(AdminSite):
     index_template = 'jqmobile/index.html' 
     app_index_template = 'jqmobile/app_index.html'
     login_template = 'jqmobile/login.html'
-    logout_template = 'jqmobile/logout.html'
+    logout_template = 'jqmobile/registration/logged_out.html'
     password_change_template = 'jqmobile/registration/password_change_form.html'
     password_change_done_template = 'jqmobile/registration/password_change_done.html'
 

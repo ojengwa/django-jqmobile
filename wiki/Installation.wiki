@@ -1,12 +1,12 @@
 #summary django-jqmobile Installation documentation
 
-= Introduction =
+=Introduction=
 
 Here you will find the basic configurations required to get you started.
 
-== Configurations ==
+==Configurations==
 
-=== settings.py ===
+===settings.py===
 
 {{{
 
@@ -20,7 +20,9 @@ INSTALLED_APPS = (
     'mobileadmin',
 )
 
-=== urls.py ===
+}}}
+
+===urls.py===
 
 {{{
 

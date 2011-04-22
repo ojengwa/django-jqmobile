@@ -197,7 +197,7 @@ def paginator_number(cl, i):
         classname = "active"
     else:
         classname = "inactive"
-    return u'<a href="%s" class="%s float-left">%d</a> ' % (cl.get_query_string({PAGE_VAR: i}), classname, i+1)
+    return u'<a href="%s" class="%s float-left" data-role="button">%d</a> ' % (cl.get_query_string({PAGE_VAR: i}), classname, i+1)
 paginator_number = register.simple_tag(paginator_number)
 
 def pagination(cl):
@@ -230,7 +230,10 @@ def pagination(cl):
                 page_range.extend(range(page_num + 1, paginator.num_pages))
 
     need_show_all_link = cl.can_show_all and not cl.show_all and cl.multi_page
-    return render_to_string((
+    
+    #render_to_string(('jqmobile/pagination.html','admin/pagination.html'), {'cl': cl,'pagination_required':pagination_required,'show_all_url': need_show_all_link and cl.get_query_string({ALL_VAR: ''}),'page_range': page_range,'ALL_VAR': ALL_VAR,'1': 1,})
+    
+    out=render_to_string((
         'jqmobile/pagination.html',
         'admin/pagination.html'
     ), {
@@ -241,4 +244,7 @@ def pagination(cl):
         'ALL_VAR': ALL_VAR,
         '1': 1,
     })
+    print (out)
+    
+    return out
 register.simple_tag(pagination)

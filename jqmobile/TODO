@@ -3,12 +3,15 @@
  ~ trouver la source du conflit entre l'admin desktop et mobile (on vas voir si on peux se passer de mobileadmin avant)
  ~ le login form devrait utilisé l'interface mobile (présentement il utilise grappelli)
  - logout devrait retourné au login form
+ - le truc du username passé dans l'URL ca cause des problèmes, y dois y avoir un meilleur solution
+ - skinner la page login
 
 == Changelist ==
 
  ~ Faire fonctionner les filtres (probleme pour le submit)
  ~ Skinné la page de recherche
  ~ Faire fonctionner la recherche
+ - Pagination
 
 == Changeform == 	
 

@@ -1,8 +1,8 @@
 {% load jqmobile_tags %}
 {% if fieldset.name %}<h2>{{ fieldset.name }}</h2>{% endif %}
-<ul data-inset="true" data-role="listview" data-theme="a">
+<div class="ui-body ui-body-c">
     {% for line in fieldset %}
-    <li class="form-row{% if line.errors %} errors{% endif %} {% for field in line %}{{ field.field.name }} {% endfor %} " data-role="fieldcontain"{% if line.errors %} data-icon="alert"{% endif %}>
+    <div class="form-row{% if line.errors %} errors{% endif %} {% for field in line %}{{ field.field.name }} {% endfor %} " data-role="fieldcontain"{% if line.errors %} data-icon="alert"{% endif %}>
         {% for field in line %}
         	{% render_mobile_field field %}
         {% endfor %}
@@ -16,6 +16,6 @@
         <a href="javascript:;" data-icon="button" style="display:inline;float:right;" title="{{ field.field.field.help_text|striptags|escape }}" onclick="alert(this.title);return false;">?</a>
         {% endif %}
         {% endcomment %}
-      </li>
+      </div>
   {% endfor %}
-</ul>
+</div>

@@ -1,3 +1,20 @@
+/* General */
+
+h1 {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0 0 8px 0;
+}
+
+h2 {
+    -moz-border-radius: 4px 4px 0 0;
+    background: -moz-linear-gradient(center top , #E3E3E3, #D6D6D6) repeat scroll 0 0 transparent;
+    padding: 6px 10px;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 8px 0 0 0;
+}
 
 /* Home button tweaks */
 
@@ -5,7 +22,7 @@
     display: none;
 }
 .ui-btn-home .home-icon {
-    background: url("../jquery.mobile/images/icons-18-white.png") no-repeat scroll -579px 0 transparent;
+    background: url("../jquery.mobile/images/icons-18-black.png") no-repeat scroll -579px 0 transparent;
     display: block;
     height: 15px;
     margin: 0 auto;

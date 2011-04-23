@@ -152,7 +152,7 @@ def get_breadcrumb(field,name=''):
 	#on parcour l'arborecence
 	for page in sub_path:
 		path +=page #on reconstruit l'arborecence a chaque boucle
-		out +='<li><a href="%(path)s"' % {'path':path} #on forme la liste des boutons
+		out +='<li><a data-theme="c" href="%(path)s"' % {'path':path} #on forme la liste des boutons
 		
 		if i == len(sub_path)-1:
             # on active le dernier lien
@@ -244,7 +244,6 @@ def pagination(cl):
         'ALL_VAR': ALL_VAR,
         '1': 1,
     })
-    print (out)
     
     return out
 register.simple_tag(pagination)

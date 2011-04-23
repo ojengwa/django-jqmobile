@@ -22,7 +22,7 @@
         {% block extrastyle %}{% endblock %}
     </head> 
 	<body{# onorientationchange="updateLayout();"#}> 
-		<div id="ma-index" data-role="page" data-theme="a">
+		<div id="ma-index" data-role="page" data-theme="c">
 		    <div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
 		        {% block app.header_left_button %}
 		        <a href="#ma_options" data-icon="gear" data-iconpos="notext" data-role="button" class="ui-btn-left"></a>
@@ -41,18 +41,18 @@
 
 		{% block page.secondarypages %}
 		{# options #}
-		<div id="ma_options" data-role="page" data-theme="a" >
+		<div id="ma_options" data-role="page" data-theme="c" >
 			 <div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
 				<a data-icon="back" href="{{ request.path }}" data-role="button" class="ui-btn-left">{% trans "Back" %}</a>
 				<h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% trans 'Django administration' %}</h1>
-				<a data-direction="reverse" data-icon="delete" href="{% url jqmobile:logout %}" title="{% trans "Log out" %}" data-theme="a" data-role="button" data-iconpos="notext">{% trans "Log out" %}</a>
+				<a data-direction="reverse" data-icon="home" href="{% url jqmobile:index %}" title="{% trans "Home" %}" data-theme="a" data-role="button" data-iconpos="notext">{% trans "Home" %}</a>
 			</div>
 			<div data-role="content">    	
 				<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="c">
 					<li class="group" id="verbose_name" data-theme="a">{% trans "Options" %}</li>
 					{% if user.is_authenticated and user.is_staff %}
 					<li><a data-icon="gear" href="{% url jqmobile:password_change %}?path={{ request.path }}&user={{ original }}{% block user_name %}{% endblock %}">{% trans "Change Your Password" %}</a></li>
-					<li><a data-icon="home" href="{% url jqmobile:index %}">{% trans "Desktop Admin" %}</a></li>
+					<li><a data-icon="home" href="{# url admin:index #}/admin/">{% trans "Desktop Admin" %}</a></li>
 					<li><a data-icon="home" href="{% url jqmobile:auth_user_change request.user.id %}">{% trans "My Account" %}</a></li>
 					<li><a data-icon="star" href="#ma-actions">{% trans "My Recent Actions" %}</a></li>
 					{% endif %}
@@ -62,11 +62,11 @@
 			</div>
 		</div>
 		{# end options #}
-		<div id="ma-actions" data-role="page" data-theme="a">
+		<div id="ma-actions" data-role="page" data-theme="c">
 			<div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
 				<a data-icon="back" href="{{ request.path }}#ma_options" data-role="button" class="ui-btn-left">{% trans "Back" %}</a>
 				<h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% trans 'Django administration' %}</h1>
-				<a data-direction="reverse" data-icon="delete" href="{% url jqmobile:logout %}" title="{% trans "Logout" %}" data-theme="a" data-role="button" data-iconpos="notext">{% trans "Log out" %}</a>
+				<a data-direction="reverse" data-icon="home" href="{% url jqmobile:index %}" title="{% trans "Home" %}" data-theme="a" data-role="button" data-iconpos="notext">{% trans "Home" %}</a>
 			</div>
 			<div data-role="content">
 				<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="c">

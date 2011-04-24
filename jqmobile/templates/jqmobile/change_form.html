@@ -1,5 +1,5 @@
 {% extends "jqmobile/base.html" %}
-{% load i18n jqmobile_tags %}
+{% load i18n jqmobile_tags jqmobile_form_tags %}
 
 {% block extrahead %}{{ block.super }}
 {#<script type="text/javascript" src="{{ STATIC_URL }}jqmobile/js/jQuery.ui.datepicker.js"></script>#}
@@ -70,6 +70,7 @@ $( document ).bind( "mobileinit", function(){
 
 	{% for inline_admin_formset in inline_admin_formsets %} 
 		{# mobile_inline_admin_formset inline_admin_formset user_agent #}
+        {% include inline_admin_formset.opts.template %}
 	{% endfor %}
 	{% block after_related_objects %}{% endblock %} 
 
@@ -82,7 +83,7 @@ $( document ).bind( "mobileinit", function(){
 	{% endif %} 
 
 	{# JavaScript for prepopulated fields #}
-	{# prepopulated_fields_js #}
+	{% prepopulated_fields_js %}
 </form>
 {% endblock %}
 

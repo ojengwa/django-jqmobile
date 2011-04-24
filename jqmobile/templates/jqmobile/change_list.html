@@ -44,7 +44,10 @@
 
 {% block content %}
 	<ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
-        <li class="group" id="verbose_name" data-theme="a">{{ cl.opts.verbose_name_plural|capfirst|escape }}<p class="ui-li-count">{{ cl.result_count }}</p></li>
+        <li class="group" data-theme="a">{{ cl.opts.verbose_name_plural|capfirst|escape }}<p class="ui-li-count">{{ cl.result_count }}</p></li>
+        {% if cl.search_fields %}
+        <li data-theme="c">{% search_form cl %}</li>
+        {% endif %} 
 		{% for res in cl.result_list %}
 		<li data-theme="c"><a href="{{ res.id }}/" id="obj_{{ res.id }}">{{ res|escape }}</a></li>
 		{% endfor %}

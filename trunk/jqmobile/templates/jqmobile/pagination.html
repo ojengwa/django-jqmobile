@@ -1,15 +1,13 @@
-{% load mobile_admin_list i18n jqmobile_tags %}
-<li>
-<span class="active float-right">{{ cl.result_count }} {% ifequal cl.result_count 1 %}{{ cl.opts.verbose_name|capfirst }}{% else %}{{ cl.opts.verbose_name_plural }}{% endifequal %}</span>
-</li>
+{% load i18n jqmobile_tags %}
+
 {% if pagination_required %}
-</ul>
-<span class="float-left"  data-role="controlgroup" data-type="horizontal">
-	{% for i in page_range %}
-		{% paginator_number cl i %}
+<div data-role="controlgroup" data-type="horizontal" data-theme="c">
+    {% for i in page_range %}
+    {% paginator_number cl i %}
 	{% endfor %}
+    {% if show_all_url %}
+    <a href="{{ show_all_url }}" class="showall inactive" data-role="button">{% trans "All" %}</a>
+    {% endif %}
+</div>
 {% endif %}
-{% if show_all_url %}
-<a href="{{ show_all_url }}" class="showall inactive" data-role="button">{% trans "All" %}</a>
-</span>
-{% endif %}
+

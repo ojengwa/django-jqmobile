@@ -143,6 +143,7 @@ INSTALLED_APPS = (
     'mobileadmin',
     'jqmobile',
     'testdjango',
+    'testdjangoinlines',
     'debug_toolbar',
 )
 

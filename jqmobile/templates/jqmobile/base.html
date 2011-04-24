@@ -50,14 +50,15 @@
 			</div>
 			<div data-role="content">    	
 				<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="c">
-					<li class="group" id="verbose_name" data-theme="a">{% trans "Options" %}</li>
+					{% block extra_options_head %}{% endblock %}
+					<li class="group" data-theme="a">{% trans "Options" %}</li>
 					{% if user.is_authenticated and user.is_staff %}
 					<li><a data-icon="gear" href="{% url jqmobile:password_change %}?path={{ request.path }}&user={{ original }}{% block user_name %}{% endblock %}">{% trans "Change Your Password" %}</a></li>
 					<li><a data-icon="home" href="{# url admin:index #}/admin/">{% trans "Desktop Admin" %}</a></li>
 					<li><a data-icon="home" href="{% url jqmobile:auth_user_change request.user.id %}">{% trans "My Account" %}</a></li>
 					<li><a data-icon="star" href="#ma-actions">{% trans "My Recent Actions" %}</a></li>
+					{% block extra_options_footer %}{% endblock %}
 					{% endif %}
-					{% block contenu_option %}{% endblock %}
 					 <li><a data-icon="delete" href="{% url jqmobile:logout %}">{% trans "Log out" %}</a></li>
 				</ul>
 			</div>

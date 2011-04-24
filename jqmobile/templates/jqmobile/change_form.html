@@ -38,14 +38,15 @@ $( document ).bind( "mobileinit", function(){
 	{% trans "Admin" %} / {{ opts.verbose_name_plural|capfirst|escape }} / {{ original|escape|truncatewords:"3" }}
 {% endblock %}
 
-{% block contenu_option %}
+{% block extra_options_head %}
 	{% if change %}
+    <li class="group" data-theme="a">{{ original|escape|truncatewords:"3" }}</li>
 		{# view on site #}
 		{% if has_absolute_url %}
-			<li><a href="../../../r/{{ content_type_id }}/{{ object_id }}/" class="inactive float-right" target="_blank">{% trans "Go" %}</a></li>
+			<li><a href="../../../r/{{ content_type_id }}/{{ object_id }}/" target="_blank">{% trans "View on site" %}</a></li>
 		{% endif%}
 		{# history #}
-		<li><a href="history/?user={{ original }} " class="inactive float-right">{% trans "History" %}</a></li>
+		<li><a href="history/?user={{ original }}" data-icon="info">{% trans "History" %}</a></li>
 	{% endif%}
 {% endblock %}
 

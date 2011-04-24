@@ -192,12 +192,11 @@ def get_back_path(field):
 
 # Pagination
 
-def paginator_number(cl, i):
+def paginator_number(cl, i,):
+    theme = ''
     if i == cl.page_num:
-        classname = "active"
-    else:
-        classname = "inactive"
-    return u'<a href="%s" class="%s float-left" data-role="button">%d</a> ' % (cl.get_query_string({PAGE_VAR: i}), classname, i+1)
+        theme = ' data-theme="b"'
+    return u'<a href="%s"%s data-role="button">%d</a> ' % (cl.get_query_string({PAGE_VAR: i}), theme, i+1)
 paginator_number = register.simple_tag(paginator_number)
 
 def pagination(cl):

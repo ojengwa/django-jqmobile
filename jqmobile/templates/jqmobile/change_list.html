@@ -44,15 +44,17 @@
 
 {% block content %}
 	<ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
-		<li class="group" id="verbose_name" data-theme="a">{{ cl.opts.verbose_name_plural|capfirst|escape }}</li>
+        <li class="group" id="verbose_name" data-theme="a">{{ cl.opts.verbose_name_plural|capfirst|escape }}<p class="ui-li-count">{{ cl.result_count }}</p></li>
 		{% for res in cl.result_list %}
 		<li data-theme="c"><a href="{{ res.id }}/" id="obj_{{ res.id }}">{{ res|escape }}</a></li>
 		{% endfor %}
-		{% block pagination %}
-            {% pagination cl %}
-		{% endblock %}
-	{% if not pagination_required %}</ul> {% endif %}
-	{% block page.secondarypages %}{{ block.super }}
+        <li>
+            {% ifequal cl.result_count 1 %}{{ cl.opts.verbose_name|capfirst }}{% else %}{{ cl.opts.verbose_name_plural }}{% endifequal %}
+            <p class="ui-li-count">{{ cl.result_count }}</p>
+        </li>
+	</ul>
+    {% pagination cl %}
+{% endblock %}
 	{% comment %}
 	<div id="ma-listfilters" data-role="page" data-theme="a" >
 		 <div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
@@ -148,6 +150,4 @@
 		</div>
 	</div>
 	{% endcomment %}
-	{% endblock %}		
-{% endblock %}
 

@@ -49,15 +49,15 @@ $( document ).bind( "mobileinit", function(){
 	{% endif%}
 {% endblock %}
 
-{% if errors %}
 {% block messages %}
+{% if errors %}{% spaceless %}
 <ul class="ui-listview ui-listview-inset ui-corner-all ui-shadow errors" data-theme="e" data-role="listview" >
     <li class="ui-li ui-li-static ui-body-a ui-corner-top error">
         {% blocktrans count errors.items|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
     </li>
 </ul>
+{% endspaceless %}{% endif %}
 {% endblock %}
-{% endif %}
 
 {% block content %}
 <form target="_self" class="panel" selected="true" title="{{ opts.object_name|capfirst }}" {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.module_name }}_form">{% csrf_token %}{% block form_top %}{% endblock %}

@@ -33,8 +33,9 @@
 				{% endblock %}
 		    </div>
             {% block navbar %} {% endblock %}
+            {% block messages %}{% endblock %}
 			<div data-role="content">
-				{% block content %}{{ content }}{% endblock %}
+				{% block content %}{% endblock %}
 			</div>
 			{% block page.footer %}{% endblock %}
 		</div>

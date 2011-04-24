@@ -49,18 +49,21 @@ $( document ).bind( "mobileinit", function(){
 	{% endif%}
 {% endblock %}
 
+{% if errors %}
+{% block messages %}
+<ul class="ui-listview ui-listview-inset ui-corner-all ui-shadow errors" data-theme="e" data-role="listview" >
+    <li class="ui-li ui-li-static ui-body-a ui-corner-top error">
+        {% blocktrans count errors.items|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
+    </li>
+</ul>
+{% endblock %}
+{% endif %}
+
 {% block content %}
 <form target="_self" class="panel" selected="true" title="{{ opts.object_name|capfirst }}" {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.module_name }}_form">{% csrf_token %}{% block form_top %}{% endblock %}
 	{% if not add %}
 		<h1><span id="object_name">{{ opts.object_name|escape }}</span>: <span id="original">{{ original|escape }}</span></h1>
 	{% endif %}
-	{% if errors %}
-		<ul classe="ui-listview ui-listview-inset ui-corner-all ui-shadow" data-theme="e" data-role="listview" >
-		<li classe="ui-li ui-li-static ui-body-a ui-corner-top error">
-		{% blocktrans count errors.items|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
-		</li>
-	{% endif %}
-	</ul>
 	
 	{% for fieldset in adminform %} 
 	  {% include "jqmobile/includes/fieldset.html" %}

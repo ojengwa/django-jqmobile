@@ -33,6 +33,25 @@ h2 {
 
 /* Change form tweaks */
 
+.errors {
+    margin: 15px 15px 0 15px;
+}
+
+.errorlist {
+    margin: 5px 0 0 22%;
+    padding: 0;
+}
+
+.errorlist li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-weight: bold;
+    color: #c30;
+    text-shadow: 1px 1px 1px #fff;
+}
+
+
 .ui-btn-delete {
     border: 1px solid #992626;
     background: #D93636;

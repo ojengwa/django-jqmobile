@@ -10,12 +10,20 @@
 
 {% if show_result_count %}
 <p class="ui-li-count">
-    <a href="?">{% blocktrans with cl.full_result_count as full_result_count and cl.result_count as count %}Displaying {{ count }} of {{ full_result_count }}{% endblocktrans %}</a>
+    {% blocktrans with cl.full_result_count as full_result_count and cl.result_count as count %}Displaying {{ count }} of {{ full_result_count }}{% endblocktrans %}
 </p>
 {% endif %}
 
 <script type="text/javascript">
-(function($){$(function(){$('#searchinput').focus()})})(jQuery)
+(function($){
+    $(function(){
+        $('#searchinput').focus()
+            .next().bind('click.jqmobile', function(e){
+                e.preventDefault()
+                window.location.href = '?'
+                })
+    })
+})(jQuery)
 </script>
 {% endif %}
 {% endspaceless %}

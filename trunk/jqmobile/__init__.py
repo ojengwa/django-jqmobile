@@ -27,6 +27,15 @@ def autodiscover():
     import copy
 
     for model, modeladmin in main_site._registry.iteritems():
+        print "---------------"
+        print modeladmin.__class__.__name__
+        print "---------------"
+        print modeladmin.inlines
+        print dir(modeladmin.__class__)
+
+
+
+
         admin_class = type(modeladmin.__class__.__name__, (modeladmin.__class__,), {
             'change_form_template': 'jqmobile/change_form.html',
             'change_list_template': 'jqmobile/change_list.html',
@@ -34,6 +43,16 @@ def autodiscover():
             'delete_confirmation_template': 'jqmobile/delete_confirmation.html',
             'delete_selected_confirmation_template': 'jqmobile/delete_selected_confirmation.html',
         })
+        
+        # we have to recreate inlines too..
+        inlines = []
+        for inline in modeladmin.inlines:
+            print " + Inline: %s" % inline.__name__
+            inlines.append(type(inline.__name__, (inline,), {
+                # mobiles devices and tabular data don't mix well..
+                'template': 'jqmobile/edit_inline/stacked.html',
+            }))
+        setattr(admin_class, 'inlines', inlines)
                 
         if admin_class == UserAdmin:
             setattr(admin_class, 'add_form_template', 'jqmobile/auth/user/add_form.html')

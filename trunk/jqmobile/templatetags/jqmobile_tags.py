@@ -246,3 +246,17 @@ def pagination(cl):
     
     return out
 register.simple_tag(pagination)
+
+
+
+from django.contrib.admin.templatetags.admin_modify import prepopulated_fields_js as pfj
+from django.contrib.admin.templatetags.admin_list import date_hierarchy as dh
+from django.contrib.admin.templatetags.admin_list import search_form as sf
+from django.contrib.admin.templatetags.admin_list import admin_list_filter as alf
+from django.contrib.admin.templatetags.admin_list import admin_actions as ac
+
+prepopulated_fields_js = register.inclusion_tag('jqmobile/prepopulated_fields_js.html', takes_context=True)(pfj)
+date_hierarchy = register.inclusion_tag('jqmobile/date_hierarchy.html')(dh)
+search_form = register.inclusion_tag('jqmobile/search_form.html')(sf)
+admin_list_filter = register.inclusion_tag('jqmobile/filter.html')(alf)
+admin_actions = register.inclusion_tag('jqmobile/actions.html')(ac)

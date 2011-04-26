@@ -76,6 +76,7 @@ $( document ).bind( "mobileinit", function(){
 	{% for inline_admin_formset in inline_admin_formsets %} 
         {% include inline_admin_formset.opts.template %}
 	{% endfor %}
+	{% if inline_admin_formsets %}{% endif %}
     {% block after_related_objects %}{% endblock %} 
 
 

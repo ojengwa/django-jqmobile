@@ -34,6 +34,7 @@ class DjangoTextFieldsAdmin(admin.ModelAdmin):
     list_display = ('__unicode__', 'char_test', 'slug_test', 'text_test')
     list_editable = ('char_test', 'slug_test', 'text_test')
     list_per_page = 3
+    search_fields = ['char_test', 'slug_test', 'text_test',]
     fieldsets = (
         (None, {
             'fields': ('char_test', 'slug_test', 'text_test')

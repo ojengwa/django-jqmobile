@@ -4,26 +4,6 @@
 {% block breadcrumbs %}{% trans "Log in" %}</a>{% endblock %}
 
 {% block content %}
-{% comment %}
-<form action="{{ app_path }}" class="panel" method="post" selected="true">{% csrf_token %}
-    {% if error_message %}<h1 class="error">{{ error_message }}</h1>{% endif %}
-    <fieldset class="ui-body ui-body-b" data-theme="b">
-        <div class="form-row ui-br ui-body" data-theme="b">
-            <label for="id_username" class="required">{% trans "Username:" %}</label>
-            <input type="text" name="username" id="id_username" value="" />
-        </div>
-        <div data-role="fieldcontain" class="form-row ui-br ui-body">
-            <label for="id_password" class="required">{% trans "Password:" %}</label>
-            <input type="password" name="password" id="id_password" value="" />
-            <input type="hidden" name="this_is_the_login_form" value="1" />
-            <input type="hidden" name="post_data" value="{{ post_data }}" />
-        </div>
-        <div class="submit-row ui-body" selected="true">
-            <a data-role="button" data-theme="b" href="javascript:;" onclick="document.forms[0].submit()" class="inactive float-right">{% trans 'Log in' %}</a>
-        </div>
-    </fieldset>
-</form>
-{% endcomment %}
 <form action="{{ app_path }}" class="panel" method="post" selected="true">{% csrf_token %}
     {% if error_message %}<h1 class="error">{{ error_message }}</h1>{% endif %}
     <div class="ui-body ui-body-c">
@@ -37,9 +17,8 @@
             <input type="hidden" name="this_is_the_login_form" value="1" />
             <input type="hidden" name="post_data" value="{{ post_data }}" />
         </div>
-        <button type="submit" data-theme="a" name="submit" value="submit-value">{% trans 'Log in' %}</button>
+        <button type="submit" data-theme="a" name="submit" value="submit-value">{% trans "Log in" %}</button>
     </div>
 </form>
 <script type="text/javascript">$(function(){ $('#id_username').focus() })</script>
-
 {% endblock %}

@@ -158,9 +158,13 @@ def get_breadcrumb(field,name=''):
             # on active le dernier lien
 			out +=' class="ui-btn-active"' 
 			
-		if i>0 and name != '' and ("user/" in sub_path[i-1] or "group/" in sub_path[i-1]):
-			page = unicode(name)
-		
+		if i>0 and name != '':
+			try : # on test si le path courant est un entier
+				_interger=int(sub_path[i].replace('/','')) #on essaie
+				page = unicode(name) # si ca marche, on met le nom de la page en tant que paramètre obtenu
+			except ValueError:
+				pass;# sino, on continu normalement
+						
 		if i ==0:
 			out +=' class="ui-btn-home"><span class="hidden">%s</span><span class="home-icon">&nbsp;</span></a></li>' % _('Home')
 		else:

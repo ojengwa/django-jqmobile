@@ -8,3 +8,7 @@
     <h1>{% trans "Thanks for spending some quality time with the Web site today." %}</p>
 </div>
 {% endblock %}
+
+{% block app.header_right_button %}
+<a data-direction="reverse" data-icon="home" href="{% url jqmobile:index %}" title="{% trans "Home" %}" data-theme="a" data-role="button" data-iconpos="notext">{% trans "Home" %}</a>
+{% endblock %}

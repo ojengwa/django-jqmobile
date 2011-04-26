@@ -144,6 +144,8 @@ INSTALLED_APPS = (
     'jqmobile',
     'testdjango',
     'testdjangoinlines',
+    'testgrappelli',
+    'testgrappelliinlines',
     'debug_toolbar',
 )
 

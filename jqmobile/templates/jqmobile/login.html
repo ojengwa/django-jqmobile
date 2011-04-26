@@ -17,8 +17,22 @@
             <input type="hidden" name="this_is_the_login_form" value="1" />
             <input type="hidden" name="post_data" value="{{ post_data }}" />
         </div>
-        <button type="submit" data-theme="a" name="submit" value="submit-value">{% trans "Log in" %}</button>
     </div>
 </form>
 <script type="text/javascript">$(function(){ $('#id_username').focus() })</script>
+{% endblock %}
+
+{% block page.footer %}
+<div for="footer_id" data-role="footer" class="ui-bar" data-position="fixed" data-backbtn="false">
+	<a id="save-object" data-theme="b" data-iconpos="left" data-icon="check" onclick="document.forms[0].submit();">{% trans "Log in" %}</a>
+	<a id="clear-object" data-theme="b" data-iconpos="left" data-icon="delete" onclick="document.forms[0].reset();" class="ui-btn-delete">{% trans "Clear" %}</a>
+	<script>
+    $(function(){
+		$('#save-object').bind('click', function(){
+            $('form:first').submit()
+            return false
+        })
+	})
+	</script>
+</div>
 {% endblock %}

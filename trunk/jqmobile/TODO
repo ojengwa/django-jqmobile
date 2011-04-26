@@ -2,7 +2,6 @@
 == Global ==
  
  - le truc du username passé dans l'URL ca cause des problèmes, y dois y avoir un meilleur solution
-		(problème du nom qui s'affiche pas dans la page des site)
  
 
 == Changelist ==

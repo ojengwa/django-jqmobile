@@ -6,7 +6,7 @@
  - logout devrait retourné au login form
  
  - le truc du username passé dans l'URL ca cause des problèmes, y dois y avoir un meilleur solution
-		(quel probleme? j'ai cherché partout, je n'en ai aps vu)
+		(problème du nom qui s'affiche pas dans la page des site)
  
  - skinner la page login
  - skiner la page de changement de MDP depuis la page de vue des utilisateur

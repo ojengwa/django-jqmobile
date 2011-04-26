@@ -45,7 +45,6 @@ def autodiscover():
 
         # Exceptions for User model
         if modeladmin.__class__ == UserAdmin:
-            print "TEST----------------"
             setattr(admin_class, 'add_form_template', 'jqmobile/auth/user/add_form.html')
             setattr(admin_class, 'change_user_password_template', 'jqmobile/auth/user/change_password.html')
 

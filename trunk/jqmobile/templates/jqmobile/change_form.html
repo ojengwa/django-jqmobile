@@ -72,11 +72,12 @@ $( document ).bind( "mobileinit", function(){
 	
 	{% block after_field_sets %}{% endblock %} 
 
+    {# Inlines #}
 	{% for inline_admin_formset in inline_admin_formsets %} 
-		{# mobile_inline_admin_formset inline_admin_formset user_agent #}
         {% include inline_admin_formset.opts.template %}
 	{% endfor %}
-	{% block after_related_objects %}{% endblock %} 
+    {% block after_related_objects %}{% endblock %} 
+
 
 	{% if add %} 
     <script type="text/javascript">

@@ -20,7 +20,7 @@
             {{ inline_admin_form.pk_field.field }}
         </div>
         
-        {% comment %}
+        
       	{% if forloop.last %}
       	{# si c'est le dernier, on le remet pour avoir une copie vièrege du formulaire (ce n'est que la copie d'en haut)#}
       	<div id="BASIC_FORM" style="display:none"> 
@@ -40,30 +40,33 @@
 		    </div>
       	</div>
 	   	{% endif %}
-	   	{% endcomment %}
-	   	
-	   	
+	
     {% endfor %}
     
     <a data-icon="plus"data-role="button" href="javascript:Add_another()" >{% trans "Add another" %} {{ inline_admin_formset.opts.verbose_name }}</a>
 </div>
 {% endspaceless %}
-{% comment %}
+
 <script>
 function Add_another()
 {
-	var TOTAL_FORMS=document.getElementById("id_djangonetfieldsinline_set-TOTAL_FORMS").value;
+	var TOTAL_FORMS=parseInt(document.getElementById("id_djangonetfieldsinline_set-TOTAL_FORMS").value)+1;
 	//alert("TOTAL_FORMS: "+TOTAL_FORMS);
 	var INITIAL_FORMS=document.getElementById("id_djangonetfieldsinline_set-INITIAL_FORMS").value;
 	//alert("INITIAL_FORMS: "+INITIAL_FORMS);
 	
 	var BASIC_FORM=$("BASIC_FORM").find('div:first');
-	
+	var v=document.getElementById("BASIC_FORM").getElementsByTagName("input");
+	for(var i=0;i<v.length;i++)
+	{
+		var reg=new RegExp("(prefix)", "g");
+		alert(v[i].getAttribute("id").replace(reg,TOTAL_FORMS)); //on recupère les bon id et on l'incremente
+	} 
 	//alert("BASIC_FORM: "+BASIC_FORM);
 
 };
 </script>
-{% endcomment %}
+
 
 
 {% comment %}

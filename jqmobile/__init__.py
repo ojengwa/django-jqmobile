@@ -24,7 +24,6 @@ def autodiscover():
     """
     Auto-register all ModelAdmin instances of the default AdminSite
     """
-    import copy
 
     for model, modeladmin in main_site._registry.iteritems():
         admin_class = type(modeladmin.__class__.__name__, (modeladmin.__class__,), {
@@ -43,8 +42,10 @@ def autodiscover():
                 'template': 'jqmobile/edit_inline/stacked.html',
             }))
         setattr(admin_class, 'inlines', inlines)
-                
-        if admin_class == UserAdmin:
+
+        # Exceptions for User model
+        if modeladmin.__class__ == UserAdmin:
+            print "TEST----------------"
             setattr(admin_class, 'add_form_template', 'jqmobile/auth/user/add_form.html')
             setattr(admin_class, 'change_user_password_template', 'jqmobile/auth/user/change_password.html')
 

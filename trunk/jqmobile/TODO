@@ -10,6 +10,8 @@
 
 == Changeform == 	
 
+	- le bouton "new" pour ajouter un groupe ou autre, ne redirige pas ver la parge d'origine
+
 
  == à long terme ==
  ~ intégration avec grappelli.dashboard

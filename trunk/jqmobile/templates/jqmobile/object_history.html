@@ -10,7 +10,7 @@
 	<li data-theme="a">{% trans "History" %}
     {% for action in action_list %}
     <li>
-    {{ action.user.username }}, {{ action.action_time|date:_("DATETIME_FORMAT") }}<br />
+    {{ action.user.username }}, {{ action.action_time|date:_("DATETIME_FORMAT") }}<br /> plop
     {{ action.change_message }}
     </li>
     {% endfor %}

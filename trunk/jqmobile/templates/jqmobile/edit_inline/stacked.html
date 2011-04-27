@@ -34,14 +34,14 @@
                     template = inlines.last().hide().clone(true)
                     
                 var title = template.find('h3')
-                title.text(title.text().replace(/#\d+/, '#'+(inlines.length - 1)))
+                title.text(title.text().replace(/#\d+/, '#'+(inlines.length)))
                 
                 template.collapsible({'collapsed': true}).insertBefore(inlines.last())
                     .find('*').each(function(i, el) {
                         $.each(['id', 'class', 'for', 'name'], function(i, name){
                             var new_attr = $(el).attr(name)
                             if (new_attr) {
-                                $(el).attr(name, new_attr.replace(/__prefix__/, inlines.length - 1))
+                                $(el).attr(name, new_attr.replace(/__prefix__/, inlines.length))
                             }
                         })
                     }).end().show()

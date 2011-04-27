@@ -4,6 +4,7 @@
 {% block navbar %}{% get_breadcrumb request.path %}{% endblock %}
 
 {% block content %}
+{% spaceless %}
 {% if perms_lacking %}
     <div class="panel" selected="true">
     <h1>{% blocktrans with object|escape as escaped_object %}Deleting the {{ object_name }} '{{ escaped_object }}' would result in deleting related objects, but your account doesn't have permission to delete the following types of objects:{% endblocktrans %}</h1>
@@ -30,4 +31,5 @@
     </form>
 {% endif %}
 <script type="text/javascript">truncate({'title': 25});</script>
+{% endspaceless %}
 {% endblock %}

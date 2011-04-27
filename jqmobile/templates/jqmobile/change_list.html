@@ -15,6 +15,7 @@
 {% endblock %}
 
 {% block content %}
+{% spaceless %}
 	<ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
         <li class="group" data-theme="a">{{ cl.opts.verbose_name_plural|capfirst|escape }}<p class="ui-li-count">{{ cl.result_count }}</p></li>
         {% if cl.search_fields %}
@@ -29,6 +30,7 @@
         </li>
 	</ul>
     {% pagination cl %}
+{% endspaceless %}
 {% endblock %}
 
 {% comment %}

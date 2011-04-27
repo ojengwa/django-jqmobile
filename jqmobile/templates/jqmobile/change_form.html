@@ -21,17 +21,12 @@ $( document ).bind( "mobileinit", function(){
 
 {% block navbar %}{% get_breadcrumb request.path %}{% endblock %}
 
-{% block user_name %}
-	{% if not add %}
-		&user={{ original}}
-	{% endif %}
-{% endblock %}
-
 {% block app.title %}
 	{% trans "Admin" %} / {{ opts.verbose_name_plural|capfirst|escape }} / {{ original|escape|truncatewords:"3" }}
 {% endblock %}
 
 {% block extra_options_head %}
+{% spaceless %}
 	{% if change %}
     <li class="group" data-theme="a">{{ original|escape|truncatewords:"3" }}</li>
 		{# view on site #}
@@ -39,21 +34,25 @@ $( document ).bind( "mobileinit", function(){
 			<li><a href="../../../r/{{ content_type_id }}/{{ object_id }}/" target="_blank">{% trans "View on site" %}</a></li>
 		{% endif%}
 		{# history #}
-		<li><a href="history/?user={{ original }}" data-icon="info">{% trans "History" %}</a></li>
+		<li><a href="history/" data-icon="info">{% trans "History" %}</a></li>
 	{% endif%}
+{% endspaceless %}
 {% endblock %}
 
 {% block messages %}
-{% if errors %}{% spaceless %}
+{% if errors %}
+{% spaceless %}
 <ul class="ui-listview ui-listview-inset ui-corner-all ui-shadow errors" data-theme="e" data-role="listview" >
     <li class="ui-li ui-li-static ui-body-a ui-corner-top error">
         {% blocktrans count errors.items|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
     </li>
 </ul>
-{% endspaceless %}{% endif %}
+{% endspaceless %}
+{% endif %}
 {% endblock %}
 
 {% block content %}
+{% spaceless %}
 <form target="_self" class="panel" selected="true" title="{{ opts.object_name|capfirst }}" {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.module_name }}_form">{% csrf_token %}{% block form_top %}{% endblock %}
 	{% if not add %}
 		<h1><span id="object_name">{{ opts.object_name|escape }}</span>: <span id="original">{{ original|escape }}</span></h1>
@@ -84,10 +83,12 @@ $( document ).bind( "mobileinit", function(){
 	{# JavaScript for prepopulated fields #}
 	{% prepopulated_fields_js %}
 </form>
+{% endspaceless %}
 {% endblock %}
 
 
 {% block page.footer %}
+{% spaceless %}
 <div for="footer_id" data-role="footer" class="ui-bar" data-position="fixed" data-backbtn="false"> 
 	<a id="save-object" data-theme="b" data-iconpos="left" data-icon="check" onclick="document.forms[0].submit();">{% trans "Save" %}</a>
 
@@ -102,6 +103,7 @@ $( document ).bind( "mobileinit", function(){
 	})
 	</script>
 </div>
+{% endspaceless %}
 {% endblock %}
 
 {% comment %}

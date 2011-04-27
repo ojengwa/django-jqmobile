@@ -4,6 +4,7 @@
 {% block navbar %}{% endblock %}
 
 {% block content %}
+{% spaceless %}
 {% if app_list %}
     <ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
         <li data-theme="a">{% trans 'Django Admin' %}</li>
@@ -16,4 +17,5 @@
         <h1 class="error">{% trans "You don't have permission to edit anything." %}</p>
     </div>
 {% endif %}
+{% endspaceless %}
 {% endblock %}

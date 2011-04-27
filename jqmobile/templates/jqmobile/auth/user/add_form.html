@@ -2,6 +2,7 @@
 {% load i18n %}
 
 {% block after_field_sets %}
+{% spaceless %}
 <ul class="ui-listview" data-role="listview" data-theme="a">
 <li class="ui-li ui-li-divider ui-btn ui-bar-b ui-corner-top ui-btn-up-undefined" data-role="list-divider" role="heading" data-theme="c"><h1>{% trans "First, enter a username and password. Then, you'll be able to edit more user options." %}</h1></li>
 	<li class="ui-li ui-li-static  ui-field-contain ui-body ui-br" data-role="fieldcontain" >
@@ -24,5 +25,5 @@
 	</li>
 </ul>
 <script type="text/javascript">document.getElementById("id_username").focus();</script> 
-
+{% endspaceless %}
 {% endblock %}

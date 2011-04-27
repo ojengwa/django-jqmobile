@@ -2,6 +2,7 @@
 {% load i18n %}
 
 {% block content %}
+{% spaceless %}
 <form action="{{ app_path }}" class="panel" method="post" selected="true">{% csrf_token %}
     {% if error_message %}<h1 class="error">{{ error_message }}</h1>{% endif %}
     <div class="ui-body ui-body-c">
@@ -21,4 +22,5 @@
     </div>
 </form>
 <script type="text/javascript">$(function(){ $('#id_username').focus() })</script>
+{% endspaceless %}
 {% endblock %}

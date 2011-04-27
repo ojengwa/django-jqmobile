@@ -1,7 +1,7 @@
 {% extends "jqmobile/base.html" %}
 {% load i18n %}
 
-{% block breadcrumbs %}<a href="../" class="inactive float-left" id="title">{{ object|escape }}</a><span class="active float-right">{% trans "Delete" %}</span>{% endblock %}
+{% block navbar %}{% get_breadcrumb request.path %}{% endblock %}
 
 {% block content %}
 {% if perms_lacking %}

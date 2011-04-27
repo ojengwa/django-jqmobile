@@ -7,17 +7,7 @@
 {% endblock %}
 {% endcomment %}
 
-{% block navbar %}
-	{% if request.GET.user and request.GET.path %}
-		{% get_breadcrumb request.GET.path request.GET.user %}
-	{% else %}
-		{% if  request.GET.user%}
-			{% get_breadcrumb request.path request.GET.user %}
-		{% else %}
-			{% get_breadcrumb request.path %}
-		{% endif %}
-	{% endif %}
-{% endblock %}
+{% block navbar %}{% get_breadcrumb request.path %}{% endblock %}
 
 {% block content %}
 {% if action_list %}

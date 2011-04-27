@@ -20,13 +20,7 @@ $( document ).bind( "mobileinit", function(){
 {% endblock %}
 
 
-{% block navbar %}
-	{% if not add %}
-		{% get_breadcrumb request.path  original %}
-	{% else %}
-		{% get_breadcrumb request.path %}
-	{% endif %}
-{% endblock %}
+{% block navbar %}{% get_breadcrumb request.path %}{% endblock %}
 
 {% block user_name %}
 	{% if not add %}

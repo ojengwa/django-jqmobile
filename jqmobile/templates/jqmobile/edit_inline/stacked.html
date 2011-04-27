@@ -5,7 +5,7 @@
     {{ inline_admin_formset.formset.management_form }}
     {{ inline_admin_formset.formset.non_form_errors }}
     {% for inline_admin_form in inline_admin_formset %}
-        <div class="stacked-inline" data-role="collapsible" {% if not forloop.first %}data-collapsed="true"{% endif %}>
+        <div class="stacked-inline" {% if not forloop.last %}data-role="collapsible" {% if not forloop.first %}data-collapsed="true"{% endif %}{% endif %}>
             <h3>
                 {{ inline_admin_formset.opts.verbose_name|title }}:&nbsp;{% if inline_admin_form.original %}{{ inline_admin_form.original }}{% else %} #{{ forloop.counter }}{% endif %}
             </h3>
@@ -19,123 +19,32 @@
             {% endfor %}
             {{ inline_admin_form.pk_field.field }}
         </div>
-        
-        
-      	{% if forloop.last %}
-      	{# si c'est le dernier, on le remet pour avoir une copie vièrege du formulaire (ce n'est que la copie d'en haut)#}
-      	<div id="BASIC_FORM" style="display:none"> 
-		  	<div class="stacked-inline" data-role="collapsible" {% if not forloop.first %}data-collapsed="true"{% endif %}>
-		        <h3>
-		            {{ inline_admin_formset.opts.verbose_name|title }}:&nbsp;{% if inline_admin_form.original %}{{ inline_admin_form.original }}{% else %} #{{ forloop.counter }}{% endif %}
-		        </h3>
-		        {% if inline_admin_formset.formset.can_delete and inline_admin_form.original %}
-		        <div class="form-row delete">
-		            {{ inline_admin_form.deletion_field.field }} {{ inline_admin_form.deletion_field.label_tag }}
-		        </div>
-		        {% endif %}
-		        {% for fieldset in inline_admin_form %}
-		            {% include "jqmobile/includes/fieldset.html" %}
-		        {% endfor %}
-		        {{ inline_admin_form.pk_field.field }}
-		    </div>
-      	</div>
-	   	{% endif %}
-	
     {% endfor %}
-    
-    <a data-icon="plus"data-role="button" href="javascript:Add_another()" >{% trans "Add another" %} {{ inline_admin_formset.opts.verbose_name }}</a>
+    <div class="ui-clear ui-br">
+        <a id="formset_add_another" data-role="button" data-icon="plus">{% trans "Add another" %} {{ inline_admin_formset.opts.verbose_name }}</a>
+    </div>
+    <script>
+    (function($){
+        $(function(){
+            $('.stacked-inline:last').hide()
+
+            $('#formset_add_another').bind('click', function(){
+                var wrapper  = $(this).parents('.stacked-inlines'),
+                    inlines  = wrapper.find('.stacked-inline'),
+                    template = inlines.last().hide().clone(true)
+
+                template.collapsible({'collapsed': true}).insertBefore(inlines.last())
+                    .find('*').each(function(i, el) {
+                        $.each(['id', 'class', 'for', 'name'], function(i, name){
+                            var new_attr = $(el).attr(name)
+                            if (new_attr) {
+                                $(el).attr(name, new_attr.replace(/__prefix__/, inlines.length - 1))
+                            }
+                        })
+                    }).end().show()
+            })
+        })
+    })(jQuery)
+    </script>
 </div>
 {% endspaceless %}
-
-<script>
-function Add_another()
-{
-	var TOTAL_FORMS=parseInt(document.getElementById("id_djangonetfieldsinline_set-TOTAL_FORMS").value)+1;
-	//alert("TOTAL_FORMS: "+TOTAL_FORMS);
-	var INITIAL_FORMS=document.getElementById("id_djangonetfieldsinline_set-INITIAL_FORMS").value;
-	//alert("INITIAL_FORMS: "+INITIAL_FORMS);
-	
-	var BASIC_FORM=$("BASIC_FORM").find('div:first');
-	var v=document.getElementById("BASIC_FORM").getElementsByTagName("input");
-	for(var i=0;i<v.length;i++)
-	{
-		var reg=new RegExp("(prefix)", "g");
-		alert(v[i].getAttribute("id").replace(reg,TOTAL_FORMS)); //on recupère les bon id et on l'incremente
-	} 
-	//reste à ajouter le nouveau
-
-};
-</script>
-
-
-
-{% comment %}
-<script type="text/javascript">
-(function($) 
-{
-	$(document).ready(function() 
-	{
-		var prefix = "djangonetfieldsinline_set";
-		//var related_lookup_fields_fk = [];
-		//var related_lookup_fields_m2m = [];
-		var related_lookup_fields_generic = [];
-		
-		$.each(related_lookup_fields_fk, function() 
-		{
-			$("#djangonetfieldsinline_set-group > div.items").find("input[name^='" + prefix + "'][name$='" + this + "']").grp_related_fk({lookup_url:"/grappelli/lookup/related/"});
-		});
-		
-		$.each(related_lookup_fields_m2m, function() 
-		{
-			$("#djangonetfieldsinline_set-group > div.items").find("input[name^='" + prefix + "'][name$='" + this + "']").grp_related_m2m({lookup_url:"/grappelli/lookup/m2m/"});
-		});
-		
-		$.each(related_lookup_fields_generic, function() 
-		{
-			var content_type = this[0],object_id = this[1];
-			$("#djangonetfieldsinline_set-group > div.items").find("input[name^='" + prefix + "'][name$='" + this[1] + "']").each(function()
-			{
-				var i = $(this).attr("id").match(/-\d+-/);
-				if (i) 
-				{
-					var ct_id = "#id_" + prefix + i[0] + content_type,
-					obj_id = "#id_" + prefix + i[0] + object_id;
-					$(this).grp_related_generic({content_type:ct_id, object_id:obj_id, lookup_url:"/grappelli/lookup/related/"});
-				}
-			});
-		});
-
-		$("#djangonetfieldsinline_set-group").grp_inline({prefix: "djangonetfieldsinline_set",onAfterRemoved: function(inline) {},onAfterAdded: function(form) 
-		{
-			grappelli.reinitDateTimeFields(form);
-			grappelli.updateSelectFilter(form);
-			$.each(related_lookup_fields_fk, function() 
-			{
-				form.find("input[name^='" + prefix + "'][name$='" + this + "']").grp_related_fk({lookup_url:"/grappelli/lookup/related/"});
-			});
-			
-			$.each(related_lookup_fields_m2m, function() 
-			{
-				form.find("input[name^='" + prefix + "'][name$='" + this + "']").grp_related_m2m({lookup_url:"/grappelli/lookup/m2m/"});
-			});
-			
-			$.each(related_lookup_fields_generic, function() 
-			{
-				var content_type = this[0],object_id = this[1];
-				form.find("input[name^='" + prefix + "'][name$='" + this[1] + "']").each(function() 
-				{
-					var i = $(this).attr("id").match(/-\d+-/);
-					if (i)
-					{
-						var ct_id = "#id_" + prefix + i[0] + content_type,obj_id = "#id_" + prefix + i[0] + object_id;
-						$(this).grp_related_generic({content_type:ct_id, object_id:obj_id, lookup_url:"/grappelli/lookup/related/"});
-					}
-				});
-			});
-			form.grp_collapsible();
-		}});
-	});
-})(django.jQuery);
-</script> 
-{% endcomment %}
-

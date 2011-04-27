@@ -3,6 +3,8 @@
 
 {% block app.title %} {% trans "Admin" %} / {{ app_list.0.name }}{% endblock %}
 
+{% block navbar %}{% get_breadcrumb request.path %}{% endblock %}
+
 {% block content %}
 <ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
     
@@ -18,7 +20,3 @@
     {% endfor %}
 </ul>
 {% endblock %}
-
-{% block navbar %}{% get_breadcrumb request.path app_list.0.name %}{% endblock %}
-
-

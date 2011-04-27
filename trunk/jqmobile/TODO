@@ -5,21 +5,11 @@
 == Changelist ==
 
  ~ Faire fonctionner les filtres (probleme pour le submit)
- ~ Skinné la page de recherche
- ~ Faire fonctionner la recherche
 
 == Changeform == 	
 
 	- le bouton "new" pour ajouter un groupe ou autre, ne redirige pas ver la parge d'origine
 
-
  == à long terme ==
  ~ intégration avec grappelli.dashboard
 
-== Docs ==
-
- - http://docs.djangoproject.com/en/dev/ref/contrib/admin/#overriding-admin-templates
- - http://docs.djangoproject.com/en/dev/ref/contrib/admin/#adminsite-objects
- - http://docs.djangoproject.com/en/dev/ref/contrib/admin/#multiple-admin-sites-in-the-same-urlconf
- - http://stackoverflow.com/questions/4526606/django-using-2-different-adminsite-instances-with-different-models-registered
- 		

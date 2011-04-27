@@ -2,12 +2,13 @@
 {% load i18n jqmobile_tags %} 
 
 {% block app.title %} {% trans "Admin" %} / {{ app_list.0.name }}{% endblock %}
+{% block navbar %}{% get_breadcrumb request.path app_list.0.name %}{% endblock %}
 
 {% block navbar %}{% get_breadcrumb request.path %}{% endblock %}
 
 {% block content %}
+{% spaceless %}
 <ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
-    
     {% for app in app_list %}
     <li class="group" id="verbose_name" data-theme="a">{{ app.name|capfirst|escape }}</li>
     {% for model in app.models %}
@@ -19,4 +20,5 @@
     {% endfor %}
     {% endfor %}
 </ul>
+{% endspaceless %}
 {% endblock %}

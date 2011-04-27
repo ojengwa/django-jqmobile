@@ -1,5 +1,5 @@
 {% load i18n jqmobile_tags %}
-{# spaceless #}
+{% spaceless %}
 <!DOCTYPE html>
 <html{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
     <head>
@@ -92,4 +92,4 @@
 		{% endblock %}
 	</body>
 </html>
-{# endspaceless #}
+{% endspaceless %}

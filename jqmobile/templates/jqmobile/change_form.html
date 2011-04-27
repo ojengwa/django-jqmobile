@@ -19,7 +19,6 @@ $( document ).bind( "mobileinit", function(){
 {% endcomment %}
 {% endblock %}
 
-
 {% block navbar %}{% get_breadcrumb request.path %}{% endblock %}
 
 {% block user_name %}
@@ -105,7 +104,7 @@ $( document ).bind( "mobileinit", function(){
 </div>
 {% endblock %}
 
-
+{% comment %}
 {% block page.secondarypages %} {{ block.super }}
 <div id="ma_date" data-role="page" data-theme="a" >
 <div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
@@ -123,3 +122,4 @@ $( document ).bind( "mobileinit", function(){
 	</div>
 </div>
 {% endblock %}
+{% endcomment %}

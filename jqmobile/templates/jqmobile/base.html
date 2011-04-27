@@ -53,10 +53,14 @@
 					{% block extra_options_head %}{% endblock %}
 					<li class="group" data-theme="a">{% trans "Options" %}</li>
 					{% if user.is_authenticated and user.is_staff %}
-					<li><a data-icon="gear" href="{% url jqmobile:password_change %}">{% trans "Change Your Password" %}</a></li>
-					<li><a data-icon="home" href="{# url admin:index #}/admin/">{% trans "Desktop Admin" %}</a></li>
-					<li><a data-icon="home" href="{% url jqmobile:auth_user_change request.user.id %}">{% trans "My Account" %}</a></li>
-					<li><a data-icon="star" href="#ma-actions">{% trans "My Recent Actions" %}</a></li>
+					<li><a href="{% url jqmobile:password_change %}">{% trans "Change Your Password" %}</a></li>
+					<li><a href="{# url admin:index #}/admin/">{% trans "Desktop Admin" %}</a></li>
+					<li><a href="{% url jqmobile:auth_user_change request.user.id %}">{% trans "My Account" %}</a></li>
+					<li><a href="#ma-actions">{% trans "My Recent Actions" %}</a></li>
+                    {% url django-admindocs-docroot as docsroot %}
+                    {% if docsroot %}
+                    <li><a href="{{ docsroot }}">{% trans "Documentation" %}</a></li>
+                    {% endif %}
 					{% block extra_options_footer %}{% endblock %}
 					{% endif %}
 					 <li><a data-icon="delete" href="{% url jqmobile:logout %}">{% trans "Log out" %}</a></li>

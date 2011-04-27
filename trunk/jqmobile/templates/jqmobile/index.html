@@ -1,6 +1,8 @@
 {% extends "jqmobile/base.html" %}
 {% load i18n %}
 
+{% block navbar %}{% endblock %}
+
 {% block content %}
 {% if app_list %}
     <ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
@@ -14,15 +16,4 @@
         <h1 class="error">{% trans "You don't have permission to edit anything." %}</p>
     </div>
 {% endif %}
-{% endblock %}
-
-{% block navbar %}{% endblock %}
-
-{% block contenu_option %}
-    	<!--
-		<li><a href="{% url jqmobile:index %}">{% trans "Desktop" %}</a></li>
-		<li><a href="{% url jqmobile:password_change %}">{% trans "Password" %}</a></li>
-		<li><a href="#ma-actions">{% trans "Actions" %}</a></li> 
-		<li><a href="{% url jqmobile:logout %}">{% trans "Log out" %}</a></li> 
-		-->
 {% endblock %}

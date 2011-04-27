@@ -1,12 +1,6 @@
 {% extends "jqmobile/base.html" %}
 {% load i18n jqmobile_tags %}
 
-{% comment %}
-{% block breadcrumbs %}<a href="../" class="inactive float-left" id="object_{{ object.pk }}">{{ object|escape }}</a> </a><span class="float-right active">{% trans 'History' %}</span>
-<script type="text/javascript">truncate({'object_{{ object.pk }}': 20});</script>
-{% endblock %}
-{% endcomment %}
-
 {% block navbar %}{% get_breadcrumb request.path %}{% endblock %}
 
 {% block content %}

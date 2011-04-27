@@ -10,37 +10,9 @@
 	{% get_breadcrumb request.path %}
 {% endblock %}
 
-{% comment %}
-{% block breadcrumbs %}
-    <a id="_objectlist" href="javascript:;" class="float-left active">{{ app_label.title|escape }}</a>
-    <a href="add/" class="float-right inactive">{% trans "Add" %}</a>
-    {% if cl.search_fields or cl.has_filters %}
-        <a id="_filter" href="javascript:;" class="float-right inactive">
-            <span class="searchimg">&nbsp;</span>
-        </a>
-    {% endif %}
-{% endblock %}
-{% endcomment %}
-
 {% block app.header_right_button %}
  	<a data-theme="b" data-iconpos="left" data-icon="plus" href="add/" class="ui-btn-right">{% trans 'Add' %}</a>
 {% endblock %}
-
-{% comment %}		
-{% block page.footer %}
-
-<div for="footer_id" data-role="footer" class="ui-bar" data-position="fixed" data-backbtn="false">
-	
-    {% if cl.has_filters %}
-    <a data-theme="a" data-iconpos="left" data-icon="gear" href="#ma-listfilters">{% trans "Filters" %}</a>
-    {% endif %}
-    {% if cl.search_fields %}
-	<a data-theme="a" data-iconpos="left" data-icon="search" data-rel="dialog" data-transition="pop" href="#ma-listsearch">{% trans "Search" %}</a>
-    {% endif %} 
-</div>
-{% endblock %}
-{% endcomment %}
-
 
 {% block content %}
 	<ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
@@ -58,99 +30,100 @@
 	</ul>
     {% pagination cl %}
 {% endblock %}
-	{% comment %}
-	<div id="ma-listfilters" data-role="page" data-theme="a" >
-		 <div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
-			<a data-icon="back" href="{{ request.path }}" data-role="button" class="ui-btn-left">{% trans "Back" %}</a>
-			<h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% trans 'Django administration' %}</h1>
-		</div>
-		<div data-role="content">
-			
-	
-                {% comment %}
-                {% if cl.search_fields or cl.has_filters or cl.date_hierarchy %}
-                    <div class="module changelist-filters">
 
-                        <!-- PAGINATION TOP -->
-                        {% pagination cl %}
+{% comment %}
+<div id="ma-listfilters" data-role="page" data-theme="a" >
+     <div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
+        <a data-icon="back" href="{{ request.path }}" data-role="button" class="ui-btn-left">{% trans "Back" %}</a>
+        <h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% trans 'Django administration' %}</h1>
+    </div>
+    <div data-role="content">
+        
 
-                        {% if cl.has_filters or cl.search_fields %}
+            {% comment %}
+            {% if cl.search_fields or cl.has_filters or cl.date_hierarchy %}
+                <div class="module changelist-filters">
 
-                            <!-- FILTERS -->
-                            {% if cl.has_filters %}
-                                <div id="filters" class="module filter span-6">
-                                    <div class="pulldown-container">
-                                        <a href="javascript://" class="button toggle-filters">{% trans 'Filter' %}</a>
-                                        <div class="filter-pulldown">
-                                            {% for spec in cl.filter_specs %}
-                                            	{% admin_list_filter cl spec %}
-                                            {% endfor %}
-                                        </div>
+                    <!-- PAGINATION TOP -->
+                    {% pagination cl %}
+
+                    {% if cl.has_filters or cl.search_fields %}
+
+                        <!-- FILTERS -->
+                        {% if cl.has_filters %}
+                            <div id="filters" class="module filter span-6">
+                                <div class="pulldown-container">
+                                    <a href="javascript://" class="button toggle-filters">{% trans 'Filter' %}</a>
+                                    <div class="filter-pulldown">
+                                        {% for spec in cl.filter_specs %}
+                                            {% admin_list_filter cl spec %}
+                                        {% endfor %}
                                     </div>
                                 </div>
-                            {% endif %}
-
-
-                            <!-- SEARCH -->
-                            {% if cl.search_fields %}
-                                <div id="search" class="module search span-6">
-                                    {% block search %}{% search_form cl %}{% endblock %}
-                                </div>
-                            {% endif %}
-
+                            </div>
                         {% endif %}
-                        <br clear="all" />
-                    </div>
 
-                    <!-- DATE HIERARCHY -->
-                    {% if cl.date_hierarchy %}
-                        {% date_hierarchy cl %}
+
+                        <!-- SEARCH -->
+                        {% if cl.search_fields %}
+                            <div id="search" class="module search span-6">
+                                {% block search %}{% search_form cl %}{% endblock %}
+                            </div>
+                        {% endif %}
+
                     {% endif %}
+                    <br clear="all" />
+                </div>
 
+                <!-- DATE HIERARCHY -->
+                {% if cl.date_hierarchy %}
+                    {% date_hierarchy cl %}
                 {% endif %}
-                {% endcomment %}
-            
-            	{% comment %}
-				{% if cl.has_filters %}
-				<div id="filters" class="module filter span-6">
-					{# <div class="pulldown-container"> #}
-					<ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
-						<li class="group" id="verbose_name" data-theme="a">{% trans 'Filter' %}</a></li>
-						{# <div class="filter-pulldown"> #}
-						{% for spec in cl.filter_specs %}
-							<li data-theme="c">{% admin_list_filter cl spec 1 %}</li>
-						{% endfor %}
-						{# </div> #}
-					</ul>
-					{# </div> #}
-				</div>
-				{% endif %}
-				{% endcomment %}
-				
-				{% comment %}
-		</div>
-	</div>
-	{% endcomment %}
-	
-	{% comment %}
-	<div id="ma-listsearch" data-role="page" data-theme="a" >
-		 <div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
-			<a data-icon="back" href="{{ request.path }}" data-role="button" class="ui-btn-left">{% trans "Back" %}</a>
-			<h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% trans 'Django administration' %}</h1>
-		</div>
 
-		<div data-role="fieldcontain">
-			<label for="search">{% trans "Search" %}</label>
-			{% if cl.search_fields %}
-            <div id="search" class="module search span-6">
-                {# {% block search %}{% search_form cl 0 %}{% endblock %} #}
-                <form id='changelist-search' methode="get" action='' > 
-			        <input type="search" name="search" id="search" value="" /> 
-			        <input type="submit" value="{% trans "Valider" %}"/>
-	            </form>
+            {% endif %}
+            {% endcomment %}
+        
+            {% comment %}
+            {% if cl.has_filters %}
+            <div id="filters" class="module filter span-6">
+                {# <div class="pulldown-container"> #}
+                <ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
+                    <li class="group" id="verbose_name" data-theme="a">{% trans 'Filter' %}</a></li>
+                    {# <div class="filter-pulldown"> #}
+                    {% for spec in cl.filter_specs %}
+                        <li data-theme="c">{% admin_list_filter cl spec 1 %}</li>
+                    {% endfor %}
+                    {# </div> #}
+                </ul>
+                {# </div> #}
             </div>
-        {% endif %}
-		</div>
-	</div>
-	{% endcomment %}
+            {% endif %}
+            {% endcomment %}
+            
+            {% comment %}
+    </div>
+</div>
+{% endcomment %}
+
+{% comment %}
+<div id="ma-listsearch" data-role="page" data-theme="a" >
+     <div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
+        <a data-icon="back" href="{{ request.path }}" data-role="button" class="ui-btn-left">{% trans "Back" %}</a>
+        <h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% trans 'Django administration' %}</h1>
+    </div>
+
+    <div data-role="fieldcontain">
+        <label for="search">{% trans "Search" %}</label>
+        {% if cl.search_fields %}
+        <div id="search" class="module search span-6">
+            {# {% block search %}{% search_form cl 0 %}{% endblock %} #}
+            <form id='changelist-search' methode="get" action='' > 
+                <input type="search" name="search" id="search" value="" /> 
+                <input type="submit" value="{% trans "Valider" %}"/>
+            </form>
+        </div>
+    {% endif %}
+    </div>
+</div>
+{% endcomment %}
 

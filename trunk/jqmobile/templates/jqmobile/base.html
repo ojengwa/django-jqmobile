@@ -83,9 +83,19 @@
 				   	<li>{% trans 'None available' %}</li>
 				    {% else %}
 				    {% for entry in admin_log %}
-						<li class="{% if entry.is_addition %}addlink{% endif %}{% if entry.is_change %}changelink{% endif %}{% if entry.is_deletion %}deletelink{% endif %}">
-						    {% if not entry.is_deletion %}<a href="{{ entry.get_admin_url }}">{% endif %}
-						    {% filter capfirst %}{% trans entry.content_type.name %}{% endfilter %}: <span id="entry_{{ entry.pk }}" data-theme="e">{{ entry.object_repr|escape }}</span>
+						<li class="{% if entry.is_addition %}addlink{% endif %}
+						{% if entry.is_change %}changelink{% endif %}
+						{% if entry.is_deletion %}deletelink{% endif %}"
+						>
+						<p class="ui-li-count">{% if entry.is_addition %}{% trans "Added" %}{% endif %}
+						{% if entry.is_change %}{% trans "Modified" %}{% endif %}
+						{% if entry.is_deletion %}{% trans "Deleted" %}{% endif %}
+						</p>
+						{% if not entry.is_deletion %}
+							<a href="{{ entry.get_admin_url }}">
+						{% endif %}
+						{% filter capfirst %}{% trans entry.content_type.name %}{% endfilter %}: 
+						 <span id="entry_{{ entry.pk }}" data-theme="e">{{ entry.object_repr|escape }}</span>
 						    {% if not entry.is_deletion %}</a>{% endif %}
 						</li>
 				    {% endfor %}

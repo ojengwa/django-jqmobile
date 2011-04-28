@@ -1,0 +1,18 @@
+Django jqmobile was originally created in early 2011 at Motion Média, a multimedia
+company located in Salaberry-de-Valleyfield, Qc, Canada. 
+
+The PRIMARY AUTHORS are (and/or have been):
+
+    * Maxime Haineault
+    * Maxime Barbier
+
+A big THANK YOU goes to:
+
+    Jannis Leidel who released django-mobileadmin under open source license. Django-mobileadmin 
+    was helpful in many ways to jumpstart the jqmobile project. .
+
+    The jQuery mobile project's team who did a wonderful job and a great Open Source library
+
+    Google for hosting this project for free
+
+    And of course the Django project's team :)

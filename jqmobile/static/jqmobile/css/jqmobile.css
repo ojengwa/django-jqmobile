@@ -9,13 +9,17 @@ h1 {
 
 h2 {
     -moz-border-radius: 4px 4px 0 0;
-    background: -moz-linear-gradient(center top , #E3E3E3, #D6D6D6) repeat scroll 0 0 transparent;
+    background: -moz-linear-gradient(center top , #e3e3e3, #d6d6d6) repeat scroll 0 0 transparent;
     padding: 8px 10px;
     font-size: 13px;
     font-weight: bold;
     margin: 8px 0 0 0;
     border: 1px solid #999;
     border-width: 1px 1px 0 1px;
+}
+
+.ui-bar .ui-btn + .ui-btn {
+    margin-left: 8px;
 }
 
 /* Home button tweaks */

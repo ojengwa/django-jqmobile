@@ -4,6 +4,22 @@
 
 Here you will find the basic configurations required to get you started.
 
+==Installation==
+
+===Latest official release===
+
+{{{
+sudo easy_install jqmobile
+}}}
+
+===From source===
+
+{{{
+svn checkout http://django-jqmobile.googlecode.com/svn/trunk/ django-jqmobile
+}}}
+
+Then make django-jqmobile/jqmobile/ available in your PYTHON path environment variable.
+
 ==Configurations==
 
 ===settings.py===

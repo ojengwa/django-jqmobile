@@ -1,0 +1,26 @@
+{% extends "jqmobile/base.html" %}
+{% load i18n %}
+
+{% block content %}
+{% spaceless %}
+<form action="{{ app_path }}" class="panel" method="post" selected="true">{% csrf_token %}
+    {% if error_message %}<h1 class="error">{{ error_message }}</h1>{% endif %}
+    <div class="ui-body ui-body-c">
+        <div data-role="fieldcontain" class="ui-body ui-br">
+            <label for="id_username" class="required">{% trans "Username:" %}</label>
+            <input type="text" name="username" id="id_username" value="" />
+        </div>
+        <div data-role="fieldcontain" class="ui-body ui-br">
+            <label for="id_password" class="required">{% trans "Password:" %}</label>
+            <input type="password" name="password" id="id_password" value="" />
+            <input type="hidden" name="this_is_the_login_form" value="1" />
+            <input type="hidden" name="post_data" value="{{ post_data }}" />
+        </div>
+	    <div class="submit-row">
+            <input type="submit" data-theme="b" value="{% trans "Log in" %}">
+        </div>
+    </div>
+</form>
+<script type="text/javascript">$(function(){ $('#id_username').focus() })</script>
+{% endspaceless %}
+{% endblock %}

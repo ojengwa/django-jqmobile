@@ -1,0 +1,29 @@
+{% load i18n %}
+{% spaceless %}
+{% if cl.search_fields %}
+<form id="search" action="" method="get">
+    <input type="search" size="40" name="{{ search_var }}" id="searchinput" value="{{ cl.query|escape }}" autofocus>
+    {% for pair in cl.params.items %}{% ifnotequal pair.0 search_var %}
+    <input type="hidden" name="{{ pair.0|escape }}" value="{{ pair.1|escape }}"/>
+    {% endifnotequal %}{% endfor %}
+</form>
+
+{% if show_result_count %}
+<p class="ui-li-count">
+    {% blocktrans with cl.full_result_count as full_result_count and cl.result_count as count %}Displaying {{ count }} of {{ full_result_count }}{% endblocktrans %}
+</p>
+{% endif %}
+
+<script type="text/javascript">
+(function($){
+    $(function(){
+        $('#searchinput').focus()
+            .next().bind('click.jqmobile', function(e){
+                e.preventDefault()
+                window.location.href = '?'
+                })
+    })
+})(jQuery)
+</script>
+{% endif %}
+{% endspaceless %}

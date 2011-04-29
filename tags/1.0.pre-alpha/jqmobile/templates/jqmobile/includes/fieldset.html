@@ -1,0 +1,13 @@
+{% load jqmobile_tags %}
+{% spaceless %}
+{% if fieldset.name %}<h2>{{ fieldset.name }}</h2>{% endif %}
+<div class="ui-body ui-body-c">
+    {% for line in fieldset %}
+    <div class="form-row{% if line.errors %} errors{% endif %} {% for field in line %}{{ field.field.name }} {% endfor %} " data-role="fieldcontain"{% if line.errors %} data-icon="alert"{% endif %}>
+        {% for field in line %}
+        	{% render_mobile_field field %}
+        {% endfor %}
+      </div>
+  {% endfor %}
+</div>
+{% endspaceless %}

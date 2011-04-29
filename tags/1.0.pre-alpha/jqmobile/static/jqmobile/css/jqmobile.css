@@ -1,0 +1,103 @@
+/* General */
+
+h1 {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0 0 8px 0;
+}
+
+h2 {
+    -moz-border-radius: 4px 4px 0 0;
+    background: -moz-linear-gradient(center top , #e3e3e3, #d6d6d6) repeat scroll 0 0 transparent;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 8px 0 0 0;
+    border: 1px solid #999;
+    border-width: 1px 1px 0 1px;
+}
+
+.ui-bar .ui-btn + .ui-btn {
+    margin-left: 8px;
+}
+
+/* Home button tweaks */
+
+.ui-btn-home .hidden {
+    display: none;
+}
+.ui-btn-home .home-icon {
+    background: url("../jquery.mobile/images/icons-18-black.png") no-repeat scroll -579px 0 transparent;
+    display: block;
+    height: 15px;
+    margin: 0 auto;
+    width: 12px;
+}
+
+/* Change form tweaks */
+
+.errors {
+    margin: 15px 15px 0 15px;
+}
+
+.errorlist {
+    margin: 5px 0 0 22%;
+    padding: 0;
+}
+
+.errorlist li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-weight: bold;
+    color: #c30;
+    text-shadow: 1px 1px 1px #fff;
+}
+
+
+.ui-btn-delete {
+    border: 1px solid #992626;
+    background: #D93636;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 1px 0 #992626;
+    background-image: -moz-linear-gradient(top,#D93636,#BF3030);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#D93636),color-stop(1,#BF3030));
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#D93636', EndColorStr='#BF3030')";
+}
+
+.error {
+    padding: 15px 20px;
+}
+
+.form-row.errors input {
+    border-color: #c30;
+}
+
+.errormsg {
+    font-size: 14px;
+    font-weight: normal;
+    margin: 6px 0 0 345px;
+    padding: 6px;
+    width: 60%;
+}
+
+.min-width-480px .errormsg {
+    margin-left: 22.3%;
+}
+
+.form-row .form-button a {
+    width: 200px;
+    margin-left: 22%;
+}
+
+
+/* Inlines */
+
+.stacked-inlines {}
+.stacked-inlines h2 {}
+.stacked-inlines h3 {
+    margin: 0;
+}
+.stacked-inlines .ui-body {}

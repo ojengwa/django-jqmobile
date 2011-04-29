@@ -1,0 +1,23 @@
+{% extends "jqmobile/index.html" %} 
+{% load i18n jqmobile_tags %} 
+
+{% block app.title %} {% trans "Admin" %} / {{ app_list.0.name }}{% endblock %}
+
+{% block navbar %}{% get_breadcrumb request.path %}{% endblock %}
+
+{% block content %}
+{% spaceless %}
+<ul data-role="listview" data-inset="true" data-theme="a" data-dividertheme="a">
+    {% for app in app_list %}
+    <li class="group" id="verbose_name" data-theme="a">{{ app.name|capfirst|escape }}</li>
+    {% for model in app.models %}
+    {% if model.perms.change %}
+        <li data-theme="c"><a target="_self" href="{{ model.admin_url }}">{{ model.name }}</a></li>
+    {% else %}
+        <li data-theme="c">{{ model.name }}</li>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+</ul>
+{% endspaceless %}
+{% endblock %}

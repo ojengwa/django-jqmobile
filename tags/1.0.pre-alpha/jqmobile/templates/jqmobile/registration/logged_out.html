@@ -1,0 +1,14 @@
+{% extends "jqmobile/base.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}<a href="../" class="inactive float-left">{% trans 'Log in again' %}</a><span class="float-right">{% trans "Logged out" %}</span>{% endblock %}
+
+{% block content %}
+<div class="panel" selected="true">
+    <h1><p><center>{% trans "Logged out. Log " %}<a href="/ma/">{% trans "in again" %}</a></center></h1></p>
+</div>
+{% endblock %}
+
+{% block app.header_right_button %}
+<a data-direction="reverse" data-icon="home" href="{% url jqmobile:index %}" title="{% trans "Home" %}" data-theme="a" data-role="button" data-iconpos="notext">{% trans "Home" %}</a>
+{% endblock %}

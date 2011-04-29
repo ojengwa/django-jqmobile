@@ -1,0 +1,53 @@
+{% load i18n mobile_admin_modify %}
+{% spaceless %}
+<h2>{{ inline_admin_formset.opts.verbose_name_plural|title }}</h2>
+<div class="stacked-inlines ui-body-c ui-body">
+    {{ inline_admin_formset.formset.management_form }}
+    {{ inline_admin_formset.formset.non_form_errors }}
+    {% for inline_admin_form in inline_admin_formset %}
+        <div class="stacked-inline" {% if not forloop.last %}data-role="collapsible" {% if not forloop.first %}data-collapsed="true"{% endif %}{% endif %}>
+            <h3>
+                {{ inline_admin_formset.opts.verbose_name|title }}:&nbsp;{% if inline_admin_form.original %}{{ inline_admin_form.original }}{% else %} #{{ forloop.counter }}{% endif %}
+            </h3>
+            {% if inline_admin_formset.formset.can_delete and inline_admin_form.original %}
+            <div class="form-row delete">
+                {{ inline_admin_form.deletion_field.field }} {{ inline_admin_form.deletion_field.label_tag }}
+            </div>
+            {% endif %}
+            {% for fieldset in inline_admin_form %}
+                {% include "jqmobile/includes/fieldset.html" %}
+            {% endfor %}
+            {{ inline_admin_form.pk_field.field }}
+        </div>
+    {% endfor %}
+    <div class="ui-clear ui-br">
+        <a id="formset_add_another" data-role="button" data-icon="plus">{% trans "Add another" %} {{ inline_admin_formset.opts.verbose_name }}</a>
+    </div>
+    <script>
+    (function($){
+        $(function(){
+            $('.stacked-inline:last').hide()
+
+            $('#formset_add_another').bind('click', function(){
+                var wrapper  = $(this).parents('.stacked-inlines'),
+                    inlines  = wrapper.find('.stacked-inline'),
+                    template = inlines.last().hide().clone(true)
+                    
+                var title = template.find('h3')
+                title.text(title.text().replace(/#\d+/, '#'+(inlines.length)))
+                
+                template.collapsible({'collapsed': true}).insertBefore(inlines.last())
+                    .find('*').each(function(i, el) {
+                        $.each(['id', 'class', 'for', 'name'], function(i, name){
+                            var new_attr = $(el).attr(name)
+                            if (new_attr) {
+                                $(el).attr(name, new_attr.replace(/__prefix__/, inlines.length))
+                            }
+                        })
+                    }).end().show()
+            })
+        })
+    })(jQuery)
+    </script>
+</div>
+{% endspaceless %}

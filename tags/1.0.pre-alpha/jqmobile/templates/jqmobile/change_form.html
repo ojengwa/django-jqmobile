@@ -1,0 +1,127 @@
+{% extends "jqmobile/base.html" %}
+{% load i18n jqmobile_tags %}
+
+{% block extrahead %}{{ block.super }}
+{#<script type="text/javascript" src="{{ STATIC_URL }}jqmobile/js/jQuery.ui.datepicker.js"></script>#}
+{#<script type="text/javascript" src="{{ STATIC_URL }}jqmobile/js/jquery.ui.datepicker.mobile.js"></script>#}
+<script type="text/javascript" src="../../../jsi18n/"></script>
+{#<script type="text/javascript" src="{% mobileadmin_media_prefix %}js/urlify.js"></script>#}
+{% endblock %}
+
+{% block add_scripts %}
+{% comment %}
+<script type="text/javascript">
+ //reset type=date inputs to text
+$( document ).bind( "mobileinit", function(){
+    $.mobile.page.prototype.options.degradeInputs.date = true
+})
+</script>
+{% endcomment %}
+{% endblock %}
+
+{% block navbar %}{% get_breadcrumb request.path %}{% endblock %}
+
+{% block app.title %}
+	{% trans "Admin" %} / {{ opts.verbose_name_plural|capfirst|escape }} / {{ original|escape|truncatewords:"3" }}
+{% endblock %}
+
+{% block extra_options_head %}
+{% spaceless %}
+	{% if change %}
+    <li class="group" data-theme="a">{{ original|escape|truncatewords:"3" }}</li>
+		{# view on site #}
+		{% if has_absolute_url %}
+			<li><a href="../../../r/{{ content_type_id }}/{{ object_id }}/" target="_blank">{% trans "View on site" %}</a></li>
+		{% endif%}
+		{# history #}
+		<li><a href="history/" data-icon="info">{% trans "History" %}</a></li>
+	{% endif%}
+{% endspaceless %}
+{% endblock %}
+
+{% block messages %}
+{% if errors %}
+{% spaceless %}
+<ul class="ui-listview ui-listview-inset ui-corner-all ui-shadow errors" data-theme="e" data-role="listview" >
+    <li class="ui-li ui-li-static ui-body-a ui-corner-top error">
+        {% blocktrans count errors.items|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
+    </li>
+</ul>
+{% endspaceless %}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% spaceless %}
+<form target="_self" class="panel" selected="true" title="{{ opts.object_name|capfirst }}" {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.module_name }}_form">{% csrf_token %}{% block form_top %}{% endblock %}
+	{% if not add %}
+		<h1><span id="object_name">{{ opts.object_name|escape }}</span>: <span id="original">{{ original|escape }}</span></h1>
+	{% endif %}
+	
+	{% for fieldset in adminform %} 
+	  {% include "jqmobile/includes/fieldset.html" %}
+	{% endfor %}
+	
+	{% block after_field_sets %}{% endblock %} 
+
+    {# Inlines #}
+	{% for inline_admin_formset in inline_admin_formsets %} 
+        {% include inline_admin_formset.opts.template %}
+	{% endfor %}
+	{% if inline_admin_formsets %}{% endif %}
+    {% block after_related_objects %}{% endblock %} 
+
+
+	{% if add %} 
+    <script type="text/javascript">
+    $(function(){
+        $("#{{ adminform.first_field.auto_id }}").focus()
+    });
+    </script> 
+	{% endif %} 
+
+	{# JavaScript for prepopulated fields #}
+	{% prepopulated_fields_js %}
+</form>
+{% endspaceless %}
+{% endblock %}
+
+
+{% block page.footer %}
+{% spaceless %}
+<div for="footer_id" data-role="footer" class="ui-bar" data-position="fixed" data-backbtn="false"> 
+	<a id="save-object" data-theme="b" data-iconpos="left" data-icon="check" onclick="document.forms[0].submit();">{% trans "Save" %}</a>
+
+	{% if has_delete_permission %}{% if change or show_delete %}<a data-theme="e" data-iconpos="left" data-icon="delete" href="delete/" class="ui-btn-delete">{% trans "Delete" %}</a>{% endif %}{% endif %}
+
+	<script>
+    $(function(){
+		$('#save-object').bind('click', function(){
+            $('form:first').submit()
+            return false
+        })
+	})
+	</script>
+</div>
+{% endspaceless %}
+{% endblock %}
+
+{% comment %}
+{% block page.secondarypages %} {{ block.super }}
+<div id="ma_date" data-role="page" data-theme="a" >
+<div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
+	<a data-icon="back" href="{{ request.path }}" data-role="button" class="ui-btn-left">{% trans "Back" %}</a>
+	<h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% trans 'Django administration' %}</h1>
+	<a data-direction="reverse" data-icon="delete" href="{% url jqmobile:logout %}" title="{% trans "Log out" %}" data-theme="a" data-role="button" data-iconpos="notext">{% trans "Log out" %}</a>
+	</div>
+	<div data-role="content">
+		<input type='date' id='datepicker_choice' name="datepicker_choice" value="12"/>
+	</div>
+</div>
+<div id='ma_button_date' data-role='page'>
+	<div data-role="content">
+		<a id="button_choice_date" href="#ma_date" data-rel="dialog" data-transition="pop">test</a>
+	</div>
+</div>
+{% endblock %}
+{% endcomment %}

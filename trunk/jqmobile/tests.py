@@ -1,4 +1,4 @@
-# http://docs.djangoproject.com/en/dev/topics/testing/
+# http://docs.djangoproject.com/en/1.3/topics/testing/
 from django.utils import unittest
 from django.test.client import Client
 

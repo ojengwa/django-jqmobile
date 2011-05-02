@@ -74,7 +74,7 @@ class DjangoFileFields(models.Model):
     image_test     = models.ImageField(u"ImageField", blank=True, upload_to='uploads/', help_text=u"Like FileField, but validates that the uploaded object is a valid image.")
 
     def __unicode__(self):
-        return u'%s' % self.char_test
+        return u'%s' % self.file_test
 
     class Meta:
         verbose_name = u'File fields test'

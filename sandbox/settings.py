@@ -141,8 +141,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'grappelli',
     'django.contrib.admin',
-    'mobileadmin',
-    'contrib.jqmobile',
+    'contrib.jqmobile', # contrib is required or else the tests wont run..
     'testdjango',
     'testdjangoinlines',
     'testgrappelli',

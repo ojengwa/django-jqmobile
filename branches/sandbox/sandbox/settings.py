@@ -142,7 +142,7 @@ INSTALLED_APPS = (
     'grappelli',
     'django.contrib.admin',
     'mobileadmin',
-    'jqmobile',
+    'contrib.jqmobile',
     'testdjango',
     'testdjangoinlines',
     'testgrappelli',

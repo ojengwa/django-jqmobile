@@ -25,7 +25,7 @@
 		    <div data-theme="a" data-role="header" class="ui-bar-a ui-header" role="banner">
 		        {% block app.header_left_button %}
 		        {% if user.is_authenticated %}
-		        <a href="#ma_options" data-icon="gear" data-iconpos="notext" data-role="button" class="ui-btn-left"></a>		{% endif %}
+		        <a href="{{ request.path }}#ma_options" data-icon="gear" data-iconpos="notext" data-role="button" class="ui-btn-left"></a>		{% endif %}
 		        {% endblock %}
 		        {# TODO: the default title should check for Grappelli title in settings before falling back to "Django Admin #}
 		        <h1 tabindex="0" role="heading" aria-level="1" data-theme="a">{% block app.title %}{% trans "Django Admin" %}{% endblock %}</h1>
@@ -56,7 +56,7 @@
 						<li><a href="{% url jqmobile:password_change %}">{% trans "Change Your Password" %}</a></li>
 						<li><a href="{# url admin:index #}/admin/">{% trans "Desktop Admin" %}</a></li>
 						<li><a href="{% url jqmobile:auth_user_change request.user.id %}">{% trans "My Account" %}</a></li>
-						<li><a href="#ma-actions">{% trans "My Recent Actions" %}</a></li>
+						<li><a href="{{ request.path }}#ma-actions">{% trans "My Recent Actions" %}</a></li>
 		                {% url django-admindocs-docroot as docsroot %}
 		                {% if docsroot %}
 		               		<li><a href="{{ docsroot }}">{% trans "Documentation" %}</a></li>

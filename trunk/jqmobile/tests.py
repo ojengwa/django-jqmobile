@@ -36,7 +36,7 @@ class TestJqmobile(unittest.TestCase):
         response = self.client.get(reverse('jqmobile:logout'))
         self.failUnlessEqual(response.status_code, 200)
 
-
+    def test_views_
 
         #response=self.client.get('jqmobile/login.html')
         #self.failUnlessEqual(response.status_code,200)
